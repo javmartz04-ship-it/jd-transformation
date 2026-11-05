@@ -85,6 +85,7 @@
   .jdx-chrome{grid-template-columns:auto 1fr;height:42px}.jdx-chrome>span:last-child{display:none}
   .jdx-url{max-width:none}
   .jdx-hint{display:none}
+  .jdx-now{height:34px;font-size:12px}.jdx-now b{display:none}
   .jdx-k i{display:none}
   .jdx-bar{justify-content:center}
   .jdx-knob{width:44px;height:44px;margin:-22px 0 0 -22px}
@@ -94,6 +95,17 @@
 @media (prefers-reduced-motion:reduce){.jdx [data-jdx-r]{opacity:1;transform:none;transition:none}.jdx-knob,.jdx-tabs button{transition:none}}
 
 /* ===== motion layer ===== */
+/* chapter chip: both sides are always on the same part of the story */
+.jdx-now{display:inline-flex;align-items:center;gap:10px;margin:0;height:38px;padding:0 16px 0 14px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;box-shadow:0 10px 24px -14px rgba(3,13,48,.6)}
+.jdx-now b{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
+.jdx-now em{position:relative;display:inline-block;height:1.3em;min-width:9.5em;overflow:hidden;font-style:normal;font-weight:600}
+.jdx-now em span{position:absolute;left:0;top:0;white-space:nowrap;animation:jdx-in .55s var(--ease) both}
+.jdx-now em span.out{animation:jdx-out .45s var(--ease) both}
+@keyframes jdx-in{from{transform:translateY(110%);filter:blur(6px);opacity:0}to{transform:none;filter:none;opacity:1}}
+@keyframes jdx-out{to{transform:translateY(-110%);filter:blur(6px);opacity:0}}
+.jdx-layer img,.jdx-scr img{transition:opacity .4s ease}
+.jdx.rst .jdx-layer img,.jdx.rst .jdx-scr img{opacity:0}
+.jdx.rst .jdx-pin>div{opacity:0}
 /* ambient bloom drifts slowly behind everything */
 .jdx::before{animation:jdx-drift 18s ease-in-out infinite alternate}
 @keyframes jdx-drift{from{transform:translate3d(-6%,0,0) scale(1)}to{transform:translate3d(6%,4%,0) scale(1.12)}}
@@ -188,6 +200,7 @@
         <button type="button" role="tab" aria-selected="true" data-view="d">Desktop</button>
         <button type="button" role="tab" aria-selected="false" data-view="m">Mobile</button>
       </div>
+      <p class="jdx-now" data-now aria-live="off"><b>Now showing</b><em></em></p>
       <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag to compare &middot; both pages scroll on their own</p>
     </div>
 
@@ -225,8 +238,16 @@
   var stage=root.querySelector('[data-stage]'), handle=root.querySelector('.jdx-handle'), url=root.querySelector('[data-url]');
   var tagB=root.querySelector('[data-tag="b"]'), tagA=root.querySelector('[data-tag="a"]');
   var dImgs=[].slice.call(stage.querySelectorAll('img')), mImgs=[].slice.call(root.querySelectorAll('.jdx-scr img'));
-  var x=100, p=0, dir=1, live=false, hold=0, last=0, dragging=false, mode='d', intro=false;
-  var SPEED=1/44; /* one full pass in ~44s */
+  var x=100, Y=0, live=false, hold=0, last=0, runT=0, hover=false, dragging=false, mode='d', intro=false;
+  /* both pages scroll together, matched section to section: when the new page reaches a section,
+     the old page is at its equivalent. Offsets are each capture's own CSS px. */
+  var MAP={
+    d:{w:1440,oldH:4484,newH:12125,speed:300,pairs:[[0,0],[1328,2815],[1609,5419],[2160,6650],[2471,6778],[3126,8650]],
+       ch:[[0,'The first impression'],[900,'Who he is'],[1759,'The next step'],[2815,'The positioning'],[4212,'His story'],[5419,'The process'],[6778,'Why franchise'],[8650,'The offer'],[10102,'The podcast'],[10851,'The close']]},
+    m:{w:390,oldH:11172,newH:16219,speed:400,pairs:[[0,0],[2122,3443],[2728,6595],[3700,8300],[4960,8800],[7331,10854]],
+       ch:[[0,'The first impression'],[1098,'Who he is'],[2115,'The next step'],[3443,'The positioning'],[4780,'His story'],[6595,'The process'],[8800,'Why franchise'],[10854,'The offer'],[13226,'The podcast'],[14246,'The close']]}
+  };
+  var nowEl=root.querySelector('[data-now]'), nowTxt='';
   var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   var XX='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>';
   /* anchors in the captured pages' own 1440px-wide coordinates */
@@ -266,22 +287,48 @@
     handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after');
     tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1; if(PINS[0].el) pins();
     url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com \u2192 JD Strategic, rebuilt'; }
-  function pan(list,box){ list.forEach(function(img,i){ var h=img.offsetHeight, H=box.clientHeight; if(!h) return; var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2, v=-(h-H)*e; if(box===stage) ty[i]=v; img.style.transform='translate3d(0,'+v.toFixed(1)+'px,0)'; }); }
-  function draw(){ if(mode==='d'){ pan(dImgs,stage); pins(); } else mImgs.forEach(function(img){ pan([img],img.parentNode); }); stage.style.setProperty('--p',p.toFixed(4)); }
-  function loop(t){ if(!live){ last=0; return; } if(last && !RM && t>hold){ var dt=Math.min(.05,(t-last)/1000); p+=dir*dt*SPEED; if(p>=1){p=1;dir=-1;hold=t+2200;} if(p<=0){p=0;dir=1;hold=t+2200;} draw(); } last=t; requestAnimationFrame(loop); }
+  /* monotone cubic through the matched pairs, so the old page never jerks between sections */
+  function curve(M,vh){ var nMax=Math.max(1,M.newH-vh), oMax=Math.max(0,M.oldH-vh);
+    var P=M.pairs.filter(function(q){ return q[0]<oMax-40 && q[1]<nMax-40; }).concat([[oMax,nMax]]);
+    var xs=P.map(function(q){return q[1];}), ys=P.map(function(q){return q[0];}), n=xs.length, d=[], m=[];
+    for(var i=0;i<n-1;i++) d.push((ys[i+1]-ys[i])/(xs[i+1]-xs[i]));
+    m[0]=d[0]; m[n-1]=d[n-2]; for(i=1;i<n-1;i++) m[i]=(d[i-1]*d[i]<=0)?0:(d[i-1]+d[i])/2;
+    for(i=0;i<n-1;i++){ if(d[i]===0){m[i]=m[i+1]=0;continue;} var a=m[i]/d[i], b=m[i+1]/d[i], h=a*a+b*b; if(h>9){ var t=3/Math.sqrt(h); m[i]=t*a*d[i]; m[i+1]=t*b*d[i]; } }
+    return {nMax:nMax, f:function(y){ y=Math.max(0,Math.min(nMax,y)); var i=0; while(i<n-2 && y>xs[i+1]) i++; var hh=xs[i+1]-xs[i], t=(y-xs[i])/hh, t2=t*t, t3=t2*t;
+      return (2*t3-3*t2+1)*ys[i]+(t3-2*t2+t)*hh*m[i]+(-2*t3+3*t2)*ys[i+1]+(t3-t2)*hh*m[i+1]; }}; }
+  function place(oldImg,newImg,box,M,isStage){ var W=box.clientWidth, H=box.clientHeight; if(!W) return 0; var k=W/M.w, vh=H/k, c=curve(M,vh);
+    if(Y>c.nMax) Y=c.nMax; var yo=c.f(Y);
+    if(isStage){ ty[0]=-yo*k; ty[1]=-Y*k; }
+    oldImg.style.transform='translate3d(0,'+(-yo*k).toFixed(1)+'px,0)'; newImg.style.transform='translate3d(0,'+(-Y*k).toFixed(1)+'px,0)';
+    return c.nMax; }
+  function chapter(M){ var lab=M.ch[0][1]; M.ch.forEach(function(c){ if(Y+ (mode==='d'?300:420) >= c[0]) lab=c[1]; });
+    if(lab===nowTxt) return; nowTxt=lab; var o=nowEl.querySelector('span.cur'); if(o){ o.className='out'; setTimeout(function(){ if(o.parentNode) o.parentNode.removeChild(o); },500); }
+    var sp=document.createElement('span'); sp.className='cur'; sp.textContent=lab; nowEl.querySelector('em').appendChild(sp); }
+  var nMaxNow=1;
+  function draw(){ var M=MAP[mode];
+    if(mode==='d'){ nMaxNow=place(dImgs[0],dImgs[1],stage,M,true); pins(); }
+    else { nMaxNow=place(mImgs[0],mImgs[1],root.querySelector('.jdx-scr'),M,false); }
+    stage.style.setProperty('--p',(Y/nMaxNow).toFixed(4)); chapter(M); }
+  function loop(t){ if(!live){ last=0; return; }
+    if(last && !RM && !hover && !dragging && t>hold){ var dt=Math.min(.05,(t-last)/1000); runT+=dt; var ramp=Math.min(1,runT/1.4); ramp=ramp*ramp*(3-2*ramp);
+      var left=nMaxNow-Y, slow=Math.min(1,Math.max(.18,left/(MAP[mode].speed*1.6)));
+      Y+=MAP[mode].speed*dt*ramp*slow; draw();
+      if(Y>=nMaxNow-.5){ hold=Infinity; setTimeout(restart,2800); } }
+    last=t; requestAnimationFrame(loop); }
+  function restart(){ root.classList.add('rst'); setTimeout(function(){ Y=0; runT=0; draw(); root.classList.remove('rst'); hold=performance.now()+1400; },450); }
 
   function fromEvent(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
-  stage.addEventListener('pointerdown',function(e){ dragging=true; root.classList.add('drag'); stage.setPointerCapture(e.pointerId); setX(fromEvent(e)); hold=performance.now()+1500; });
+  stage.addEventListener('pointerdown',function(e){ dragging=true; root.classList.add('drag'); stage.setPointerCapture(e.pointerId); setX(fromEvent(e)); });
   stage.addEventListener('pointermove',function(e){ if(dragging) setX(fromEvent(e)); });
   ['pointerup','pointercancel'].forEach(function(n){ stage.addEventListener(n,function(){ dragging=false; root.classList.remove('drag'); }); });
   handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
-  stage.addEventListener('mouseenter',function(){ hold=Infinity; }); stage.addEventListener('mouseleave',function(){ hold=performance.now()+600; });
+  [stage,root.querySelector('.jdx-phones')].forEach(function(el){ el.addEventListener('mouseenter',function(){ hover=true; }); el.addEventListener('mouseleave',function(){ hover=false; hold=performance.now()+500; }); });
 
   root.querySelectorAll('.jdx-tabs button').forEach(function(b){ b.addEventListener('click',function(){
     mode=b.dataset.view; root.classList.toggle('m',mode==='m');
     root.querySelectorAll('.jdx-tabs button').forEach(function(o){ o.setAttribute('aria-selected',o===b?'true':'false'); });
     if(mode==='m') mImgs.forEach(function(img){ if(img.dataset.src){ img.src=img.dataset.src; img.removeAttribute('data-src'); img.addEventListener('load',draw); } });
-    p=0; dir=1; hold=performance.now()+900; draw(); }); });
+    root.classList.remove('rst'); Y=0; runT=0; hold=performance.now()+900; draw(); }); });
 
   function reveal(){ if(intro) return; intro=true; root.classList.add('in'); pins();
     if(RM){ setX(50); return; }
