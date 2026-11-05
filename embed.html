@@ -1,0 +1,177 @@
+<!-- JD Strategic transformation showcase. Self-contained: paste into a custom code element. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+.jdx{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--ground:#FFFFFF;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;--ease:cubic-bezier(.22,1,.36,1);
+  position:relative;background:var(--ground);color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding:clamp(56px,8vw,120px) clamp(16px,4vw,56px);overflow:hidden;isolation:isolate}
+.jdx *,.jdx *::before,.jdx *::after{box-sizing:border-box}
+.jdx::before{content:"";position:absolute;inset:-20% -10% auto;height:70%;z-index:-1;background:radial-gradient(48% 60% at 50% 0%,rgba(1,129,252,.10),rgba(1,129,252,0) 70%)}
+.jdx-in{max-width:1180px;margin:0 auto}
+.jdx-head{text-align:center;max-width:820px;margin:0 auto clamp(36px,4.6vw,64px)}
+.jdx-k{display:inline-flex;align-items:center;gap:12px;margin:0 0 22px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.jdx-k i{width:28px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
+.jdx h2{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);font-size:clamp(34px,5.4vw,68px);line-height:1;letter-spacing:-.035em;text-wrap:balance}
+.jdx h2 em{display:block;margin-top:.08em;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1.05;padding-bottom:.06em;background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.jdx-lede{margin:22px auto 0;max-width:56ch;font-size:clamp(15.5px,1.2vw,17.5px);color:var(--body);text-wrap:pretty}
+
+/* view switch */
+.jdx-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 auto 18px;flex-wrap:wrap}
+.jdx-tabs{display:inline-flex;padding:4px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
+.jdx-tabs button{appearance:none;border:0;background:transparent;font:600 13px/1 'Inter',sans-serif;letter-spacing:.01em;color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.jdx-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(3,13,48,.08),0 6px 16px -8px rgba(3,13,48,.25)}
+.jdx-tabs button:focus-visible,.jdx-handle:focus-visible,.jdx-live:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
+.jdx-hint{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.jdx-hint svg{width:18px;height:18px;color:var(--g2)}
+
+/* desktop browser */
+.jdx-win{position:relative;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 2px 4px rgba(3,13,48,.04),0 30px 60px -30px rgba(3,13,48,.28),0 80px 120px -60px rgba(1,29,120,.25);overflow:hidden}
+.jdx-chrome{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;height:46px;padding:0 16px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F4F5F7)}
+.jdx-dots{display:flex;gap:7px}.jdx-dots i{width:11px;height:11px;border-radius:50%;background:#DDE0E6}
+.jdx-url{display:flex;align-items:center;gap:8px;min-width:0;max-width:420px;height:28px;padding:0 14px;border-radius:8px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden}
+.jdx-url svg{width:12px;height:12px;flex:none}
+.jdx-url span{overflow:hidden;text-overflow:ellipsis;transition:opacity .25s ease}
+.jdx-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.jdx-layer{position:absolute;inset:0;overflow:hidden}
+.jdx-layer img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform;pointer-events:none;-webkit-user-drag:none}
+.jdx-after{clip-path:inset(0 0 0 var(--x,50%))}
+.jdx-tag{position:absolute;bottom:16px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:none;transition:opacity .35s var(--ease)}
+.jdx-tag.b{left:16px;background:rgba(255,255,255,.86);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
+.jdx-tag.a{right:16px;background:rgba(3,13,48,.78);color:#fff}
+.jdx-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:44px;margin-left:-22px;display:flex;justify-content:center;cursor:ew-resize;border:0;background:none;padding:0}
+.jdx-handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 24px rgba(1,129,252,.55)}
+.jdx-knob{position:absolute;top:50%;left:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.9),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
+.jdx-knob svg{width:22px;height:22px}
+.jdx-stage:hover .jdx-knob,.jdx-handle:focus-visible .jdx-knob,.jdx.drag .jdx-knob{transform:scale(1.08)}
+.jdx-rail{position:absolute;right:10px;top:16%;bottom:16%;z-index:3;width:3px;border-radius:3px;background:rgba(3,13,48,.10);pointer-events:none}
+.jdx-rail i{position:absolute;left:0;right:0;top:0;height:14%;border-radius:3px;background:rgba(3,13,48,.42);transform:translateY(calc(var(--p,0) * 614%))}
+
+/* mobile pair */
+.jdx-phones{display:none;grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;gap:clamp(20px,6vw,96px);padding:clamp(28px,4vw,56px) 0 clamp(8px,1vw,16px);background:radial-gradient(60% 70% at 50% 40%,#F2F5FB,#fff 70%);border-radius:14px;border:1px solid var(--line)}
+.jdx.m .jdx-phones{display:grid}.jdx.m .jdx-win{display:none}
+.jdx-phone{margin:0;text-align:center}
+.jdx-dev{position:relative;aspect-ratio:390/844;border-radius:42px;padding:10px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 40px 70px -30px rgba(3,13,48,.45)}
+.jdx-scr{position:relative;height:100%;border-radius:33px;overflow:hidden;background:#fff}
+.jdx-scr img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform}
+.jdx-scr::before{content:"";position:absolute;z-index:2;top:9px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:20px;background:#0B0E16}
+.jdx-phone figcaption{margin-top:18px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.jdx-phone figcaption b{color:var(--ink);font-weight:600}
+.jdx-phone.after .jdx-dev{box-shadow:inset 0 0 0 2px #2A2F3A,0 0 0 1px rgba(1,129,252,.25),0 40px 80px -28px rgba(1,29,180,.45)}
+
+/* what changed */
+.jdx-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--line)}
+.jdx-note{padding:28px clamp(18px,2.4vw,36px) 0 0}
+.jdx-note+.jdx-note{padding-left:clamp(18px,2.4vw,36px);border-left:1px solid var(--line)}
+.jdx-from{font-size:13px;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(122,129,148,.5)}
+.jdx-to{margin:6px 0 10px;font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.2;letter-spacing:-.015em;color:var(--ink)}
+.jdx-note p{margin:0;font-size:14.5px;line-height:1.6;color:var(--body)}
+.jdx-foot{display:flex;justify-content:center;margin-top:clamp(36px,4vw,56px)}
+.jdx-live{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line);transition:border-color .3s var(--ease),gap .3s var(--ease)}
+.jdx-live svg{width:16px;height:16px;color:var(--g2)}
+.jdx-live:hover{border-color:var(--g2);gap:14px}
+
+/* entrance */
+.jdx [data-jdx-r]{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.jdx.in [data-jdx-r]{opacity:1;transform:none}
+.jdx.in [data-jdx-r="2"]{transition-delay:.12s}.jdx.in [data-jdx-r="3"]{transition-delay:.24s}
+
+@media (max-width:760px){
+  .jdx-notes{grid-template-columns:minmax(0,1fr)}
+  .jdx-note,.jdx-note+.jdx-note{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .jdx-stage{aspect-ratio:4/5}
+  .jdx-chrome{grid-template-columns:auto 1fr;height:42px}.jdx-chrome>span:last-child{display:none}
+  .jdx-url{max-width:none}
+  .jdx-hint{display:none}
+  .jdx-k i{display:none}
+  .jdx-bar{justify-content:center}
+  .jdx-knob{width:44px;height:44px;margin:-22px 0 0 -22px}
+  .jdx-phones{gap:14px;padding:22px 12px 8px}
+  .jdx-dev{border-radius:30px;padding:7px}.jdx-scr{border-radius:24px}.jdx-scr::before{height:14px;top:6px}
+}
+@media (prefers-reduced-motion:reduce){.jdx [data-jdx-r]{opacity:1;transform:none;transition:none}.jdx-knob,.jdx-tabs button{transition:none}}
+</style>
+
+<section class="jdx" id="jdx" aria-label="JD Strategic Franchising website redesign, before and after">
+  <div class="jdx-in">
+    <header class="jdx-head">
+      <p class="jdx-k" data-jdx-r><i></i>Website redesign &middot; JD Strategic Franchising<i></i></p>
+      <h2 data-jdx-r="2">Same founder. <em>A whole new first impression.</em></h2>
+      <p class="jdx-lede" data-jdx-r="3">Josh DuBois helps people buy franchises worth owning. His old site said so in a wall of centered text. We rebuilt it into an 11-page site that looks like the expert he is. Drag the line to compare.</p>
+    </header>
+
+    <div class="jdx-bar" data-jdx-r="3">
+      <div class="jdx-tabs" role="tablist" aria-label="Device">
+        <button type="button" role="tab" aria-selected="true" data-view="d">Desktop</button>
+        <button type="button" role="tab" aria-selected="false" data-view="m">Mobile</button>
+      </div>
+      <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag to compare &middot; both pages scroll on their own</p>
+    </div>
+
+    <div class="jdx-win" data-jdx-r="3">
+      <div class="jdx-chrome"><span class="jdx-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="jdx-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-url>jdfranchising.com &rarr; JD Strategic, rebuilt</span></div><span></span></div>
+      <div class="jdx-stage" data-stage>
+        <div class="jdx-layer"><img data-img="old-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage: centered orange headline, a YouTube thumbnail, and long centered paragraphs" decoding="async"></div>
+        <div class="jdx-layer jdx-after"><img data-img="new-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage: serif headline with an orange italic line, Josh's portrait, credential stats and a franchise fit finder" decoding="async"></div>
+        <span class="jdx-tag b" data-tag="b">Before</span><span class="jdx-tag a" data-tag="a">After</span>
+        <button type="button" class="jdx-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdx-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
+        <span class="jdx-rail" aria-hidden="true"><i></i></span>
+      </div>
+    </div>
+
+    <div class="jdx-phones" aria-label="Mobile, before and after">
+      <figure class="jdx-phone"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-mobile.jpg" width="720" height="20625" alt="The old JD Strategic site on a phone" decoding="async"></div></div><figcaption>Before</figcaption></figure>
+      <figure class="jdx-phone after"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-mobile.jpg" width="720" height="29943" alt="The new JD Strategic site on a phone" decoding="async"></div></div><figcaption><b>After</b></figcaption></figure>
+    </div>
+
+    <div class="jdx-notes">
+      <div class="jdx-note" data-jdx-r><div class="jdx-from">Competing colors and logos</div><div class="jdx-to">One navy, one rationed orange</div><p>Orange headlines, two blues and a row of logos fought for attention. Now his brand navy carries the page and orange only marks what matters.</p></div>
+      <div class="jdx-note" data-jdx-r="2"><div class="jdx-from">A YouTube thumbnail as the hero</div><div class="jdx-to">Josh, shot like a founder</div><p>Portraits and 4K stills pulled from his own channel, plus a four-minute How It Works film on the homepage and process page.</p></div>
+      <div class="jdx-note" data-jdx-r="3"><div class="jdx-from">A wall of centered text</div><div class="jdx-to">A path a buyer can follow</div><p>Credentials up top, a franchise fit finder wired into his CRM, five clear steps, and the same clear next step on every page.</p></div>
+    </div>
+
+    <div class="jdx-foot"><a class="jdx-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('jdx'); if(!root||root.dataset.ready) return; root.dataset.ready='1';
+  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stage=root.querySelector('[data-stage]'), handle=root.querySelector('.jdx-handle'), url=root.querySelector('[data-url]');
+  var tagB=root.querySelector('[data-tag="b"]'), tagA=root.querySelector('[data-tag="a"]');
+  var dImgs=[].slice.call(stage.querySelectorAll('img')), mImgs=[].slice.call(root.querySelectorAll('.jdx-scr img'));
+  var x=100, p=0, dir=1, live=false, hold=0, last=0, dragging=false, mode='d', intro=false;
+  var SPEED=1/38; /* one full pass in ~38s */
+
+  function setX(v){ x=Math.max(0,Math.min(100,v)); root.style.setProperty('--x',x+'%'); stage.style.setProperty('--x',x+'%');
+    handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after');
+    tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1;
+    url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com → JD Strategic, rebuilt'; }
+  function pan(list,box){ list.forEach(function(img){ var h=img.getBoundingClientRect().height, H=box.clientHeight; if(!h) return; var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; img.style.transform='translate3d(0,'+(-(h-H)*e).toFixed(1)+'px,0)'; }); }
+  function draw(){ if(mode==='d') pan(dImgs,stage); else mImgs.forEach(function(img){ pan([img],img.parentNode); }); stage.style.setProperty('--p',p.toFixed(4)); }
+  function loop(t){ if(!live){ last=0; return; } if(last && !RM && t>hold){ var dt=Math.min(.05,(t-last)/1000); p+=dir*dt*SPEED; if(p>=1){p=1;dir=-1;hold=t+2200;} if(p<=0){p=0;dir=1;hold=t+2200;} draw(); } last=t; requestAnimationFrame(loop); }
+
+  function fromEvent(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
+  stage.addEventListener('pointerdown',function(e){ dragging=true; root.classList.add('drag'); stage.setPointerCapture(e.pointerId); setX(fromEvent(e)); hold=performance.now()+1500; });
+  stage.addEventListener('pointermove',function(e){ if(dragging) setX(fromEvent(e)); });
+  ['pointerup','pointercancel'].forEach(function(n){ stage.addEventListener(n,function(){ dragging=false; root.classList.remove('drag'); }); });
+  handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
+  stage.addEventListener('mouseenter',function(){ hold=Infinity; }); stage.addEventListener('mouseleave',function(){ hold=performance.now()+600; });
+
+  root.querySelectorAll('.jdx-tabs button').forEach(function(b){ b.addEventListener('click',function(){
+    mode=b.dataset.view; root.classList.toggle('m',mode==='m');
+    root.querySelectorAll('.jdx-tabs button').forEach(function(o){ o.setAttribute('aria-selected',o===b?'true':'false'); });
+    if(mode==='m') mImgs.forEach(function(img){ if(img.dataset.src){ img.src=img.dataset.src; img.removeAttribute('data-src'); img.addEventListener('load',draw); } });
+    p=0; dir=1; hold=performance.now()+900; draw(); }); });
+
+  function reveal(){ if(intro) return; intro=true; root.classList.add('in');
+    if(RM){ setX(50); return; }
+    function tw(a,b,d,next){ var s=performance.now(); (function f(t){ var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; if(!dragging) setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
+    setTimeout(function(){ tw(100,0,1700,function(){ setTimeout(function(){ if(!dragging) tw(0,50,1100); },1300); }); }, 650); }
+
+  setX(100); draw();
+  dImgs.forEach(function(img){ if(!img.complete) img.addEventListener('load',draw); });
+  window.addEventListener('resize',draw);
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ reveal(); if(!live){ live=true; hold=performance.now()+2600; requestAnimationFrame(loop); } } else live=false; }); },{threshold:.25}).observe(root); }
+  else { reveal(); live=true; requestAnimationFrame(loop); }
+})();
+</script>
