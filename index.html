@@ -149,7 +149,7 @@
   function setX(v){ x=Math.max(0,Math.min(100,v)); root.style.setProperty('--x',x+'%'); stage.style.setProperty('--x',x+'%');
     handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after');
     tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1;
-    url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com → JD Strategic, rebuilt'; }
+    url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com \u2192 JD Strategic, rebuilt'; }
   function pan(list,box){ list.forEach(function(img){ var h=img.getBoundingClientRect().height, H=box.clientHeight; if(!h) return; var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; img.style.transform='translate3d(0,'+(-(h-H)*e).toFixed(1)+'px,0)'; }); }
   function draw(){ if(mode==='d') pan(dImgs,stage); else mImgs.forEach(function(img){ pan([img],img.parentNode); }); stage.style.setProperty('--p',p.toFixed(4)); }
   function loop(t){ if(!live){ last=0; return; } if(last && !RM && t>hold){ var dt=Math.min(.05,(t-last)/1000); p+=dir*dt*SPEED; if(p>=1){p=1;dir=-1;hold=t+2200;} if(p<=0){p=0;dir=1;hold=t+2200;} draw(); } last=t; requestAnimationFrame(loop); }
