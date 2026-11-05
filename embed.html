@@ -88,6 +88,87 @@
   .jdx-dev{border-radius:30px;padding:7px}.jdx-scr{border-radius:24px}.jdx-scr::before{height:14px;top:6px}
 }
 @media (prefers-reduced-motion:reduce){.jdx [data-jdx-r]{opacity:1;transform:none;transition:none}.jdx-knob,.jdx-tabs button{transition:none}}
+
+/* ===== motion layer ===== */
+/* ambient bloom drifts slowly behind everything */
+.jdx::before{animation:jdx-drift 18s ease-in-out infinite alternate}
+@keyframes jdx-drift{from{transform:translate3d(-6%,0,0) scale(1)}to{transform:translate3d(6%,4%,0) scale(1.12)}}
+
+/* headline: words rise out of blur (Magic UI text-animate blurInUp, ported) */
+.jdx-w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.42em);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i) * 70ms + 120ms)}
+.jdx.in .jdx-w{opacity:1;filter:none;transform:none}
+.jdx h2[data-jdx-r]{opacity:1;transform:none}
+.jdx h2 em{clip-path:inset(-10% 100% -20% 0);filter:blur(6px);transition:clip-path 1.25s cubic-bezier(.77,0,.18,1) .55s,filter 1s var(--ease) .65s;
+  background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 62%),linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);
+  background-size:260% 100%,100% 100%;background-repeat:no-repeat;background-position:160% 0,0 0;animation:jdx-shine 5.5s cubic-bezier(.6,.6,0,1) 2.2s infinite}
+.jdx.in h2 em{clip-path:inset(-10% 0 -20% 0);filter:none}
+@keyframes jdx-shine{0%{background-position:160% 0,0 0}38%,100%{background-position:-60% 0,0 0}}
+
+/* window flies in on a 3D tilt tied to scroll */
+.jdx-persp{perspective:1800px;perspective-origin:50% 0}
+.jdx-win,.jdx-phones{transform-origin:50% 0;transform:translate3d(0,calc(var(--tilt,1) * 70px),0) rotateX(calc(var(--tilt,1) * 26deg)) scale(calc(1 - var(--tilt,1) * .1));opacity:calc(1 - var(--tilt,1) * .85);will-change:transform}
+
+/* border beam (Magic UI border-beam, ported to CSS offset-path) */
+.jdx-beam{position:absolute;inset:0;z-index:6;border-radius:inherit;border:1.5px solid transparent;pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;mask-composite:exclude}
+.jdx-beam i{position:absolute;width:180px;aspect-ratio:1;offset-path:rect(0 auto auto 0 round 180px);background:linear-gradient(to left,var(--g3),var(--g1),transparent);animation:jdx-beam 9s linear infinite}
+.jdx-beam i+i{animation-delay:-4.5s;background:linear-gradient(to left,var(--g2),rgba(10,235,255,.4),transparent)}
+@keyframes jdx-beam{from{offset-distance:0%}to{offset-distance:100%}}
+
+/* the split line breathes */
+.jdx-handle::before{animation:jdx-glow 2.8s ease-in-out infinite}
+@keyframes jdx-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 18px rgba(1,129,252,.45)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 34px rgba(10,235,255,.85)}}
+.jdx-knob::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(10,235,255,.7);animation:jdx-ping 2.8s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes jdx-ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+
+/* callouts that ride the page */
+.jdx-pins{position:absolute;inset:0;z-index:3;pointer-events:none}
+.jdx-pin{position:absolute;left:0;top:0;will-change:transform}
+.jdx-pin>div{display:flex;align-items:center;gap:0;opacity:0;filter:blur(8px);transform:translateY(10px) scale(.94);transition:opacity .45s var(--ease),filter .45s var(--ease),transform .55s var(--ease)}
+.jdx-pin.on>div{opacity:1;filter:none;transform:none}
+.jdx-pin.l>div{flex-direction:row-reverse;transform-origin:right center}
+.jdx-pin>div{margin-top:-7px;margin-left:-7px}.jdx-pin.l>div{margin-left:0}.jdx-pin.l>div{position:absolute;right:-7px;top:0}
+.jdx-dot{position:relative;flex:none;width:14px;height:14px;border-radius:50%}
+.jdx-dot::after{content:"";position:absolute;inset:0;border-radius:50%;animation:jdx-ping 2.2s cubic-bezier(.2,.6,.3,1) infinite}
+.jdx-pin i.jdx-lead{flex:none;width:26px;height:1.5px}
+.jdx-lbl{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:-.005em;line-height:1}
+.jdx-lbl svg{width:13px;height:13px;flex:none}
+.jdx-pin.a .jdx-dot{background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 0 3px #fff,0 6px 16px rgba(1,29,180,.45)}
+.jdx-pin.a .jdx-dot::after{border:1.5px solid rgba(10,235,255,.9)}
+.jdx-pin.a .jdx-lead{background:linear-gradient(90deg,#fff,rgba(255,255,255,.4))}
+.jdx-pin.l.a .jdx-lead{background:linear-gradient(270deg,#fff,rgba(255,255,255,.4))}
+.jdx-pin.a .jdx-lbl{color:#fff;background:rgba(3,13,48,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(10,235,255,.35),0 14px 30px -12px rgba(1,29,120,.6)}
+.jdx-pin.a .jdx-lbl svg{color:var(--g3)}
+.jdx-pin.b .jdx-dot{background:#fff;box-shadow:0 0 0 2px rgba(3,13,48,.55),0 4px 12px rgba(3,13,48,.25)}
+.jdx-pin.b .jdx-dot::after{border:1.5px solid rgba(3,13,48,.35)}
+.jdx-pin.b .jdx-lead{background:rgba(3,13,48,.45)}
+.jdx-pin.b .jdx-lbl{color:var(--ink);background:rgba(255,255,255,.94);box-shadow:0 0 0 1px rgba(3,13,48,.12),0 12px 26px -12px rgba(3,13,48,.45)}
+.jdx-pin.b .jdx-lbl svg{color:var(--muted)}
+
+/* phones float, and lean toward the cursor */
+.jdx-phones{transform-style:preserve-3d}
+.jdx-phone{animation:jdx-bob 6s ease-in-out infinite alternate}
+.jdx-phone.after{animation-delay:-3s}
+.jdx-dev{transition:transform .8s var(--ease);transform:rotateY(calc(var(--lean,0) * 9deg)) rotateX(calc(var(--leanY,0) * -6deg))}
+@keyframes jdx-bob{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+
+/* what changed: the old thing gets struck on screen, the new thing rises in */
+.jdx-from{text-decoration:none;position:relative;display:inline-block}
+.jdx-from::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:1.5px;background:var(--muted);transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.77,0,.18,1)}
+.jdx-to,.jdx-note p{opacity:0;filter:blur(8px);transform:translateY(12px);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .8s var(--ease)}
+.jdx-note.go .jdx-from::after{transform:scaleX(1);transition-delay:calc(var(--d,0) * 1ms + 200ms)}
+.jdx-note.go .jdx-to{opacity:1;filter:none;transform:none;transition-delay:calc(var(--d,0) * 1ms + 750ms)}
+.jdx-note.go p{opacity:1;filter:none;transform:none;transition-delay:calc(var(--d,0) * 1ms + 900ms)}
+.jdx-note[data-jdx-r]{opacity:1;transform:none}
+
+@media (max-width:760px){.jdx-lbl{font-size:11px;padding:6px 10px}.jdx-pin i.jdx-lead{width:14px}.jdx-beam i{width:120px;offset-path:rect(0 auto auto 0 round 120px)}}
+@media (max-width:520px){.jdx-pins{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .jdx::before,.jdx-beam i,.jdx-handle::before,.jdx-knob::after,.jdx-dot::after,.jdx-phone,.jdx h2 em{animation:none}
+  .jdx-w,.jdx h2 em,.jdx-to,.jdx-note p{opacity:1;filter:none;transform:none;clip-path:none;transition:none}
+  .jdx-from::after{transform:scaleX(1);transition:none}
+  .jdx-win,.jdx-phones{transform:none;opacity:1}
+}
 </style>
 
 <section class="jdx" id="jdx" aria-label="JD Strategic Franchising website redesign, before and after">
@@ -106,11 +187,12 @@
       <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag to compare &middot; both pages scroll on their own</p>
     </div>
 
-    <div class="jdx-win" data-jdx-r="3">
+    <div class="jdx-persp"><div class="jdx-win"><span class="jdx-beam" aria-hidden="true"><i></i><i></i></span>
       <div class="jdx-chrome"><span class="jdx-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="jdx-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-url>jdfranchising.com &rarr; JD Strategic, rebuilt</span></div><span></span></div>
       <div class="jdx-stage" data-stage>
         <div class="jdx-layer"><img data-img="old-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage: centered orange headline, a YouTube thumbnail, and long centered paragraphs" decoding="async"></div>
         <div class="jdx-layer jdx-after"><img data-img="new-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage: serif headline with an orange italic line, Josh's portrait, credential stats and a franchise fit finder" decoding="async"></div>
+        <div class="jdx-pins" aria-hidden="true" data-pins></div>
         <span class="jdx-tag b" data-tag="b">Before</span><span class="jdx-tag a" data-tag="a">After</span>
         <button type="button" class="jdx-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdx-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
         <span class="jdx-rail" aria-hidden="true"><i></i></span>
@@ -120,12 +202,12 @@
     <div class="jdx-phones" aria-label="Mobile, before and after">
       <figure class="jdx-phone"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-mobile.jpg" width="720" height="20625" alt="The old JD Strategic site on a phone" decoding="async"></div></div><figcaption>Before</figcaption></figure>
       <figure class="jdx-phone after"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-mobile.jpg" width="720" height="29943" alt="The new JD Strategic site on a phone" decoding="async"></div></div><figcaption><b>After</b></figcaption></figure>
-    </div>
+    </div></div>
 
     <div class="jdx-notes">
-      <div class="jdx-note" data-jdx-r><div class="jdx-from">Competing colors and logos</div><div class="jdx-to">One navy, one rationed orange</div><p>Orange headlines, two blues and a row of logos fought for attention. Now his brand navy carries the page and orange only marks what matters.</p></div>
-      <div class="jdx-note" data-jdx-r="2"><div class="jdx-from">A YouTube thumbnail as the hero</div><div class="jdx-to">Josh, shot like a founder</div><p>Portraits and 4K stills pulled from his own channel, plus a four-minute How It Works film on the homepage and process page.</p></div>
-      <div class="jdx-note" data-jdx-r="3"><div class="jdx-from">A wall of centered text</div><div class="jdx-to">A path a buyer can follow</div><p>Credentials up top, a franchise fit finder wired into his CRM, five clear steps, and the same clear next step on every page.</p></div>
+      <div class="jdx-note" data-jdx-r style="--d:0"><div><span class="jdx-from">Competing colors and logos</span></div><div class="jdx-to">One navy, one rationed orange</div><p>Orange headlines, two blues and a row of logos fought for attention. Now his brand navy carries the page and orange only marks what matters.</p></div>
+      <div class="jdx-note" data-jdx-r="2" style="--d:180"><div><span class="jdx-from">A YouTube thumbnail as the hero</span></div><div class="jdx-to">Josh, shot like a founder</div><p>Portraits and 4K stills pulled from his own channel, plus a four-minute How It Works film on the homepage and process page.</p></div>
+      <div class="jdx-note" data-jdx-r="3" style="--d:360"><div><span class="jdx-from">A wall of centered text</span></div><div class="jdx-to">A path a buyer can follow</div><p>Credentials up top, a franchise fit finder wired into his CRM, five clear steps, and the same clear next step on every page.</p></div>
     </div>
 
     <div class="jdx-foot"><a class="jdx-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
@@ -140,14 +222,48 @@
   var tagB=root.querySelector('[data-tag="b"]'), tagA=root.querySelector('[data-tag="a"]');
   var dImgs=[].slice.call(stage.querySelectorAll('img')), mImgs=[].slice.call(root.querySelectorAll('.jdx-scr img'));
   var x=100, p=0, dir=1, live=false, hold=0, last=0, dragging=false, mode='d', intro=false;
-  var SPEED=1/38; /* one full pass in ~38s */
+  var SPEED=1/44; /* one full pass in ~44s */
+  var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var XX='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>';
+  /* anchors in the captured pages' own 1440px-wide coordinates */
+  var PINS=[
+    {s:0,x:440,y:330,t:'Drop-shadowed orange headline'},
+    {s:0,x:560,y:610,t:'A centered wall of text'},
+    {s:0,x:720,y:1088,t:'A flyer dropped mid-page'},
+    {s:0,x:430,y:1905,t:'Five steps buried in paragraphs'},
+    {s:0,x:330,y:2370,t:'Social icons as a whole section'},
+    {s:0,x:420,y:2720,t:'Six blocks of small print'},
+    {s:1,x:1080,y:430,t:'His real portrait, pulled from his own 4K footage'},
+    {s:1,x:990,y:1010,t:'Credentials, not adjectives'},
+    {s:1,x:1000,y:1478,t:'A four-minute How It Works film'},
+    {s:1,x:1010,y:2420,t:'Fit finder, wired straight into his CRM'},
+    {s:1,x:1120,y:3050,t:'The whole pitch in one line'},
+    {s:1,x:1000,y:6120,t:'Five steps, zero guesswork'},
+    {s:1,x:1050,y:7420,t:'Industries he actually vets'},
+    {s:1,x:1000,y:9080,t:'What he gives you, in plain numbers'},
+    {s:1,x:1020,y:10440,t:'His podcast, front and center'},
+    {s:1,x:930,y:11050,t:'One closing ask'}
+  ];
+  var pinBox=root.querySelector('[data-pins]'), ty=[0,0];
+  PINS.forEach(function(d){ var el=document.createElement('div'); el.className='jdx-pin '+(d.s?'a':'b');
+    el.innerHTML='<div><span class="jdx-dot"></span><i class="jdx-lead"></i><span class="jdx-lbl">'+(d.s?CHK:XX)+d.t+'</span></div>'; pinBox.appendChild(el); d.el=el; });
+  function pins(){ var W=stage.clientWidth, H=stage.clientHeight, k=W/1440;
+    PINS.forEach(function(d){ var px=d.x/1440*100, py=d.y*k+ty[d.s];
+      var side = d.s ? px > x+4 : px < x-4;
+      if(!d.w) d.w=d.el.firstChild.offsetWidth; var ax=d.x*k, sx=x/100*W, w=d.w, left;
+      if(d.s){ if(ax+w+12<W) left=false; else if(ax-w-12>sx) left=true; else side=false; }
+      else { if(ax-w-12>8) left=true; else if(ax+w+12<sx) left=false; else side=false; }
+      d.el.classList.toggle('l',!!left);
+      var on = mode==='d' && intro && side && py>H*.1 && py<H*.88;
+      d.el.classList.toggle('on',on);
+      d.el.style.transform='translate3d('+(d.x*k).toFixed(1)+'px,'+py.toFixed(1)+'px,0)'; }); }
 
   function setX(v){ x=Math.max(0,Math.min(100,v)); root.style.setProperty('--x',x+'%'); stage.style.setProperty('--x',x+'%');
     handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after');
-    tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1;
+    tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1; if(PINS[0].el) pins();
     url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com \u2192 JD Strategic, rebuilt'; }
-  function pan(list,box){ list.forEach(function(img){ var h=img.getBoundingClientRect().height, H=box.clientHeight; if(!h) return; var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; img.style.transform='translate3d(0,'+(-(h-H)*e).toFixed(1)+'px,0)'; }); }
-  function draw(){ if(mode==='d') pan(dImgs,stage); else mImgs.forEach(function(img){ pan([img],img.parentNode); }); stage.style.setProperty('--p',p.toFixed(4)); }
+  function pan(list,box){ list.forEach(function(img,i){ var h=img.offsetHeight, H=box.clientHeight; if(!h) return; var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2, v=-(h-H)*e; if(box===stage) ty[i]=v; img.style.transform='translate3d(0,'+v.toFixed(1)+'px,0)'; }); }
+  function draw(){ if(mode==='d'){ pan(dImgs,stage); pins(); } else mImgs.forEach(function(img){ pan([img],img.parentNode); }); stage.style.setProperty('--p',p.toFixed(4)); }
   function loop(t){ if(!live){ last=0; return; } if(last && !RM && t>hold){ var dt=Math.min(.05,(t-last)/1000); p+=dir*dt*SPEED; if(p>=1){p=1;dir=-1;hold=t+2200;} if(p<=0){p=0;dir=1;hold=t+2200;} draw(); } last=t; requestAnimationFrame(loop); }
 
   function fromEvent(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
@@ -163,14 +279,36 @@
     if(mode==='m') mImgs.forEach(function(img){ if(img.dataset.src){ img.src=img.dataset.src; img.removeAttribute('data-src'); img.addEventListener('load',draw); } });
     p=0; dir=1; hold=performance.now()+900; draw(); }); });
 
-  function reveal(){ if(intro) return; intro=true; root.classList.add('in');
+  function reveal(){ if(intro) return; intro=true; root.classList.add('in'); pins();
     if(RM){ setX(50); return; }
     function tw(a,b,d,next){ var s=performance.now(); (function f(t){ var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; if(!dragging) setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
     setTimeout(function(){ tw(100,0,1700,function(){ setTimeout(function(){ if(!dragging) tw(0,50,1100); },1300); }); }, 650); }
 
+  /* headline: wrap first-line words for the blur-up reveal */
+  var h2=root.querySelector('h2'), em=h2.querySelector('em'), first=h2.firstChild;
+  if(first && first.nodeType===3){ var words=first.textContent.trim().split(/\s+/), frag=document.createDocumentFragment();
+    words.forEach(function(w,i){ var sp=document.createElement('span'); sp.className='jdx-w'; sp.style.setProperty('--i',i); sp.textContent=w; frag.appendChild(sp); frag.appendChild(document.createTextNode(' ')); });
+    h2.replaceChild(frag,first); }
+
+  /* 3D tilt-in driven by scroll */
+  var persp=root.querySelector('.jdx-persp'), tq=false;
+  function tilt(){ tq=false; if(RM){ persp.style.setProperty('--tilt',0); return; } var r=persp.getBoundingClientRect(), vh=window.innerHeight;
+    var t=Math.min(1,Math.max(0,(vh*.98-r.top)/(vh*.62))); var e=1-Math.pow(1-t,3); persp.style.setProperty('--tilt',(1-e).toFixed(4)); }
+  window.addEventListener('scroll',function(){ if(!tq){ tq=true; requestAnimationFrame(tilt); } },{passive:true}); tilt();
+
+  /* notes: strike + rise when they reach the viewport */
+  var notes=[].slice.call(root.querySelectorAll('.jdx-note'));
+  if('IntersectionObserver' in window){ var no=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('go'); no.unobserve(e.target); } }); },{threshold:.4}); notes.forEach(function(n){ no.observe(n); }); }
+  else notes.forEach(function(n){ n.classList.add('go'); });
+
+  /* phones lean toward the cursor */
+  var ph=root.querySelector('.jdx-phones');
+  if(!RM && window.matchMedia('(hover:hover)').matches){ ph.addEventListener('pointermove',function(e){ var r=ph.getBoundingClientRect(); ph.style.setProperty('--lean',(((e.clientX-r.left)/r.width)*2-1).toFixed(3)); ph.style.setProperty('--leanY',(((e.clientY-r.top)/r.height)*2-1).toFixed(3)); });
+    ph.addEventListener('pointerleave',function(){ ph.style.setProperty('--lean',0); ph.style.setProperty('--leanY',0); }); }
+
   setX(100); draw();
   dImgs.forEach(function(img){ if(!img.complete) img.addEventListener('load',draw); });
-  window.addEventListener('resize',draw);
+  window.addEventListener('resize',function(){ PINS.forEach(function(d){ d.w=0; }); draw(); });
   if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ reveal(); if(!live){ live=true; hold=performance.now()+2600; requestAnimationFrame(loop); } } else live=false; }); },{threshold:.25}).observe(root); }
   else { reveal(); live=true; requestAnimationFrame(loop); }
 })();
