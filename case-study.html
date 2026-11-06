@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JD Strategic Case Study</title><meta name="robots" content="noindex">
+<style>html,body{margin:0;background:#fff}</style></head><body>
+<!-- JD Strategic case study: before, what we changed, after, compare. Self-contained: paste into a custom code element. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,700;1,600&family=Montserrat:wght@400;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+.jdc{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;--ease:cubic-bezier(.22,1,.36,1);
+  --jd-navy:#0A1D3A;--jd-orange:#FF6A00;
+  position:relative;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden;isolation:isolate}
+.jdc *,.jdc *::before,.jdc *::after{box-sizing:border-box}
+.jdc img{display:block;max-width:100%;height:auto}
+.jdc-in{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
+.jdc::before{content:"";position:absolute;left:-10%;right:-10%;top:-200px;height:900px;z-index:-1;background:radial-gradient(46% 60% at 50% 30%,rgba(1,129,252,.10),rgba(1,129,252,0) 70%);animation:jdc-drift 18s ease-in-out infinite alternate}
+@keyframes jdc-drift{from{transform:translate3d(-5%,0,0)}to{transform:translate3d(5%,3%,0) scale(1.1)}}
+
+/* type */
+.jdc-k{display:inline-flex;align-items:center;gap:12px;margin:0 0 20px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.jdc-k i{width:28px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
+.jdc h2,.jdc h3{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.035em;text-wrap:balance}
+.jdc h2{font-size:clamp(36px,5.6vw,72px);line-height:1}
+.jdc h3{font-size:clamp(30px,4vw,52px);line-height:1.02}
+.jdc em.jdc-em{display:block;margin-top:.06em;padding-bottom:.08em;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1.05;
+  background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 62%),linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);
+  background-size:260% 100%,100% 100%;background-repeat:no-repeat;background-position:160% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:jdc-shine 6s cubic-bezier(.6,.6,0,1) 2s infinite}
+@keyframes jdc-shine{0%{background-position:160% 0,0 0}36%,100%{background-position:-60% 0,0 0}}
+.jdc-lede{margin:20px 0 0;max-width:58ch;font-size:clamp(15.5px,1.2vw,17.5px);color:var(--body);text-wrap:pretty}
+.jdc-center{text-align:center}.jdc-center .jdc-lede{margin-left:auto;margin-right:auto}
+
+/* intro + chapter map */
+.jdc-top{padding:clamp(64px,9vw,130px) 0 clamp(40px,5vw,72px)}
+.jdc-map{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:34px 0 0;padding:0;list-style:none}
+.jdc-map a{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;text-decoration:none;transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
+.jdc-map a b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--tint);font:600 11px/1 'Inter',sans-serif;color:var(--muted);transition:background .3s var(--ease),color .3s var(--ease)}
+.jdc-map a:hover{border-color:rgba(1,129,252,.45);transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(1,29,180,.45)}
+.jdc-map a:hover b{background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff}
+
+/* chapters */
+.jdc-ch{position:relative;padding:clamp(56px,7vw,110px) 0;border-top:1px solid var(--line)}
+.jdc-ch.tint{background:linear-gradient(#FAFAFB,#F4F5F8)}
+.jdc-chead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;margin-bottom:clamp(32px,4vw,56px)}
+.jdc-num{font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(15px,1.2vw,17px);color:var(--g2);letter-spacing:.02em;padding-top:.55em;font-variant-numeric:tabular-nums}
+.jdc-num::after{content:"";display:block;width:100%;height:1.5px;margin-top:10px;background:linear-gradient(90deg,var(--g1),var(--g3));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .2s}
+.jdc-ch.in .jdc-num::after{transform:scaleX(1)}
+
+/* frames */
+.jdc-win{position:relative;margin:0;border-radius:14px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 4px rgba(3,13,48,.04),0 30px 60px -30px rgba(3,13,48,.28),0 70px 110px -60px rgba(1,29,120,.22)}
+.jdc-bar{display:flex;align-items:center;gap:12px;height:40px;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F4F5F7)}
+.jdc-bar span{display:flex;gap:6px}.jdc-bar span i{width:10px;height:10px;border-radius:50%;background:#DDE0E6}
+.jdc-bar em{flex:1;max-width:340px;margin:0 auto;height:24px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;background:#fff;border:1px solid var(--line);font:400 12px/1 'Inter',sans-serif;font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden}
+.jdc-bar em svg{width:11px;height:11px;flex:none}
+.jdc-shot{position:relative;overflow:hidden;background:var(--tint)}
+.jdc-shot img{width:100%;transition:transform 1.6s var(--ease)}
+@media (hover:hover){.jdc-win:hover .jdc-shot img{transform:scale(1.02)}}
+.jdc-phone{position:relative;margin:0;border-radius:36px;padding:9px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 36px 64px -30px rgba(3,13,48,.5)}
+.jdc-phone>div{position:relative;border-radius:28px;overflow:hidden;background:#fff}
+.jdc-phone>div::before{content:"";position:absolute;z-index:2;top:8px;left:50%;width:30%;height:20px;margin-left:-15%;border-radius:20px;background:#0B0E16}
+.jdc-phone img{width:100%}
+.jdc-tagline{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* before */
+.jdc-before{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,240px);gap:clamp(20px,3vw,44px);align-items:end}
+.jdc-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(32px,4vw,52px);border-top:1px solid var(--line)}
+.jdc-issue{padding:24px clamp(16px,2.2vw,32px) 0 0}
+.jdc-issue+.jdc-issue{padding-left:clamp(16px,2.2vw,32px);border-left:1px solid var(--line)}
+.jdc-issue b{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.5vw,21px);font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
+.jdc-issue b svg{width:18px;height:18px;flex:none;color:var(--muted)}
+.jdc-issue p{margin:8px 0 0;font-size:14.5px;line-height:1.6}
+.jdc-chip{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin:0 2px;box-shadow:inset 0 0 0 1px rgba(3,13,48,.12)}
+
+/* process: the brand board */
+.jdc-board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.jdc-tile{position:relative;grid-column:span 6;border-radius:16px;background:#fff;border:1px solid var(--line);padding:clamp(22px,2.6vw,34px);overflow:hidden;box-shadow:0 1px 2px rgba(3,13,48,.04),0 24px 48px -32px rgba(3,13,48,.25)}
+.jdc-tile.w7{grid-column:span 7}.jdc-tile.w5{grid-column:span 5}
+.jdc-tile h4{margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(19px,1.6vw,22px);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
+.jdc-tile .s{display:block;margin-bottom:12px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g2)}
+.jdc-tile p{margin:8px 0 0;font-size:14.5px;line-height:1.6;max-width:46ch}
+.jdc-logos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.jdc-logos div{display:grid;place-items:center;aspect-ratio:2/1;border-radius:10px;padding:0 10%}
+.jdc-logos .l1{background:#fff;border:1px solid var(--line);color:var(--jd-navy);--logo-box:var(--jd-navy);--logo-on-box:#fff}
+.jdc-logos .l2{background:var(--jd-navy);color:#fff;--logo-box:#fff;--logo-on-box:var(--jd-navy)}
+.jdc-logos svg{width:100%;height:auto;aspect-ratio:1576/392;overflow:visible}
+.jdc-cols{margin-top:22px;display:grid;gap:14px}
+.jdc-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center}
+.jdc-row>span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.jdc-sw{display:flex;gap:8px;position:relative}
+.jdc-sw i{flex:1;height:58px;border-radius:10px;position:relative;box-shadow:inset 0 0 0 1px rgba(3,13,48,.08);transform:scaleY(.2);opacity:0;transform-origin:bottom;transition:transform .8s var(--ease),opacity .6s ease}
+.jdc-sw i span{position:absolute;left:10px;bottom:8px;font:600 10.5px/1 'Inter',sans-serif;letter-spacing:.04em;color:#fff}
+.jdc-sw i.lt span{color:var(--ink)}
+.jdc-sw.old i{height:40px}
+.jdc-sw.old::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.77,0,.18,1) .9s}
+.jdc-ch.in .jdc-sw i{transform:none;opacity:1}
+.jdc-ch.in .jdc-sw i:nth-child(2){transition-delay:.08s}.jdc-ch.in .jdc-sw i:nth-child(3){transition-delay:.16s}.jdc-ch.in .jdc-sw i:nth-child(4){transition-delay:.24s}
+.jdc-ch.in .jdc-sw.new i{transition-delay:1.3s}.jdc-ch.in .jdc-sw.new i:nth-child(2){transition-delay:1.38s}.jdc-ch.in .jdc-sw.new i:nth-child(3){transition-delay:1.46s}.jdc-ch.in .jdc-sw.new i:nth-child(4){transition-delay:1.54s}
+.jdc-ch.in .jdc-sw.old::after{transform:scaleX(1)}
+.jdc-type{margin-top:22px;display:grid;gap:16px}
+.jdc-type .o{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(20px,2vw,26px);color:#000;text-shadow:1px 1px 3px rgba(0,0,0,.5);line-height:1.15;text-decoration:line-through;text-decoration-color:var(--muted);text-decoration-thickness:1.5px}
+.jdc-type .n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--jd-navy);line-height:1;letter-spacing:-.02em}
+.jdc-type .n i{font-style:italic;font-weight:600;color:var(--jd-orange)}
+.jdc-type .r{font-size:14px;line-height:1.55;color:var(--body);border-top:1px solid var(--line);padding-top:14px}
+.jdc-type small{display:block;margin-bottom:6px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;text-shadow:none}
+.jdc-photos{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.jdc-photos img{border-radius:10px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.jdc-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:clamp(28px,3.6vw,48px) 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.jdc-steps li{padding:20px 14px 0 0;font-size:14px;line-height:1.5;color:var(--body)}
+.jdc-steps li b{display:block;margin-bottom:4px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+
+/* after */
+.jdc-after-hero{margin-bottom:14px}
+.jdc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.jdc-grid figure{margin:0}
+.jdc-grid figcaption{display:flex;justify-content:space-between;gap:16px;padding:14px 4px 0;font-size:13.5px;color:var(--muted)}
+.jdc-grid figcaption b{font-family:'Outfit',sans-serif;font-weight:600;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
+.jdc-grid .jdc-win{border-radius:12px}
+.jdc-phones{display:grid;grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:clamp(16px,4vw,56px);margin-top:clamp(40px,5vw,72px);padding:clamp(32px,4vw,56px) 0;border-radius:18px;background:radial-gradient(60% 70% at 50% 40%,#EEF3FB,#F7F8FA 75%)}
+.jdc-phones figure{margin:0}
+.jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-18px)}
+
+/* compare */
+.jdc-cmp-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.jdc-seg{display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.jdc-seg button{appearance:none;border:0;background:transparent;font:600 13px/1 'Inter',sans-serif;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.jdc-seg button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 6px 16px -8px rgba(3,13,48,.5)}
+.jdc-seg button:focus-visible,.jdc-handle:focus-visible,.jdc-map a:focus-visible,.jdc-live:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
+.jdc-hint{display:flex;align-items:center;gap:8px;margin:0;font-size:13px;color:var(--muted)}
+.jdc-hint svg{width:18px;height:18px;color:var(--g2)}
+.jdc-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.jdc-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none;-webkit-user-drag:none;transition:opacity .5s var(--ease)}
+.jdc-stage img.a{clip-path:inset(0 0 0 var(--x,50%))}
+.jdc-stage.swap img{opacity:0}
+.jdc-lbl{position:absolute;bottom:16px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:opacity .3s ease}
+.jdc-lbl.b{left:16px;background:rgba(255,255,255,.9);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
+.jdc-lbl.a{right:16px;background:rgba(3,13,48,.8);color:#fff}
+.jdc-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:48px;margin-left:-24px;border:0;background:none;padding:0;cursor:ew-resize;touch-action:none}
+.jdc-handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));animation:jdc-glow 2.8s ease-in-out infinite}
+@keyframes jdc-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 16px rgba(1,129,252,.45)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 32px rgba(10,235,255,.85)}}
+.jdc-knob{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.92),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
+.jdc-knob svg{width:22px;height:22px}
+.jdc-knob::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(10,235,255,.7);animation:jdc-ping 2.8s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes jdc-ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+.jdc-stage:hover .jdc-knob,.jdc.drag .jdc-knob{transform:scale(1.08)}
+.jdc-beam{position:absolute;inset:0;z-index:6;border-radius:inherit;border:1.5px solid transparent;pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;mask-composite:exclude}
+.jdc-beam i{position:absolute;width:180px;aspect-ratio:1;offset-path:rect(0 auto auto 0 round 180px);background:linear-gradient(to left,var(--g3),var(--g1),transparent);animation:jdc-beam 9s linear infinite}
+.jdc-beam i+i{animation-delay:-4.5s;background:linear-gradient(to left,var(--g2),rgba(10,235,255,.4),transparent)}
+@keyframes jdc-beam{from{offset-distance:0%}to{offset-distance:100%}}
+.jdc-foot{display:flex;justify-content:center;padding:clamp(36px,4vw,56px) 0 clamp(64px,8vw,110px)}
+.jdc-live{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line);transition:border-color .3s var(--ease),gap .3s var(--ease)}
+.jdc-live svg{width:16px;height:16px;color:var(--g2)}
+.jdc-live:hover{border-color:var(--g2);gap:14px}
+
+/* reveal on scroll */
+.jdc [data-r]{opacity:0;filter:blur(8px);transform:translateY(26px);transition:opacity 1s var(--ease),filter 1s var(--ease),transform 1.1s var(--ease)}
+.jdc [data-r].on{opacity:1;filter:none;transform:none}
+.jdc [data-r="2"]{transition-delay:.1s}.jdc [data-r="3"]{transition-delay:.2s}.jdc [data-r="4"]{transition-delay:.3s}
+
+@media (max-width:900px){
+  .jdc-before{grid-template-columns:minmax(0,1fr)}
+  .jdc-before .jdc-phone{max-width:220px;margin:0 auto}
+  .jdc-tile,.jdc-tile.w7,.jdc-tile.w5{grid-column:span 12}
+  .jdc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .jdc-chead{grid-template-columns:minmax(0,1fr);gap:10px}.jdc-num{padding-top:0}.jdc-num::after{width:40px}
+  .jdc-issues{grid-template-columns:minmax(0,1fr)}
+  .jdc-issue,.jdc-issue+.jdc-issue{padding:20px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .jdc-grid{grid-template-columns:minmax(0,1fr)}
+  .jdc-steps{grid-template-columns:minmax(0,1fr)}
+  .jdc-phones{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:22px 10px}
+  .jdc-phone{border-radius:20px;padding:5px}.jdc-phone>div{border-radius:16px}.jdc-phone>div::before{height:10px;top:5px}
+  .jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-10px)}
+  .jdc-stage{aspect-ratio:4/5}
+  .jdc-hint{display:none}.jdc-cmp-bar{justify-content:center}
+  .jdc-seg button{padding:9px 11px;font-size:12px}
+  .jdc-k i{display:none}
+  .jdc-map a{font-size:12.5px;padding:8px 12px 8px 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .jdc::before,.jdc em.jdc-em,.jdc-handle::before,.jdc-knob::after,.jdc-beam i{animation:none}
+  .jdc [data-r]{opacity:1;filter:none;transform:none;transition:none}
+  .jdc-sw i{transform:none;opacity:1;transition:none}.jdc-sw.old::after{transform:scaleX(1);transition:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="jdc-mark" viewBox="0 0 1576 392">
+    <path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="var(--logo-box,#0A1D3A)"/>
+    <rect x="24" y="24" width="352" height="342" fill="var(--logo-box,#0A1D3A)"/>
+    <text x="50" y="276" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="var(--logo-on-box,#fff)">JD</text>
+    <path d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
+    <rect x="456" y="0" width="976" height="12" fill="currentColor"/>
+    <rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/>
+    <text x="456" y="208" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
+    <text x="462" y="324" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
+    <rect x="456" y="378" width="976" height="12" fill="currentColor"/>
+    <rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/>
+  </symbol>
+  <symbol id="jdc-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="jdc-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<section class="jdc" id="jdc" aria-label="Case study: JD Strategic Franchising website redesign">
+  <div class="jdc-in">
+    <header class="jdc-top jdc-center">
+      <p class="jdc-k" data-r><i></i>Case study &middot; JD Strategic Franchising<i></i></p>
+      <h2 data-r="2">A franchise expert&rsquo;s website, <em class="jdc-em">rebuilt to look the part.</em></h2>
+      <p class="jdc-lede" data-r="3">Josh DuBois helps people buy franchises worth owning. Here&rsquo;s his website before we started, what we changed, and what it looks like now.</p>
+      <ul class="jdc-map" data-r="4">
+        <li><a href="#jdc-before"><b>1</b>The before</a></li>
+        <li><a href="#jdc-process"><b>2</b>What we changed</a></li>
+        <li><a href="#jdc-after"><b>3</b>The after</a></li>
+        <li><a href="#jdc-compare"><b>4</b>Compare them</a></li>
+      </ul>
+    </header>
+  </div>
+
+  <!-- 1. BEFORE -->
+  <div class="jdc-ch" id="jdc-before" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>01</div>
+        <div><h3 data-r>His website, before.</h3><p class="jdc-lede" data-r="2">The old jdfranchising.com homepage, exactly as visitors saw it.</p></div>
+      </div>
+      <div class="jdc-before">
+        <figure class="jdc-win" data-r>
+          <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>jdfranchising.com</em></div>
+          <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="The old JD Strategic homepage: an orange drop-shadowed headline, an orange button with blue text and a YouTube thumbnail" loading="lazy" decoding="async"></div>
+        </figure>
+        <div data-r="2"><figure class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-phone.webp" width="780" height="1688" alt="The old homepage on a phone, with a chat pop-up covering the headline" loading="lazy" decoding="async"></div></figure><div class="jdc-center"><span class="jdc-tagline">On a phone</span></div></div>
+      </div>
+      <div class="jdc-issues">
+        <div class="jdc-issue" data-r><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>Colors fighting each other</b><p>Orange buttons <span class="jdc-chip" style="background:#F6AD55"></span> with bright blue text <span class="jdc-chip" style="background:#188BF6"></span>, drop-shadowed headlines, and a row of logos all competing for attention.</p></div>
+        <div class="jdc-issue" data-r="2"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>One font, every line centered</b><p>Everything set in Lato and centered, so long paragraphs read like a wall and nothing stood out as the next step.</p></div>
+        <div class="jdc-issue" data-r="3"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>A thumbnail for a hero</b><p>The first thing visitors saw was a YouTube thumbnail, not Josh, his credentials, or why they should trust him.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PROCESS -->
+  <div class="jdc-ch tint" id="jdc-process" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>02</div>
+        <div><h3 data-r>What we changed, and why.</h3><p class="jdc-lede" data-r="2">Before designing a single page, we cleaned up the brand: his colors, his logo, his type and his photos. That became the brand board every page is built from.</p></div>
+      </div>
+      <div class="jdc-board">
+        <div class="jdc-tile w7" data-r>
+          <span class="s">Colors</span><h4>From four loud colors to one navy and one orange.</h4>
+          <p>We kept his orange but made it deeper, and let his brand navy carry the page. Orange now only marks what matters.</p>
+          <div class="jdc-cols">
+            <div class="jdc-row"><span>Before</span><div class="jdc-sw old"><i style="background:#F6AD55"><span>F6AD55</span></i><i style="background:#188BF6"><span>188BF6</span></i><i style="background:#000"><span>000000</span></i><i class="lt" style="background:#FAFAFA"><span>FAFAFA</span></i></div></div>
+            <div class="jdc-row"><span>After</span><div class="jdc-sw new"><i style="background:#0A1D3A"><span>0A1D3A</span></i><i style="background:#FF6A00"><span>FF6A00</span></i><i style="background:#061020"><span>061020</span></i><i class="lt" style="background:#FAF9F7"><span>FAF9F7</span></i></div></div>
+          </div>
+        </div>
+        <div class="jdc-tile w5" data-r="2">
+          <span class="s">Logo</span><h4>Redrawn as a crisp vector.</h4>
+          <p>His logo was a small, blurry image. We rebuilt it so it stays sharp at any size, on light or dark.</p>
+          <div class="jdc-logos"><div class="l1"><svg role="img" aria-label="JD Strategic Franchising logo on white"><use href="#jdc-mark"/></svg></div><div class="l2"><svg role="img" aria-label="JD Strategic Franchising logo on navy"><use href="#jdc-mark"/></svg></div></div>
+        </div>
+        <div class="jdc-tile w5" data-r>
+          <span class="s">Type</span><h4>A voice that sounds like an expert.</h4>
+          <div class="jdc-type">
+            <div class="o"><small>Before &middot; Lato</small>Discover Carefully Vetted Franchise Opportunities</div>
+            <div class="n"><small style="color:var(--g2)">After &middot; Playfair Display</small>Buy a franchise <i>worth owning.</i></div>
+            <div class="r">Playfair Display for headlines, Inter for everything you read.</div>
+          </div>
+        </div>
+        <div class="jdc-tile w7" data-r="2">
+          <span class="s">Photos</span><h4>Real photos of Josh, from his own videos.</h4>
+          <p>Instead of stock images and thumbnails, we pulled sharp 4K stills from his own YouTube footage and used them across the site.</p>
+          <div class="jdc-photos"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-who.webp" width="800" height="1000" alt="Josh DuBois portrait" loading="lazy" decoding="async"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-proc.webp" width="800" height="1000" alt="Josh working through a plan with a franchise owner" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <ol class="jdc-steps">
+        <li data-r><b>Refine the colors</b>One navy, one orange.</li>
+        <li data-r="2"><b>Rebuild the logo</b>Sharp at every size.</li>
+        <li data-r="3"><b>Set the type</b>A serif with authority.</li>
+        <li data-r="4"><b>Shoot from his videos</b>Real 4K photos of Josh.</li>
+        <li data-r="4"><b>Rebuild the site</b>11 pages, start to finish.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 3. AFTER -->
+  <div class="jdc-ch" id="jdc-after" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>03</div>
+        <div><h3 data-r>His website, after.</h3><p class="jdc-lede" data-r="2">The new homepage, plus a look at the sections that do the heavy lifting.</p></div>
+      </div>
+      <figure class="jdc-win jdc-after-hero" data-r>
+        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>JD Strategic Franchising</em></div>
+        <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="The new JD Strategic homepage: a serif headline with an orange italic line, Josh's portrait and three stats" loading="lazy" decoding="async"></div>
+      </figure>
+      <div class="jdc-grid">
+        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-fit.webp" width="1200" height="750" alt="The franchise fit finder" loading="lazy" decoding="async"></div></div><figcaption><b>Franchise fit finder</b><span>Six questions, sent straight to his CRM</span></figcaption></figure>
+        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-who.webp" width="1200" height="750" alt="The About Josh section" loading="lazy" decoding="async"></div></div><figcaption><b>Who he is</b><span>A franchise owner on your side</span></figcaption></figure>
+        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-offer.webp" width="1200" height="750" alt="What you get working with Josh" loading="lazy" decoding="async"></div></div><figcaption><b>The offer</b><span>Free to you, $2,000 back</span></figcaption></figure>
+        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-show.webp" width="1200" height="750" alt="The Conquer the Mind podcast section" loading="lazy" decoding="async"></div></div><figcaption><b>His podcast</b><span>Conquer the Mind, front and center</span></figcaption></figure>
+      </div>
+      <div class="jdc-phones">
+        <figure data-r><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-a.webp" width="780" height="1688" alt="The new homepage on a phone" loading="lazy" decoding="async"></div></div></figure>
+        <figure data-r="2"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-b.webp" width="780" height="1688" alt="The fit finder on a phone" loading="lazy" decoding="async"></div></div></figure>
+        <figure data-r="3"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-c.webp" width="780" height="1688" alt="The five-step process on a phone" loading="lazy" decoding="async"></div></div></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. COMPARE -->
+  <div class="jdc-ch tint" id="jdc-compare" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>04</div>
+        <div><h3 data-r>Now see the difference <em class="jdc-em">for yourself.</em></h3><p class="jdc-lede" data-r="2">Drag the line left and right. Pick a section to compare the same part of both sites.</p></div>
+      </div>
+      <div class="jdc-cmp-bar" data-r>
+        <div class="jdc-seg" role="group" aria-label="Section to compare">
+          <button type="button" aria-pressed="true" data-pair="hero">First impression</button>
+          <button type="button" aria-pressed="false" data-pair="process">The process</button>
+          <button type="button" aria-pressed="false" data-pair="why">Why franchise</button>
+        </div>
+        <p class="jdc-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag the line to compare</p>
+      </div>
+      <figure class="jdc-win" data-r="2">
+        <span class="jdc-beam" aria-hidden="true"><i></i><i></i></span>
+        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>Before &rarr; After</em></div>
+        <div class="jdc-stage" data-stage>
+          <img class="b" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="Before" loading="lazy" decoding="async">
+          <img class="a" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="After" loading="lazy" decoding="async">
+          <span class="jdc-lbl b">Before</span><span class="jdc-lbl a">After</span>
+          <button type="button" class="jdc-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdc-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
+        </div>
+      </figure>
+    </div>
+    <div class="jdc-foot"><a class="jdc-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('jdc'); if(!root||root.dataset.ready) return; root.dataset.ready='1';
+  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var BASE='https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/';
+
+  /* reveal on scroll (blur-up); the chapter rule draws in */
+  var rev=[].slice.call(root.querySelectorAll('[data-r]')), chs=[].slice.call(root.querySelectorAll('[data-ch]'));
+  if(RM || !('IntersectionObserver' in window)){ rev.forEach(function(e){ e.classList.add('on'); }); chs.forEach(function(c){ c.classList.add('in'); }); }
+  else {
+    var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(function(e){ io.observe(e); });
+    var co=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); co.unobserve(e.target); } }); },{threshold:.18});
+    chs.forEach(function(c){ co.observe(c); });
+  }
+
+  /* chapter links scroll the host page smoothly */
+  root.querySelectorAll('.jdc-map a').forEach(function(a){ a.addEventListener('click',function(e){ var t=root.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'}); }); });
+
+  /* compare slider: only a sideways drag is captured, so up/down always scrolls the page */
+  var stage=root.querySelector('[data-stage]'), handle=stage.querySelector('.jdc-handle'), imB=stage.querySelector('img.b'), imA=stage.querySelector('img.a');
+  var lb=stage.querySelector('.jdc-lbl.b'), la=stage.querySelector('.jdc-lbl.a'), x=50, drag=false, sx=0, sy=0, decided=false, active=false;
+  function setX(v){ x=Math.max(0,Math.min(100,v)); stage.style.setProperty('--x',x+'%'); handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after'); lb.style.opacity=x<14?0:1; la.style.opacity=x>86?0:1; }
+  function at(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
+  function begin(e){ decided=true; active=true; try{ stage.setPointerCapture(e.pointerId); }catch(_){} root.classList.add('drag'); setX(at(e)); }
+  stage.addEventListener('pointerdown',function(e){ if(e.button) return; drag=true; sx=e.clientX; sy=e.clientY; decided=false;
+    if(e.pointerType==='mouse' || e.target.closest('.jdc-handle')) begin(e); });
+  stage.addEventListener('pointermove',function(e){ if(!drag) return;
+    if(!decided){ var dx=Math.abs(e.clientX-sx), dy=Math.abs(e.clientY-sy); if(dx<6&&dy<6) return; if(dy>dx){ drag=false; return; } begin(e); }
+    setX(at(e)); });
+  function end(){ drag=false; decided=false; active=false; root.classList.remove('drag'); }
+  ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ stage.addEventListener(n,end); });
+  handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
+
+  /* pick which section pair to compare */
+  var PAIRS={hero:['old-hero','new-hero'],process:['old-process','new-process'],why:['old-why','new-why']};
+  [].slice.call(root.querySelectorAll('[data-pair]')).forEach(function(b,i,all){ b.addEventListener('click',function(){
+    if(b.getAttribute('aria-pressed')==='true') return;
+    all.forEach(function(o){ o.setAttribute('aria-pressed',o===b?'true':'false'); });
+    var p=PAIRS[b.dataset.pair]; stage.classList.add('swap');
+    setTimeout(function(){ var n=0; function done(){ if(++n===2){ stage.classList.remove('swap'); nudge(); } }
+      [[imB,p[0]],[imA,p[1]]].forEach(function(q){ q[0].onload=done; q[0].onerror=done; q[0].src=BASE+q[1]+'.webp'; if(q[0].complete && q[0].naturalWidth) { q[0].onload=null; done(); } });
+    }, RM?0:260); }); });
+
+  /* one gentle sweep when it first comes into view, so people see the line moves */
+  var shown=false;
+  function tw(a,b,d,next){ var s=performance.now(); (function f(t){ if(active) return; var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
+  function nudge(){ if(RM||active) return; tw(x,22,700,function(){ tw(x,78,1000,function(){ tw(x,50,700); }); }); }
+  setX(50);
+  if('IntersectionObserver' in window){ var so=new IntersectionObserver(function(en){ if(en[0].isIntersecting && !shown){ shown=true; setTimeout(nudge,800); so.disconnect(); } },{threshold:.5}); so.observe(stage); }
+})();
+</script>
+
+</body></html>

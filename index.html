@@ -1,393 +1,468 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JD Strategic Case Study</title><meta name="robots" content="noindex">
-<style>html,body{margin:0;background:#fff}</style></head><body>
-<!-- JD Strategic case study: before, what we changed, after, compare. Self-contained: paste into a custom code element. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JD Strategic Transformation</title>
+<meta name="description" content="How JD Strategic Franchising's website went from cluttered to credible: the before, the brand, the rebuild.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,700;1,600&family=Montserrat:wght@400;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,700;1,600&family=Montserrat:wght@400;800&family=Lato:wght@700&display=swap" rel="stylesheet">
 <style>
-.jdc{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;--ease:cubic-bezier(.22,1,.36,1);
-  --jd-navy:#0A1D3A;--jd-orange:#FF6A00;
-  position:relative;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden;isolation:isolate}
-.jdc *,.jdc *::before,.jdc *::after{box-sizing:border-box}
-.jdc img{display:block;max-width:100%;height:auto}
-.jdc-in{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
-.jdc::before{content:"";position:absolute;left:-10%;right:-10%;top:-200px;height:900px;z-index:-1;background:radial-gradient(46% 60% at 50% 30%,rgba(1,129,252,.10),rgba(1,129,252,0) 70%);animation:jdc-drift 18s ease-in-out infinite alternate}
-@keyframes jdc-drift{from{transform:translate3d(-5%,0,0)}to{transform:translate3d(5%,3%,0) scale(1.1)}}
+:root{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;
+  --navy:#0A1D3A;--deep:#061020;--orange:#FF6A00;--ease:cubic-bezier(.22,1,.36,1);--gut:clamp(18px,4vw,64px)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.035em;text-wrap:balance}
+.em{display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;padding-bottom:.08em;
+  background:linear-gradient(100deg,var(--g1),var(--g2) 45%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.k{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.k b{color:var(--g2);font-weight:600}
+.k i{width:26px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
 
+/* scroll progress */
+.prog{position:fixed;left:0;top:0;right:0;height:2px;z-index:50;background:linear-gradient(90deg,var(--g1),var(--g3));transform-origin:left;transform:scaleX(0)}
+
+/* scenes */
+.scene{position:relative;min-height:100vh;min-height:100svh}
+.pin{height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+
+/* 0 intro */
+#intro{display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+#intro::before{content:"";position:absolute;inset:-20% -10% auto;height:90%;background:radial-gradient(46% 55% at 50% 40%,rgba(1,129,252,.13),rgba(1,129,252,0) 70%);pointer-events:none}
+#intro h1{font-size:clamp(46px,8.4vw,128px);line-height:.95;position:relative}
+#intro h1 .w{display:inline-block}
+#intro .sub{margin:26px auto 0;max-width:46ch;font-size:clamp(16px,1.3vw,19px);position:relative}
+.cue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.cue i{position:relative;width:1px;height:46px;background:var(--line);overflow:hidden}
+.cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:linear-gradient(var(--g3),var(--g1));animation:cue 1.8s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes cue{to{top:100%}}
+
+/* browser frame */
+.win{position:relative;border-radius:14px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 4px rgba(3,13,48,.04),0 34px 70px -34px rgba(3,13,48,.32),0 80px 120px -70px rgba(1,29,120,.28)}
+.bar{display:flex;align-items:center;gap:12px;height:38px;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F3F4F7)}
+.bar span{display:flex;gap:6px}.bar span i{width:10px;height:10px;border-radius:50%;background:#DDE0E6}
+.bar em{flex:1;max-width:300px;margin:0 auto;height:22px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#fff;border:1px solid var(--line);font-size:11.5px;font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden}
+.view{position:relative;overflow:hidden;background:var(--tint)}
+.view img.tall{width:100%;height:auto;will-change:transform}
+
+/* 1 before + 3 after share a layout */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4.5vw,80px);align-items:center;width:100%}
+.split h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
+.list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:4px}
+.list li{position:relative;padding:14px 0 14px 22px;border-left:2px solid var(--line);opacity:.32;transition:opacity .5s var(--ease),border-color .5s var(--ease)}
+.list li b{display:block;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.5vw,21px);font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
+.list li span{display:block;margin-top:4px;font-size:14.5px;line-height:1.55;max-width:40ch}
+.list li.on{opacity:1;border-color:var(--g2)}
+#before .view{height:min(64vh,40vw)}
+#before .win{transform-origin:50% 60%}
+
+/* 2 brand */
+#brand .wrap{text-align:center}
+#brand h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
+.steps{display:inline-flex;gap:6px;margin:26px 0 0;padding:5px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
+.steps span{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease)}
+.steps span.on{background:var(--ink);color:#fff;box-shadow:0 8px 20px -10px rgba(3,13,48,.6)}
+.stage{position:relative;height:min(46vh,420px);margin:clamp(24px,4vh,48px) auto 0;max-width:980px}
+.panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden}
+.cap{margin:clamp(20px,3vh,34px) 0 0;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.7vw,24px);font-weight:600;letter-spacing:-.015em;color:var(--ink);text-wrap:balance}
+.cap s{color:var(--muted);text-decoration-thickness:1.5px;font-weight:500}
+/* colors */
+.sw{display:flex;gap:clamp(10px,1.6vw,22px)}
+.sw i{position:relative;width:clamp(64px,9vw,128px);aspect-ratio:1;border-radius:22%;box-shadow:inset 0 0 0 1px rgba(3,13,48,.08),0 20px 40px -24px rgba(3,13,48,.5)}
+.sw i span{position:absolute;left:0;right:0;bottom:-26px;font:600 11.5px/1 'Inter',sans-serif;letter-spacing:.06em;color:var(--muted)}
+/* logo */
+.logos{position:relative;width:min(560px,80vw);aspect-ratio:1576/392}
+.logos img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;filter:blur(1.2px);image-rendering:auto}
+.logos svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--navy)}
 /* type */
-.jdc-k{display:inline-flex;align-items:center;gap:12px;margin:0 0 20px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.jdc-k i{width:28px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
-.jdc h2,.jdc h3{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.035em;text-wrap:balance}
-.jdc h2{font-size:clamp(36px,5.6vw,72px);line-height:1}
-.jdc h3{font-size:clamp(30px,4vw,52px);line-height:1.02}
-.jdc em.jdc-em{display:block;margin-top:.06em;padding-bottom:.08em;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1.05;
-  background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 62%),linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);
-  background-size:260% 100%,100% 100%;background-repeat:no-repeat;background-position:160% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:jdc-shine 6s cubic-bezier(.6,.6,0,1) 2s infinite}
-@keyframes jdc-shine{0%{background-position:160% 0,0 0}36%,100%{background-position:-60% 0,0 0}}
-.jdc-lede{margin:20px 0 0;max-width:58ch;font-size:clamp(15.5px,1.2vw,17.5px);color:var(--body);text-wrap:pretty}
-.jdc-center{text-align:center}.jdc-center .jdc-lede{margin-left:auto;margin-right:auto}
+.types{position:relative;width:min(900px,90vw);height:clamp(140px,20vh,200px)}
+.types .o,.types .n{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
+.types .o{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(28px,4vw,56px);line-height:1.1;color:#F6AD55;text-shadow:2px 2px 5px rgba(0,0,0,.45)}
+.types .n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(40px,6vw,88px);line-height:1;letter-spacing:-.02em;color:var(--navy)}
+.types .n i{font-style:italic;font-weight:600;color:var(--orange)}
+.types .c,.types .wd{display:inline-block;white-space:pre}
+/* photo */
+.photos{position:relative;width:min(560px,82vw);aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(3,13,48,.55)}
+.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photos img.n{object-position:50% 22%;clip-path:circle(0% at 50% 50%)}
 
-/* intro + chapter map */
-.jdc-top{padding:clamp(64px,9vw,130px) 0 clamp(40px,5vw,72px)}
-.jdc-map{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:34px 0 0;padding:0;list-style:none}
-.jdc-map a{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;text-decoration:none;transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
-.jdc-map a b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--tint);font:600 11px/1 'Inter',sans-serif;color:var(--muted);transition:background .3s var(--ease),color .3s var(--ease)}
-.jdc-map a:hover{border-color:rgba(1,129,252,.45);transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(1,29,180,.45)}
-.jdc-map a:hover b{background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff}
+/* 3 after: the dark moment */
+#after{color:rgba(255,255,255,.7)}
+#after h2{color:#fff}
+#after .k{color:rgba(255,255,255,.55)}
+#after .list li{border-color:rgba(255,255,255,.14)}
+#after .list li b{color:#fff}
+#after .list li.on{border-color:var(--g3)}
+#after .win{border-color:rgba(255,255,255,.12);box-shadow:0 60px 120px -50px rgba(0,0,0,.9),0 0 0 1px rgba(10,235,255,.12)}
+#after .bar{background:linear-gradient(#141B2C,#0E1424);border-color:rgba(255,255,255,.08)}
+#after .bar span i{background:rgba(255,255,255,.16)}
+#after .bar em{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+#after .view{height:min(64vh,40vw);background:var(--deep)}
+.bg{position:fixed;inset:0;z-index:-1;background:var(--deep);opacity:0;pointer-events:none}
+.bg::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 70% 30%,rgba(1,129,252,.22),rgba(1,129,252,0) 70%),radial-gradient(40% 50% at 15% 85%,rgba(10,235,255,.10),rgba(10,235,255,0) 70%)}
 
-/* chapters */
-.jdc-ch{position:relative;padding:clamp(56px,7vw,110px) 0;border-top:1px solid var(--line)}
-.jdc-ch.tint{background:linear-gradient(#FAFAFB,#F4F5F8)}
-.jdc-chead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;margin-bottom:clamp(32px,4vw,56px)}
-.jdc-num{font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(15px,1.2vw,17px);color:var(--g2);letter-spacing:.02em;padding-top:.55em;font-variant-numeric:tabular-nums}
-.jdc-num::after{content:"";display:block;width:100%;height:1.5px;margin-top:10px;background:linear-gradient(90deg,var(--g1),var(--g3));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .2s}
-.jdc-ch.in .jdc-num::after{transform:scaleX(1)}
+/* 4 phones */
+#phones{padding:clamp(80px,12vh,140px) 0;text-align:center;min-height:auto}
+#phones h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,min(230px,26vh)));justify-content:center;gap:clamp(14px,4vw,60px);margin-top:clamp(40px,6vh,72px)}
+.phone{border-radius:38px;padding:9px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 50px 90px -40px rgba(3,13,48,.55)}
+.phone>div{position:relative;border-radius:30px;overflow:hidden;background:#fff}
+.phone>div::before{content:"";position:absolute;z-index:2;top:8px;left:50%;width:30%;height:20px;margin-left:-15%;border-radius:20px;background:#0B0E16}
+.phone img{width:100%}
 
-/* frames */
-.jdc-win{position:relative;margin:0;border-radius:14px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 4px rgba(3,13,48,.04),0 30px 60px -30px rgba(3,13,48,.28),0 70px 110px -60px rgba(1,29,120,.22)}
-.jdc-bar{display:flex;align-items:center;gap:12px;height:40px;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F4F5F7)}
-.jdc-bar span{display:flex;gap:6px}.jdc-bar span i{width:10px;height:10px;border-radius:50%;background:#DDE0E6}
-.jdc-bar em{flex:1;max-width:340px;margin:0 auto;height:24px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;background:#fff;border:1px solid var(--line);font:400 12px/1 'Inter',sans-serif;font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden}
-.jdc-bar em svg{width:11px;height:11px;flex:none}
-.jdc-shot{position:relative;overflow:hidden;background:var(--tint)}
-.jdc-shot img{width:100%;transition:transform 1.6s var(--ease)}
-@media (hover:hover){.jdc-win:hover .jdc-shot img{transform:scale(1.02)}}
-.jdc-phone{position:relative;margin:0;border-radius:36px;padding:9px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 36px 64px -30px rgba(3,13,48,.5)}
-.jdc-phone>div{position:relative;border-radius:28px;overflow:hidden;background:#fff}
-.jdc-phone>div::before{content:"";position:absolute;z-index:2;top:8px;left:50%;width:30%;height:20px;margin-left:-15%;border-radius:20px;background:#0B0E16}
-.jdc-phone img{width:100%}
-.jdc-tagline{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+/* 5 reveal */
+#reveal .wrap{text-align:center}
+#reveal h2{font-size:clamp(34px,4.4vw,62px);line-height:1;position:relative;height:1.1em}
+#reveal h2 span{position:absolute;left:0;right:0;top:0}
+.cmp{margin:clamp(22px,4vh,44px) auto 0;max-width:1100px}
+.stg{position:relative;height:min(62vh,42vw);overflow:hidden;background:var(--tint);user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+.stg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none}
+.stg img.a{clip-path:inset(0 0 0 var(--x,100%))}
+.stg .lb{position:absolute;bottom:14px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:opacity .3s}
+.stg .lb.b{left:14px;background:rgba(255,255,255,.92);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
+.stg .lb.a{right:14px;background:rgba(3,13,48,.82);color:#fff}
+.hd{position:absolute;top:0;bottom:0;left:var(--x,100%);z-index:4;width:48px;margin-left:-24px;border:0;background:none;padding:0;cursor:ew-resize;touch-action:none}
+.hd::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 26px rgba(1,129,252,.6)}
+.hd b{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.92),0 14px 34px -10px rgba(1,29,180,.7)}
+.hd b svg{width:22px;height:22px}
+.hint{margin:16px 0 0;font-size:13px;color:var(--muted);opacity:0;transition:opacity .6s var(--ease)}
+.hint.on{opacity:1}
 
-/* before */
-.jdc-before{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,240px);gap:clamp(20px,3vw,44px);align-items:end}
-.jdc-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(32px,4vw,52px);border-top:1px solid var(--line)}
-.jdc-issue{padding:24px clamp(16px,2.2vw,32px) 0 0}
-.jdc-issue+.jdc-issue{padding-left:clamp(16px,2.2vw,32px);border-left:1px solid var(--line)}
-.jdc-issue b{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.5vw,21px);font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
-.jdc-issue b svg{width:18px;height:18px;flex:none;color:var(--muted)}
-.jdc-issue p{margin:8px 0 0;font-size:14.5px;line-height:1.6}
-.jdc-chip{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin:0 2px;box-shadow:inset 0 0 0 1px rgba(3,13,48,.12)}
+/* 6 end */
+#end{display:flex;align-items:center;text-align:center;min-height:90vh;min-height:90svh}
+#end h2{font-size:clamp(40px,6.4vw,96px);line-height:.98}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin:34px auto 0;padding:0;list-style:none;max-width:900px}
+.facts li{padding:6px 18px;font-size:14px;font-weight:500;color:var(--ink);border-left:1px solid var(--line)}
+.facts li:first-child{border-left:0}
+.live{display:inline-flex;align-items:center;gap:10px;margin-top:40px;padding:15px 22px;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 18px 40px -20px rgba(3,13,48,.7);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.live svg{width:16px;height:16px;color:var(--g3)}
+.live:hover{transform:translateY(-2px);box-shadow:0 24px 50px -20px rgba(1,29,180,.7)}
+.live:focus-visible,.hd:focus-visible{outline:2px solid var(--g2);outline-offset:4px}
 
-/* process: the brand board */
-.jdc-board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
-.jdc-tile{position:relative;grid-column:span 6;border-radius:16px;background:#fff;border:1px solid var(--line);padding:clamp(22px,2.6vw,34px);overflow:hidden;box-shadow:0 1px 2px rgba(3,13,48,.04),0 24px 48px -32px rgba(3,13,48,.25)}
-.jdc-tile.w7{grid-column:span 7}.jdc-tile.w5{grid-column:span 5}
-.jdc-tile h4{margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(19px,1.6vw,22px);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
-.jdc-tile .s{display:block;margin-bottom:12px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g2)}
-.jdc-tile p{margin:8px 0 0;font-size:14.5px;line-height:1.6;max-width:46ch}
-.jdc-logos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-.jdc-logos div{display:grid;place-items:center;aspect-ratio:2/1;border-radius:10px;padding:0 10%}
-.jdc-logos .l1{background:#fff;border:1px solid var(--line);color:var(--jd-navy);--logo-box:var(--jd-navy);--logo-on-box:#fff}
-.jdc-logos .l2{background:var(--jd-navy);color:#fff;--logo-box:#fff;--logo-on-box:var(--jd-navy)}
-.jdc-logos svg{width:100%;height:auto;aspect-ratio:1576/392;overflow:visible}
-.jdc-cols{margin-top:22px;display:grid;gap:14px}
-.jdc-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center}
-.jdc-row>span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.jdc-sw{display:flex;gap:8px;position:relative}
-.jdc-sw i{flex:1;height:58px;border-radius:10px;position:relative;box-shadow:inset 0 0 0 1px rgba(3,13,48,.08);transform:scaleY(.2);opacity:0;transform-origin:bottom;transition:transform .8s var(--ease),opacity .6s ease}
-.jdc-sw i span{position:absolute;left:10px;bottom:8px;font:600 10.5px/1 'Inter',sans-serif;letter-spacing:.04em;color:#fff}
-.jdc-sw i.lt span{color:var(--ink)}
-.jdc-sw.old i{height:40px}
-.jdc-sw.old::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.77,0,.18,1) .9s}
-.jdc-ch.in .jdc-sw i{transform:none;opacity:1}
-.jdc-ch.in .jdc-sw i:nth-child(2){transition-delay:.08s}.jdc-ch.in .jdc-sw i:nth-child(3){transition-delay:.16s}.jdc-ch.in .jdc-sw i:nth-child(4){transition-delay:.24s}
-.jdc-ch.in .jdc-sw.new i{transition-delay:1.3s}.jdc-ch.in .jdc-sw.new i:nth-child(2){transition-delay:1.38s}.jdc-ch.in .jdc-sw.new i:nth-child(3){transition-delay:1.46s}.jdc-ch.in .jdc-sw.new i:nth-child(4){transition-delay:1.54s}
-.jdc-ch.in .jdc-sw.old::after{transform:scaleX(1)}
-.jdc-type{margin-top:22px;display:grid;gap:16px}
-.jdc-type .o{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(20px,2vw,26px);color:#000;text-shadow:1px 1px 3px rgba(0,0,0,.5);line-height:1.15;text-decoration:line-through;text-decoration-color:var(--muted);text-decoration-thickness:1.5px}
-.jdc-type .n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--jd-navy);line-height:1;letter-spacing:-.02em}
-.jdc-type .n i{font-style:italic;font-weight:600;color:var(--jd-orange)}
-.jdc-type .r{font-size:14px;line-height:1.55;color:var(--body);border-top:1px solid var(--line);padding-top:14px}
-.jdc-type small{display:block;margin-bottom:6px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;text-shadow:none}
-.jdc-photos{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.jdc-photos img{border-radius:10px;aspect-ratio:4/5;object-fit:cover;width:100%}
-.jdc-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:clamp(28px,3.6vw,48px) 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
-.jdc-steps li{padding:20px 14px 0 0;font-size:14px;line-height:1.5;color:var(--body)}
-.jdc-steps li b{display:block;margin-bottom:4px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
-
-/* after */
-.jdc-after-hero{margin-bottom:14px}
-.jdc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.jdc-grid figure{margin:0}
-.jdc-grid figcaption{display:flex;justify-content:space-between;gap:16px;padding:14px 4px 0;font-size:13.5px;color:var(--muted)}
-.jdc-grid figcaption b{font-family:'Outfit',sans-serif;font-weight:600;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
-.jdc-grid .jdc-win{border-radius:12px}
-.jdc-phones{display:grid;grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:clamp(16px,4vw,56px);margin-top:clamp(40px,5vw,72px);padding:clamp(32px,4vw,56px) 0;border-radius:18px;background:radial-gradient(60% 70% at 50% 40%,#EEF3FB,#F7F8FA 75%)}
-.jdc-phones figure{margin:0}
-.jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-18px)}
-
-/* compare */
-.jdc-cmp-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
-.jdc-seg{display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid var(--line)}
-.jdc-seg button{appearance:none;border:0;background:transparent;font:600 13px/1 'Inter',sans-serif;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
-.jdc-seg button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 6px 16px -8px rgba(3,13,48,.5)}
-.jdc-seg button:focus-visible,.jdc-handle:focus-visible,.jdc-map a:focus-visible,.jdc-live:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
-.jdc-hint{display:flex;align-items:center;gap:8px;margin:0;font-size:13px;color:var(--muted)}
-.jdc-hint svg{width:18px;height:18px;color:var(--g2)}
-.jdc-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.jdc-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none;-webkit-user-drag:none;transition:opacity .5s var(--ease)}
-.jdc-stage img.a{clip-path:inset(0 0 0 var(--x,50%))}
-.jdc-stage.swap img{opacity:0}
-.jdc-lbl{position:absolute;bottom:16px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:opacity .3s ease}
-.jdc-lbl.b{left:16px;background:rgba(255,255,255,.9);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
-.jdc-lbl.a{right:16px;background:rgba(3,13,48,.8);color:#fff}
-.jdc-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:48px;margin-left:-24px;border:0;background:none;padding:0;cursor:ew-resize;touch-action:none}
-.jdc-handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));animation:jdc-glow 2.8s ease-in-out infinite}
-@keyframes jdc-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 16px rgba(1,129,252,.45)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 32px rgba(10,235,255,.85)}}
-.jdc-knob{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.92),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
-.jdc-knob svg{width:22px;height:22px}
-.jdc-knob::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(10,235,255,.7);animation:jdc-ping 2.8s cubic-bezier(.2,.6,.3,1) infinite}
-@keyframes jdc-ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
-.jdc-stage:hover .jdc-knob,.jdc.drag .jdc-knob{transform:scale(1.08)}
-.jdc-beam{position:absolute;inset:0;z-index:6;border-radius:inherit;border:1.5px solid transparent;pointer-events:none;
-  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;mask-composite:exclude}
-.jdc-beam i{position:absolute;width:180px;aspect-ratio:1;offset-path:rect(0 auto auto 0 round 180px);background:linear-gradient(to left,var(--g3),var(--g1),transparent);animation:jdc-beam 9s linear infinite}
-.jdc-beam i+i{animation-delay:-4.5s;background:linear-gradient(to left,var(--g2),rgba(10,235,255,.4),transparent)}
-@keyframes jdc-beam{from{offset-distance:0%}to{offset-distance:100%}}
-.jdc-foot{display:flex;justify-content:center;padding:clamp(36px,4vw,56px) 0 clamp(64px,8vw,110px)}
-.jdc-live{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line);transition:border-color .3s var(--ease),gap .3s var(--ease)}
-.jdc-live svg{width:16px;height:16px;color:var(--g2)}
-.jdc-live:hover{border-color:var(--g2);gap:14px}
-
-/* reveal on scroll */
-.jdc [data-r]{opacity:0;filter:blur(8px);transform:translateY(26px);transition:opacity 1s var(--ease),filter 1s var(--ease),transform 1.1s var(--ease)}
-.jdc [data-r].on{opacity:1;filter:none;transform:none}
-.jdc [data-r="2"]{transition-delay:.1s}.jdc [data-r="3"]{transition-delay:.2s}.jdc [data-r="4"]{transition-delay:.3s}
-
-@media (max-width:900px){
-  .jdc-before{grid-template-columns:minmax(0,1fr)}
-  .jdc-before .jdc-phone{max-width:220px;margin:0 auto}
-  .jdc-tile,.jdc-tile.w7,.jdc-tile.w5{grid-column:span 12}
-  .jdc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* phones and small screens */
+@media (max-width:860px){
+  .split{grid-template-columns:minmax(0,1fr);gap:18px;align-content:center}
+  .split h2{font-size:clamp(30px,8vw,44px)}
+  .list{position:relative;margin-top:14px;height:84px}
+  .list li{position:absolute;left:0;right:0;top:0;padding:8px 0 8px 16px;opacity:0;border-color:var(--g2)}
+  .list li.on{opacity:1}
+  .list li span{font-size:13.5px}
+  #before .view,#after .view{height:44svh}
+  .k{margin-bottom:10px}
+  .stage{height:40svh}
+  .steps span{padding:7px 10px;font-size:12px}
+  .phones{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .phone{border-radius:20px;padding:5px}.phone>div{border-radius:16px}.phone>div::before{height:10px;top:5px}
+  .stg{height:56svh}
+  .facts li{border-left:0;padding:4px 10px}
 }
-@media (max-width:640px){
-  .jdc-chead{grid-template-columns:minmax(0,1fr);gap:10px}.jdc-num{padding-top:0}.jdc-num::after{width:40px}
-  .jdc-issues{grid-template-columns:minmax(0,1fr)}
-  .jdc-issue,.jdc-issue+.jdc-issue{padding:20px 0;border-left:0;border-bottom:1px solid var(--line)}
-  .jdc-grid{grid-template-columns:minmax(0,1fr)}
-  .jdc-steps{grid-template-columns:minmax(0,1fr)}
-  .jdc-phones{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:22px 10px}
-  .jdc-phone{border-radius:20px;padding:5px}.jdc-phone>div{border-radius:16px}.jdc-phone>div::before{height:10px;top:5px}
-  .jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-10px)}
-  .jdc-stage{aspect-ratio:4/5}
-  .jdc-hint{display:none}.jdc-cmp-bar{justify-content:center}
-  .jdc-seg button{padding:9px 11px;font-size:12px}
-  .jdc-k i{display:none}
-  .jdc-map a{font-size:12.5px;padding:8px 12px 8px 8px}
-}
-@media (prefers-reduced-motion:reduce){
-  .jdc::before,.jdc em.jdc-em,.jdc-handle::before,.jdc-knob::after,.jdc-beam i{animation:none}
-  .jdc [data-r]{opacity:1;filter:none;transform:none;transition:none}
-  .jdc-sw i{transform:none;opacity:1;transition:none}.jdc-sw.old::after{transform:scaleX(1);transition:none}
-}
+/* no motion, or GSAP failed: everything simply shows, nothing is pinned */
+.static .panel{position:relative;opacity:1;visibility:visible;margin-bottom:60px}
+.static .stage{height:auto}
+.static .pin{height:auto;padding:90px 0}
+.static .list li{position:relative;opacity:1}
+.static .list{height:auto}
+.static .photos img.n{clip-path:none}
+.static .logos img,.static .types .o{display:none}
+.static .stg img.a{clip-path:inset(0 0 0 50%)}
+.static .hd{left:50%}
 </style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="jdc-mark" viewBox="0 0 1576 392">
-    <path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="var(--logo-box,#0A1D3A)"/>
-    <rect x="24" y="24" width="352" height="342" fill="var(--logo-box,#0A1D3A)"/>
-    <text x="50" y="276" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="var(--logo-on-box,#fff)">JD</text>
-    <path d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
-    <rect x="456" y="0" width="976" height="12" fill="currentColor"/>
-    <rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/>
-    <text x="456" y="208" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
-    <text x="462" y="324" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
-    <rect x="456" y="378" width="976" height="12" fill="currentColor"/>
-    <rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/>
-  </symbol>
-  <symbol id="jdc-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="jdc-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="arrows" viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
-<section class="jdc" id="jdc" aria-label="Case study: JD Strategic Franchising website redesign">
-  <div class="jdc-in">
-    <header class="jdc-top jdc-center">
-      <p class="jdc-k" data-r><i></i>Case study &middot; JD Strategic Franchising<i></i></p>
-      <h2 data-r="2">A franchise expert&rsquo;s website, <em class="jdc-em">rebuilt to look the part.</em></h2>
-      <p class="jdc-lede" data-r="3">Josh DuBois helps people buy franchises worth owning. Here&rsquo;s his website before we started, what we changed, and what it looks like now.</p>
-      <ul class="jdc-map" data-r="4">
-        <li><a href="#jdc-before"><b>1</b>The before</a></li>
-        <li><a href="#jdc-process"><b>2</b>What we changed</a></li>
-        <li><a href="#jdc-after"><b>3</b>The after</a></li>
-        <li><a href="#jdc-compare"><b>4</b>Compare them</a></li>
+<main>
+  <!-- 0 -->
+  <section class="scene" id="intro">
+    <div class="wrap">
+      <p class="k" data-in><i></i>JD Strategic Franchising &middot; Website redesign<i></i></p>
+      <h1 data-split>Same founder. <span class="em">A whole new first impression.</span></h1>
+      <p class="sub" data-in>How a franchise expert&rsquo;s website went from cluttered to credible.</p>
+    </div>
+    <div class="cue" aria-hidden="true">Scroll<i></i></div>
+  </section>
+
+  <!-- 1 -->
+  <section class="scene" id="before">
+    <div class="pin"><div class="wrap"><div class="split">
+      <div class="copy">
+        <p class="k"><b>01</b>The before</p>
+        <h2>This was his website.</h2>
+        <ul class="list">
+          <li><b>Colors fighting each other</b><span>Orange buttons with bright blue text and drop-shadowed headlines.</span></li>
+          <li><b>Walls of centered text</b><span>One font for everything, so nothing told visitors where to look.</span></li>
+          <li><b>No clear next step</b><span>Long paragraphs, a flyer mid-page, and the ask buried at the bottom.</span></li>
+        </ul>
+      </div>
+      <figure class="win" style="margin:0">
+        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>jdfranchising.com</em></div>
+        <div class="view"><img class="tall" src="assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage, top to bottom"></div>
+      </figure>
+    </div></div></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="scene" id="brand">
+    <div class="pin"><div class="wrap">
+      <p class="k"><b>02</b>The brand</p>
+      <h2>First, we fixed the brand.</h2>
+      <div class="steps" aria-hidden="true"><span class="on">Color</span><span>Logo</span><span>Type</span><span>Photos</span></div>
+      <div class="stage">
+        <div class="panel p1">
+          <div class="sw">
+            <i style="background:#F6AD55" data-to="#0A1D3A"><span data-a="F6AD55" data-b="0A1D3A">F6AD55</span></i>
+            <i style="background:#188BF6" data-to="#FF6A00"><span data-a="188BF6" data-b="FF6A00">188BF6</span></i>
+            <i style="background:#000000" data-to="#061020"><span data-a="000000" data-b="061020">000000</span></i>
+            <i style="background:#FAFAFA" data-to="#FAF9F7"><span data-a="FAFAFA" data-b="FAF9F7">FAFAFA</span></i>
+          </div>
+          <p class="cap" style="margin-top:56px"><s>Four loud colors.</s> One navy and one orange.</p>
+        </div>
+        <div class="panel p2">
+          <div class="logos">
+            <img src="assets/v3/old-logo.png" width="226" height="116" alt="The old raster logo">
+            <svg viewBox="0 0 1576 392" role="img" aria-label="The new vector logo">
+              <g class="lg-box"><path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="#0A1D3A"/><rect x="24" y="24" width="352" height="342" fill="#0A1D3A"/></g>
+              <text class="lg-jd" x="50" y="276" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="#fff">JD</text>
+              <path class="lg-or" d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
+              <g class="lg-top"><rect x="456" y="0" width="976" height="12" fill="currentColor"/><rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/></g>
+              <text class="lg-t1" x="456" y="208" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
+              <text class="lg-t2" x="462" y="324" font-family="Montserrat,Inter,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
+              <g class="lg-bot"><rect x="456" y="378" width="976" height="12" fill="currentColor"/><rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/></g>
+            </svg>
+          </div>
+          <p class="cap"><s>A blurry image.</s> A crisp vector logo, sharp at any size.</p>
+        </div>
+        <div class="panel p3">
+          <div class="types">
+            <div class="o" data-chars>Discover Carefully Vetted Franchise Opportunities</div>
+            <div class="n"><span data-words>Buy a franchise</span> <i data-words>worth owning.</i></div>
+          </div>
+          <p class="cap"><s>Lato for everything.</s> A serif with authority.</p>
+        </div>
+        <div class="panel p4">
+          <div class="photos">
+            <img class="o" src="assets/v3/old-thumb.webp" width="600" height="338" alt="The old YouTube thumbnail hero">
+            <img class="n" src="assets/v2/photo-who.webp" width="800" height="1000" alt="A real portrait of Josh DuBois from his own footage">
+          </div>
+          <p class="cap"><s>A YouTube thumbnail.</s> Real 4K photos of Josh.</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="scene" id="after">
+    <div class="pin"><div class="wrap"><div class="split">
+      <div class="copy">
+        <p class="k"><b>03</b>The rebuild</p>
+        <h2>Then we rebuilt every page.</h2>
+        <ul class="list">
+          <li><b>He leads, with proof</b><span>His portrait, his credentials and what it costs, above the fold.</span></li>
+          <li><b>A fit finder</b><span>Six questions that land straight in his CRM.</span></li>
+          <li><b>Five clear steps</b><span>The whole process, from first call to signing.</span></li>
+          <li><b>One next step</b><span>The same call to action, page after page.</span></li>
+        </ul>
+      </div>
+      <figure class="win" style="margin:0">
+        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>JD Strategic Franchising</em></div>
+        <div class="view"><img class="tall" src="assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage, top to bottom"></div>
+      </figure>
+    </div></div></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="scene" id="phones">
+    <div class="wrap">
+      <p class="k" data-in><b>04</b>On the go</p>
+      <h2 data-in>And it works on every phone.</h2>
+      <div class="phones">
+        <div class="phone" data-depth="1.0"><div><img src="assets/v2/new-phone-a.webp" width="780" height="1688" alt="The new homepage on a phone" loading="lazy"></div></div>
+        <div class="phone" data-depth="-0.6"><div><img src="assets/v2/new-phone-b.webp" width="780" height="1688" alt="The fit finder on a phone" loading="lazy"></div></div>
+        <div class="phone" data-depth="0.7"><div><img src="assets/v2/new-phone-c.webp" width="780" height="1688" alt="The five steps on a phone" loading="lazy"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="scene" id="reveal">
+    <div class="pin"><div class="wrap">
+      <p class="k"><b>05</b>Side by side</p>
+      <h2><span class="r1">From this&hellip;</span><span class="r2" style="opacity:0">&hellip;to this.</span></h2>
+      <figure class="win cmp" style="margin-bottom:0">
+        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>Before &rarr; After</em></div>
+        <div class="stg">
+          <img class="b" src="assets/v2/old-hero.webp" width="1800" height="1125" alt="Before: the old homepage">
+          <img class="a" src="assets/v2/new-hero.webp" width="1800" height="1125" alt="After: the new homepage">
+          <span class="lb b">Before</span><span class="lb a">After</span>
+          <button type="button" class="hd" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><b><svg aria-hidden="true"><use href="#arrows"/></svg></b></button>
+        </div>
+      </figure>
+      <p class="hint">Drag the line to compare</p>
+    </div></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="scene" id="end">
+    <div class="wrap">
+      <h2 data-in>From cluttered <span class="em">to credible.</span></h2>
+      <ul class="facts" data-in>
+        <li>Brand board</li><li>Vector logo</li><li>11 pages</li><li>Fit finder in his CRM</li><li>A 4-minute film</li>
       </ul>
-    </header>
-  </div>
-
-  <!-- 1. BEFORE -->
-  <div class="jdc-ch" id="jdc-before" data-ch>
-    <div class="jdc-in">
-      <div class="jdc-chead">
-        <div class="jdc-num" data-r>01</div>
-        <div><h3 data-r>His website, before.</h3><p class="jdc-lede" data-r="2">The old jdfranchising.com homepage, exactly as visitors saw it.</p></div>
-      </div>
-      <div class="jdc-before">
-        <figure class="jdc-win" data-r>
-          <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>jdfranchising.com</em></div>
-          <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="The old JD Strategic homepage: an orange drop-shadowed headline, an orange button with blue text and a YouTube thumbnail" loading="lazy" decoding="async"></div>
-        </figure>
-        <div data-r="2"><figure class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-phone.webp" width="780" height="1688" alt="The old homepage on a phone, with a chat pop-up covering the headline" loading="lazy" decoding="async"></div></figure><div class="jdc-center"><span class="jdc-tagline">On a phone</span></div></div>
-      </div>
-      <div class="jdc-issues">
-        <div class="jdc-issue" data-r><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>Colors fighting each other</b><p>Orange buttons <span class="jdc-chip" style="background:#F6AD55"></span> with bright blue text <span class="jdc-chip" style="background:#188BF6"></span>, drop-shadowed headlines, and a row of logos all competing for attention.</p></div>
-        <div class="jdc-issue" data-r="2"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>One font, every line centered</b><p>Everything set in Lato and centered, so long paragraphs read like a wall and nothing stood out as the next step.</p></div>
-        <div class="jdc-issue" data-r="3"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>A thumbnail for a hero</b><p>The first thing visitors saw was a YouTube thumbnail, not Josh, his credentials, or why they should trust him.</p></div>
-      </div>
+      <a class="live" data-in href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
-  </div>
+  </section>
+</main>
 
-  <!-- 2. PROCESS -->
-  <div class="jdc-ch tint" id="jdc-process" data-ch>
-    <div class="jdc-in">
-      <div class="jdc-chead">
-        <div class="jdc-num" data-r>02</div>
-        <div><h3 data-r>What we changed, and why.</h3><p class="jdc-lede" data-r="2">Before designing a single page, we cleaned up the brand: his colors, his logo, his type and his photos. That became the brand board every page is built from.</p></div>
-      </div>
-      <div class="jdc-board">
-        <div class="jdc-tile w7" data-r>
-          <span class="s">Colors</span><h4>From four loud colors to one navy and one orange.</h4>
-          <p>We kept his orange but made it deeper, and let his brand navy carry the page. Orange now only marks what matters.</p>
-          <div class="jdc-cols">
-            <div class="jdc-row"><span>Before</span><div class="jdc-sw old"><i style="background:#F6AD55"><span>F6AD55</span></i><i style="background:#188BF6"><span>188BF6</span></i><i style="background:#000"><span>000000</span></i><i class="lt" style="background:#FAFAFA"><span>FAFAFA</span></i></div></div>
-            <div class="jdc-row"><span>After</span><div class="jdc-sw new"><i style="background:#0A1D3A"><span>0A1D3A</span></i><i style="background:#FF6A00"><span>FF6A00</span></i><i style="background:#061020"><span>061020</span></i><i class="lt" style="background:#FAF9F7"><span>FAF9F7</span></i></div></div>
-          </div>
-        </div>
-        <div class="jdc-tile w5" data-r="2">
-          <span class="s">Logo</span><h4>Redrawn as a crisp vector.</h4>
-          <p>His logo was a small, blurry image. We rebuilt it so it stays sharp at any size, on light or dark.</p>
-          <div class="jdc-logos"><div class="l1"><svg role="img" aria-label="JD Strategic Franchising logo on white"><use href="#jdc-mark"/></svg></div><div class="l2"><svg role="img" aria-label="JD Strategic Franchising logo on navy"><use href="#jdc-mark"/></svg></div></div>
-        </div>
-        <div class="jdc-tile w5" data-r>
-          <span class="s">Type</span><h4>A voice that sounds like an expert.</h4>
-          <div class="jdc-type">
-            <div class="o"><small>Before &middot; Lato</small>Discover Carefully Vetted Franchise Opportunities</div>
-            <div class="n"><small style="color:var(--g2)">After &middot; Playfair Display</small>Buy a franchise <i>worth owning.</i></div>
-            <div class="r">Playfair Display for headlines, Inter for everything you read.</div>
-          </div>
-        </div>
-        <div class="jdc-tile w7" data-r="2">
-          <span class="s">Photos</span><h4>Real photos of Josh, from his own videos.</h4>
-          <p>Instead of stock images and thumbnails, we pulled sharp 4K stills from his own YouTube footage and used them across the site.</p>
-          <div class="jdc-photos"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-who.webp" width="800" height="1000" alt="Josh DuBois portrait" loading="lazy" decoding="async"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-proc.webp" width="800" height="1000" alt="Josh working through a plan with a franchise owner" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-      <ol class="jdc-steps">
-        <li data-r><b>Refine the colors</b>One navy, one orange.</li>
-        <li data-r="2"><b>Rebuild the logo</b>Sharp at every size.</li>
-        <li data-r="3"><b>Set the type</b>A serif with authority.</li>
-        <li data-r="4"><b>Shoot from his videos</b>Real 4K photos of Josh.</li>
-        <li data-r="4"><b>Rebuild the site</b>11 pages, start to finish.</li>
-      </ol>
-    </div>
-  </div>
-
-  <!-- 3. AFTER -->
-  <div class="jdc-ch" id="jdc-after" data-ch>
-    <div class="jdc-in">
-      <div class="jdc-chead">
-        <div class="jdc-num" data-r>03</div>
-        <div><h3 data-r>His website, after.</h3><p class="jdc-lede" data-r="2">The new homepage, plus a look at the sections that do the heavy lifting.</p></div>
-      </div>
-      <figure class="jdc-win jdc-after-hero" data-r>
-        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>JD Strategic Franchising</em></div>
-        <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="The new JD Strategic homepage: a serif headline with an orange italic line, Josh's portrait and three stats" loading="lazy" decoding="async"></div>
-      </figure>
-      <div class="jdc-grid">
-        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-fit.webp" width="1200" height="750" alt="The franchise fit finder" loading="lazy" decoding="async"></div></div><figcaption><b>Franchise fit finder</b><span>Six questions, sent straight to his CRM</span></figcaption></figure>
-        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-who.webp" width="1200" height="750" alt="The About Josh section" loading="lazy" decoding="async"></div></div><figcaption><b>Who he is</b><span>A franchise owner on your side</span></figcaption></figure>
-        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-offer.webp" width="1200" height="750" alt="What you get working with Josh" loading="lazy" decoding="async"></div></div><figcaption><b>The offer</b><span>Free to you, $2,000 back</span></figcaption></figure>
-        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-show.webp" width="1200" height="750" alt="The Conquer the Mind podcast section" loading="lazy" decoding="async"></div></div><figcaption><b>His podcast</b><span>Conquer the Mind, front and center</span></figcaption></figure>
-      </div>
-      <div class="jdc-phones">
-        <figure data-r><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-a.webp" width="780" height="1688" alt="The new homepage on a phone" loading="lazy" decoding="async"></div></div></figure>
-        <figure data-r="2"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-b.webp" width="780" height="1688" alt="The fit finder on a phone" loading="lazy" decoding="async"></div></div></figure>
-        <figure data-r="3"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-c.webp" width="780" height="1688" alt="The five-step process on a phone" loading="lazy" decoding="async"></div></div></figure>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4. COMPARE -->
-  <div class="jdc-ch tint" id="jdc-compare" data-ch>
-    <div class="jdc-in">
-      <div class="jdc-chead">
-        <div class="jdc-num" data-r>04</div>
-        <div><h3 data-r>Now see the difference <em class="jdc-em">for yourself.</em></h3><p class="jdc-lede" data-r="2">Drag the line left and right. Pick a section to compare the same part of both sites.</p></div>
-      </div>
-      <div class="jdc-cmp-bar" data-r>
-        <div class="jdc-seg" role="group" aria-label="Section to compare">
-          <button type="button" aria-pressed="true" data-pair="hero">First impression</button>
-          <button type="button" aria-pressed="false" data-pair="process">The process</button>
-          <button type="button" aria-pressed="false" data-pair="why">Why franchise</button>
-        </div>
-        <p class="jdc-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag the line to compare</p>
-      </div>
-      <figure class="jdc-win" data-r="2">
-        <span class="jdc-beam" aria-hidden="true"><i></i><i></i></span>
-        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>Before &rarr; After</em></div>
-        <div class="jdc-stage" data-stage>
-          <img class="b" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="Before" loading="lazy" decoding="async">
-          <img class="a" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="After" loading="lazy" decoding="async">
-          <span class="jdc-lbl b">Before</span><span class="jdc-lbl a">After</span>
-          <button type="button" class="jdc-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdc-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
-        </div>
-      </figure>
-    </div>
-    <div class="jdc-foot"><a class="jdc-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
-  </div>
-</section>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
-  var root=document.getElementById('jdc'); if(!root||root.dataset.ready) return; root.dataset.ready='1';
   var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var BASE='https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/';
+  var $=function(s,c){return (c||document).querySelector(s);}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
 
-  /* reveal on scroll (blur-up); the chapter rule draws in */
-  var rev=[].slice.call(root.querySelectorAll('[data-r]')), chs=[].slice.call(root.querySelectorAll('[data-ch]'));
-  if(RM || !('IntersectionObserver' in window)){ rev.forEach(function(e){ e.classList.add('on'); }); chs.forEach(function(c){ c.classList.add('in'); }); }
-  else {
-    var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-    rev.forEach(function(e){ io.observe(e); });
-    var co=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); co.unobserve(e.target); } }); },{threshold:.18});
-    chs.forEach(function(c){ co.observe(c); });
+  /* split helpers */
+  $$('[data-chars]').forEach(function(el){ el.innerHTML=el.textContent.split('').map(function(ch){ return '<span class="c">'+(ch===' '?' ':ch)+'</span>'; }).join(''); });
+  $$('[data-words]').forEach(function(el){ el.innerHTML=el.textContent.split(' ').map(function(w){ return '<span class="wd">'+w+'</span>'; }).join(' '); });
+  var h1=$('[data-split]'), first=h1.firstChild;
+  if(first && first.nodeType===3){ var frag=document.createDocumentFragment(); first.textContent.trim().split(/\s+/).forEach(function(w){ var s=document.createElement('span'); s.className='w'; s.textContent=w; frag.appendChild(s); frag.appendChild(document.createTextNode(' ')); }); h1.replaceChild(frag,first); }
+
+  /* compare slider (works with or without GSAP) */
+  var stg=$('.stg'), hd=$('.hd'), lbB=$('.lb.b',stg), lbA=$('.lb.a',stg), X=100, userX=false;
+  function setX(v){ X=Math.max(0,Math.min(100,v)); stg.style.setProperty('--x',X+'%'); hd.setAttribute('aria-valuenow',Math.round(100-X)); lbB.style.opacity=X<12?0:1; lbA.style.opacity=X>88?0:1; }
+  (function(){ var drag=false, dec=false, sx=0, sy=0;
+    function at(e){ var r=stg.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
+    function go(e){ dec=true; userX=true; try{stg.setPointerCapture(e.pointerId);}catch(_){} setX(at(e)); $('.hint').classList.add('on'); }
+    stg.addEventListener('pointerdown',function(e){ if(e.button) return; drag=true; dec=false; sx=e.clientX; sy=e.clientY; if(e.pointerType==='mouse'||e.target.closest('.hd')) go(e); });
+    stg.addEventListener('pointermove',function(e){ if(!drag) return; if(!dec){ var dx=Math.abs(e.clientX-sx), dy=Math.abs(e.clientY-sy); if(dx<6&&dy<6) return; if(dy>dx){ drag=false; return; } go(e); } setX(at(e)); });
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ stg.addEventListener(n,function(){ drag=false; dec=false; }); });
+    hd.addEventListener('keydown',function(e){ var s=e.shiftKey?10:4; if(e.key==='ArrowLeft'){userX=true;setX(X-s);e.preventDefault();} if(e.key==='ArrowRight'){userX=true;setX(X+s);e.preventDefault();} });
+  })();
+
+  if(RM || !window.gsap || !window.ScrollTrigger){ document.documentElement.classList.add('static'); setX(50); $$('.list li').forEach(function(l){ l.classList.add('on'); }); $('.r2').style.opacity=1; $('.r1').style.opacity=0; $('.hint').classList.add('on'); return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  var mob=window.matchMedia('(max-width:860px)').matches;
+  setX(100);
+
+  /* progress bar */
+  gsap.to('.prog',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+
+  /* 0 intro: words rise out of blur */
+  gsap.set('#intro .w,#intro .em',{yPercent:60,opacity:0,filter:'blur(12px)'});
+  gsap.set('#intro [data-in]',{y:18,opacity:0});
+  var tIn=gsap.timeline({delay:.2});
+  tIn.to('#intro .k',{y:0,opacity:1,duration:.8,ease:'power3.out'})
+     .to('#intro .w',{yPercent:0,opacity:1,filter:'blur(0px)',duration:1,ease:'power4.out',stagger:.07},'-=.5')
+     .to('#intro .em',{yPercent:0,opacity:1,filter:'blur(0px)',duration:1.2,ease:'power4.out'},'-=.7')
+     .to('#intro .sub',{y:0,opacity:1,duration:.9,ease:'power3.out'},'-=.8');
+  gsap.to('#intro .wrap',{yPercent:-18,opacity:0,ease:'none',scrollTrigger:{trigger:'#intro',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.cue',{opacity:0,scrollTrigger:{trigger:'#intro',start:'top top',end:'15% top',scrub:true}});
+
+  /* shared: a tall screenshot scrolls inside its frame as the page scrolls; list items light in turn */
+  function walk(id,len,marks,extra){
+    var sec=$(id), view=$('.view',sec), img=$('img.tall',view), items=$$('.list li',sec);
+    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'+='+len,pin:$('.pin',sec),scrub:.8,anticipatePin:1,invalidateOnRefresh:true,
+      onUpdate:function(st){ var p=st.progress, k=-1; marks.forEach(function(m,i){ if(p>=m) k=i; }); items.forEach(function(li,i){ li.classList.toggle('on',i===k||(!mob&&i<k)); }); }}});
+    var ent={trigger:sec,start:'top 90%',end:'top 10%',scrub:.8};
+    gsap.fromTo($('.copy',sec),{x:-50,opacity:0,filter:'blur(8px)'},{x:0,opacity:1,filter:'blur(0px)',ease:'power2.out',scrollTrigger:ent});
+    gsap.fromTo($('.win',sec),{y:120,scale:.88,rotateX:16,opacity:0,transformPerspective:1400},{y:0,scale:1,rotateX:0,opacity:1,ease:'power2.out',scrollTrigger:ent});
+    tl.to(img,{y:function(){ return -(img.offsetHeight-view.clientHeight); },ease:'none',duration:.84},.02);
+    if(extra) extra(tl,sec);
+    return tl;
   }
 
-  /* chapter links scroll the host page smoothly */
-  root.querySelectorAll('.jdc-map a').forEach(function(a){ a.addEventListener('click',function(e){ var t=root.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'}); }); });
+  /* 1 before */
+  walk('#before',mob?'200%':'230%',[.06,.34,.6],function(tl,sec){
+    tl.fromTo($('.win',sec),{scale:1,filter:'grayscale(0) brightness(1)',opacity:1},{scale:.92,filter:'grayscale(1) brightness(1.05)',opacity:.35,duration:.12,ease:'power1.in',immediateRender:false},.88)
+      .fromTo($('.copy',sec),{opacity:1,x:0},{opacity:0,x:-30,duration:.1,immediateRender:false},.9);
+  });
 
-  /* compare slider: only a sideways drag is captured, so up/down always scrolls the page */
-  var stage=root.querySelector('[data-stage]'), handle=stage.querySelector('.jdc-handle'), imB=stage.querySelector('img.b'), imA=stage.querySelector('img.a');
-  var lb=stage.querySelector('.jdc-lbl.b'), la=stage.querySelector('.jdc-lbl.a'), x=50, drag=false, sx=0, sy=0, decided=false, active=false;
-  function setX(v){ x=Math.max(0,Math.min(100,v)); stage.style.setProperty('--x',x+'%'); handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after'); lb.style.opacity=x<14?0:1; la.style.opacity=x>86?0:1; }
-  function at(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
-  function begin(e){ decided=true; active=true; try{ stage.setPointerCapture(e.pointerId); }catch(_){} root.classList.add('drag'); setX(at(e)); }
-  stage.addEventListener('pointerdown',function(e){ if(e.button) return; drag=true; sx=e.clientX; sy=e.clientY; decided=false;
-    if(e.pointerType==='mouse' || e.target.closest('.jdc-handle')) begin(e); });
-  stage.addEventListener('pointermove',function(e){ if(!drag) return;
-    if(!decided){ var dx=Math.abs(e.clientX-sx), dy=Math.abs(e.clientY-sy); if(dx<6&&dy<6) return; if(dy>dx){ drag=false; return; } begin(e); }
-    setX(at(e)); });
-  function end(){ drag=false; decided=false; active=false; root.classList.remove('drag'); }
-  ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ stage.addEventListener(n,end); });
-  handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
+  /* 2 brand: four morphs, one at a time */
+  (function(){
+    var sec=$('#brand'), steps=$$('.steps span',sec), P=$$('.panel',sec);
+    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:mob?'+=380%':'+=440%',pin:$('.pin',sec),scrub:.8,anticipatePin:1,
+      onUpdate:function(st){ var i=Math.min(3,Math.floor(st.progress*4.0001)); steps.forEach(function(s,j){ s.classList.toggle('on',j===i); }); }}});
+    tl.from(sec.querySelectorAll('.k,h2,.steps'),{y:30,opacity:0,stagger:.02,duration:.06},0);
+    function show(p,at){ tl.set(p,{visibility:'visible'},at).fromTo(p,{opacity:0,y:30},{opacity:1,y:0,duration:.04},at); }
+    function hide(p,at){ tl.to(p,{opacity:0,y:-30,duration:.04},at).set(p,{visibility:'hidden'},at+.04); }
+    /* color */
+    show(P[0],.02);
+    var sw=$$('.sw i',P[0]);
+    tl.from(sw,{scale:.4,opacity:0,stagger:.012,duration:.05,ease:'back.out(2)'},.04);
+    sw.forEach(function(s,i){ var lab=$('span',s);
+      tl.to(s,{backgroundColor:s.dataset.to,rotate:360*0+0,duration:.07,ease:'power2.inOut'},.12+i*.015)
+        .to(s,{keyframes:{scale:[1,1.12,1]},duration:.07},.12+i*.015)
+        .call(function(){ lab.textContent=tl.scrollTrigger&&tl.scrollTrigger.direction<0?lab.dataset.a:lab.dataset.b; },null,.155+i*.015); });
+    hide(P[0],.235);
+    /* logo */
+    show(P[1],.26);
+    var L=P[1], oldL=$('img',L);
+    tl.set(L.querySelectorAll('.lg-box,.lg-jd,.lg-or,.lg-top,.lg-t1,.lg-t2,.lg-bot'),{opacity:0},.26)
+      .to(oldL,{filter:'blur(6px)',scale:1.08,opacity:0,duration:.06},.32)
+      .fromTo(L.querySelector('.lg-box'),{opacity:0,scale:.6,transformOrigin:'200px 195px'},{opacity:1,scale:1,duration:.05,ease:'back.out(1.6)'},.34)
+      .fromTo(L.querySelector('.lg-jd'),{opacity:0,y:40},{opacity:1,y:0,duration:.04},.36)
+      .fromTo(L.querySelector('.lg-or'),{opacity:0},{opacity:1,duration:.03},.38)
+      .fromTo(L.querySelectorAll('.lg-top,.lg-bot'),{opacity:1,scaleX:0,transformOrigin:'456px 0'},{scaleX:1,duration:.05,ease:'power2.out'},.38)
+      .fromTo(L.querySelectorAll('.lg-t1,.lg-t2'),{opacity:0,x:-30},{opacity:1,x:0,stagger:.015,duration:.04},.4);
+    hide(P[1],.475);
+    /* type */
+    show(P[2],.5);
+    var T=P[2];
+    tl.set($$('.n .wd',T),{opacity:0,yPercent:90,filter:'blur(10px)'},.5)
+      .to($$('.o .c',T),{opacity:0,y:function(){ return 40+Math.random()*60; },rotate:function(){ return (Math.random()-.5)*40; },stagger:{each:.0015,from:'random'},duration:.04,ease:'power2.in'},.56)
+      .to($$('.n .wd',T),{opacity:1,yPercent:0,filter:'blur(0px)',stagger:.012,duration:.05,ease:'power3.out'},.62);
+    hide(P[2],.715);
+    /* photos */
+    show(P[3],.74);
+    var Ph=P[3];
+    tl.to($('img.o',Ph),{scale:1.08,filter:'blur(3px) saturate(.6)',duration:.1},.78)
+      .to($('img.n',Ph),{clipPath:'circle(75% at 50% 50%)',duration:.1,ease:'power2.inOut'},.79)
+      .from($('img.n',Ph),{scale:1.15,duration:.12,ease:'power2.out'},.79);
+    tl.to({}, {duration:.06},.94);
+  })();
 
-  /* pick which section pair to compare */
-  var PAIRS={hero:['old-hero','new-hero'],process:['old-process','new-process'],why:['old-why','new-why']};
-  [].slice.call(root.querySelectorAll('[data-pair]')).forEach(function(b,i,all){ b.addEventListener('click',function(){
-    if(b.getAttribute('aria-pressed')==='true') return;
-    all.forEach(function(o){ o.setAttribute('aria-pressed',o===b?'true':'false'); });
-    var p=PAIRS[b.dataset.pair]; stage.classList.add('swap');
-    setTimeout(function(){ var n=0; function done(){ if(++n===2){ stage.classList.remove('swap'); nudge(); } }
-      [[imB,p[0]],[imA,p[1]]].forEach(function(q){ q[0].onload=done; q[0].onerror=done; q[0].src=BASE+q[1]+'.webp'; if(q[0].complete && q[0].naturalWidth) { q[0].onload=null; done(); } });
-    }, RM?0:260); }); });
+  /* 3 after: the page turns navy, the new site builds and scrolls */
+  walk('#after',mob?'240%':'300%',[.04,.22,.5,.76],function(tl,sec){
+    gsap.fromTo($('img.tall',sec),{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',ease:'power2.out',scrollTrigger:{trigger:sec,start:'top 40%',end:'top top',scrub:.8}});
+  });
 
-  /* one gentle sweep when it first comes into view, so people see the line moves */
-  var shown=false;
-  function tw(a,b,d,next){ var s=performance.now(); (function f(t){ if(active) return; var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
-  function nudge(){ if(RM||active) return; tw(x,22,700,function(){ tw(x,78,1000,function(){ tw(x,50,700); }); }); }
-  setX(50);
-  if('IntersectionObserver' in window){ var so=new IntersectionObserver(function(en){ if(en[0].isIntersecting && !shown){ shown=true; setTimeout(nudge,800); so.disconnect(); } },{threshold:.5}); so.observe(stage); }
+  /* the dark moment: navy fades in under the rebuild, out before the phones (created after the pin so positions include its spacing) */
+  gsap.fromTo('.bg',{opacity:0},{opacity:1,ease:'none',scrollTrigger:{trigger:'#after',start:'top 70%',end:'top top',scrub:true}});
+  gsap.fromTo('.bg',{opacity:1},{opacity:0,ease:'none',immediateRender:false,scrollTrigger:{trigger:'#phones',start:'top 85%',end:'top 35%',scrub:true}});
+
+  /* 4 phones: rise in with depth */
+  $$('#phones [data-in]').forEach(function(el){ gsap.from(el,{y:30,opacity:0,filter:'blur(8px)',duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}}); });
+  $$('.phone').forEach(function(p,i){ var d=parseFloat(p.dataset.depth);
+    gsap.fromTo(p,{y:160+i*40,rotate:(i-1)*6,opacity:0},{y:0,rotate:0,opacity:1,ease:'power3.out',scrollTrigger:{trigger:'.phones',start:'top 95%',end:'top 40%',scrub:.8}});
+    gsap.to(p,{y:-60*d,ease:'none',scrollTrigger:{trigger:'.phones',start:'top 40%',end:'bottom top',scrub:true}}); });
+
+  /* 5 reveal: scroll sweeps before into after, then it's yours to drag */
+  (function(){
+    var sec=$('#reveal'), o={x:100};
+    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:mob?'+=180%':'+=200%',pin:$('.pin',sec),scrub:.8,anticipatePin:1,
+      onLeave:function(){ $('.hint',sec).classList.add('on'); }, onEnterBack:function(){ userX=false; }}});
+    tl.from(sec.querySelectorAll('.k,h2'),{y:30,opacity:0,stagger:.03,duration:.1},0)
+      .from($('.cmp',sec),{y:70,scale:.94,opacity:0,duration:.14,ease:'power2.out'},0)
+      .to(o,{x:0,duration:.6,ease:'power2.inOut',onUpdate:function(){ if(!userX) setX(o.x); }},.2)
+      .to($('.r1',sec),{opacity:0,y:-20,duration:.08},.42)
+      .fromTo($('.r2',sec),{opacity:0,y:20},{opacity:1,y:0,duration:.08},.46)
+      .to(o,{x:50,duration:.14,ease:'power2.inOut',onUpdate:function(){ if(!userX) setX(o.x); }},.84);
+  })();
+
+  /* 6 end */
+  $$('#end [data-in]').forEach(function(el,i){ gsap.from(el,{y:36,opacity:0,filter:'blur(10px)',duration:1.1,delay:i*.12,ease:'power3.out',scrollTrigger:{trigger:'#end',start:'top 70%'}}); });
+
+  window.addEventListener('load',function(){ ScrollTrigger.refresh(); });
 })();
 </script>
-
-</body></html>
+</body>
+</html>
