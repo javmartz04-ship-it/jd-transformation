@@ -34,7 +34,14 @@
 .jdx-url{display:flex;align-items:center;gap:8px;min-width:0;max-width:420px;height:28px;padding:0 14px;border-radius:8px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden}
 .jdx-url svg{width:12px;height:12px;flex:none}
 .jdx-url span{overflow:hidden;text-overflow:ellipsis;transition:opacity .25s ease}
-.jdx-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.jdx-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);user-select:none;-webkit-user-select:none}
+/* a real, invisible scroll area over each view: wheel, trackpad and touch scroll the pages natively,
+   and hand off to the host page at the top and bottom */
+.jdx-sc{position:absolute;inset:0;z-index:2;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch}
+.jdx-sc::-webkit-scrollbar{display:none}
+.jdx-sc i{display:block;width:1px;height:200%}
+.jdx-stage .jdx-sc{cursor:ew-resize}
+.jdx-handle{touch-action:none}
 .jdx-layer{position:absolute;inset:0;overflow:hidden}
 .jdx-layer img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform;pointer-events:none;-webkit-user-drag:none}
 .jdx-after{clip-path:inset(0 0 0 var(--x,50%))}
@@ -46,7 +53,7 @@
 .jdx-knob{position:absolute;top:50%;left:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.9),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
 .jdx-knob svg{width:22px;height:22px}
 .jdx-stage:hover .jdx-knob,.jdx-handle:focus-visible .jdx-knob,.jdx.drag .jdx-knob{transform:scale(1.08)}
-.jdx-rail{position:absolute;right:10px;top:16%;bottom:16%;z-index:3;width:3px;border-radius:3px;background:rgba(3,13,48,.10);pointer-events:none}
+.jdx-rail{position:absolute;right:10px;transition:opacity .4s ease;top:16%;bottom:16%;z-index:3;width:3px;border-radius:3px;background:rgba(3,13,48,.10);pointer-events:none}
 .jdx-rail i{position:absolute;left:0;right:0;top:0;height:14%;border-radius:3px;background:rgba(3,13,48,.42);transform:translateY(calc(var(--p,0) * 614%))}
 
 /* mobile pair */
@@ -56,7 +63,7 @@
 .jdx-dev{position:relative;aspect-ratio:390/844;border-radius:42px;padding:10px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 40px 70px -30px rgba(3,13,48,.45)}
 .jdx-scr{position:relative;height:100%;border-radius:33px;overflow:hidden;background:#fff}
 .jdx-scr img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform}
-.jdx-scr::before{content:"";position:absolute;z-index:2;top:9px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:20px;background:#0B0E16}
+.jdx-scr::before{content:"";position:absolute;z-index:3;pointer-events:none;top:9px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:20px;background:#0B0E16}
 .jdx-phone figcaption{margin-top:18px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .jdx-phone figcaption b{color:var(--ink);font-weight:600}
 .jdx-phone.after .jdx-dev{box-shadow:inset 0 0 0 2px #2A2F3A,0 0 0 1px rgba(1,129,252,.25),0 40px 80px -28px rgba(1,29,180,.45)}
@@ -192,7 +199,7 @@
     <header class="jdx-head">
       <p class="jdx-k" data-jdx-r><i></i>Website redesign &middot; JD Strategic Franchising<i></i></p>
       <h2 data-jdx-r="2">Same founder. <em>A whole new first impression.</em></h2>
-      <p class="jdx-lede" data-jdx-r="3">Josh DuBois helps people buy franchises worth owning. His old site said so in a wall of centered text. We rebuilt it into an 11-page site that looks like the expert he is. Drag the line to compare.</p>
+      <p class="jdx-lede" data-jdx-r="3">Josh DuBois helps people buy franchises worth owning. His old site said so in a wall of centered text. We rebuilt it into an 11-page site that looks like the expert he is. Drag the line to compare, or scroll inside it.</p>
     </header>
 
     <div class="jdx-bar" data-jdx-r="3">
@@ -201,7 +208,7 @@
         <button type="button" role="tab" aria-selected="false" data-view="m">Mobile</button>
       </div>
       <p class="jdx-now" data-now aria-live="off"><b>Now showing</b><em></em></p>
-      <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag to compare &middot; both pages scroll on their own</p>
+      <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag the line to compare &middot; scroll inside to explore</p>
     </div>
 
     <div class="jdx-persp"><div class="jdx-win"><span class="jdx-beam" aria-hidden="true"><i></i><i></i></span>
@@ -209,6 +216,7 @@
       <div class="jdx-stage" data-stage>
         <div class="jdx-layer"><img data-img="old-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage: centered orange headline, a YouTube thumbnail, and long centered paragraphs" decoding="async"></div>
         <div class="jdx-layer jdx-after"><img data-img="new-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage: serif headline with an orange italic line, Josh's portrait, credential stats and a franchise fit finder" decoding="async"></div>
+        <div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div>
         <div class="jdx-pins" aria-hidden="true" data-pins></div>
         <span class="jdx-tag b" data-tag="b">Before</span><span class="jdx-tag a" data-tag="a">After</span>
         <button type="button" class="jdx-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdx-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
@@ -217,8 +225,8 @@
     </div>
 
     <div class="jdx-phones" aria-label="Mobile, before and after">
-      <figure class="jdx-phone"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-mobile.jpg" width="720" height="20625" alt="The old JD Strategic site on a phone" decoding="async"></div></div><figcaption>Before</figcaption></figure>
-      <figure class="jdx-phone after"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-mobile.jpg" width="720" height="29943" alt="The new JD Strategic site on a phone" decoding="async"></div></div><figcaption><b>After</b></figcaption></figure>
+      <figure class="jdx-phone"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-mobile.jpg" width="720" height="20625" alt="The old JD Strategic site on a phone" decoding="async"><div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div></div></div><figcaption>Before</figcaption></figure>
+      <figure class="jdx-phone after"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-mobile.jpg" width="720" height="29943" alt="The new JD Strategic site on a phone" decoding="async"><div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div></div></div><figcaption><b>After</b></figcaption></figure>
     </div></div>
 
     <div class="jdx-notes">
@@ -238,7 +246,8 @@
   var stage=root.querySelector('[data-stage]'), handle=root.querySelector('.jdx-handle'), url=root.querySelector('[data-url]');
   var tagB=root.querySelector('[data-tag="b"]'), tagA=root.querySelector('[data-tag="a"]');
   var dImgs=[].slice.call(stage.querySelectorAll('img')), mImgs=[].slice.call(root.querySelectorAll('.jdx-scr img'));
-  var x=100, Y=0, live=false, hold=0, last=0, runT=0, hover=false, dragging=false, mode='d', intro=false;
+  var x=100, Y=0, live=false, hold=0, last=0, runT=0, dragging=false, mode='d', intro=false, kNow=1, rTimer=0;
+  var scD=stage.querySelector('[data-sc]'), scM=[].slice.call(root.querySelectorAll('.jdx-scr [data-sc]'));
   /* both pages scroll together, matched section to section: when the new page reaches a section,
      the old page is at its equivalent. Offsets are each capture's own CSS px. */
   var MAP={
@@ -298,31 +307,38 @@
       return (2*t3-3*t2+1)*ys[i]+(t3-2*t2+t)*hh*m[i]+(-2*t3+3*t2)*ys[i+1]+(t3-t2)*hh*m[i+1]; }}; }
   function place(oldImg,newImg,box,M,isStage){ var W=box.clientWidth, H=box.clientHeight; if(!W) return 0; var k=W/M.w, vh=H/k, c=curve(M,vh);
     if(Y>c.nMax) Y=c.nMax; var yo=c.f(Y);
-    if(isStage){ ty[0]=-yo*k; ty[1]=-Y*k; }
+    if(isStage){ ty[0]=-yo*k; ty[1]=-Y*k; } kNow=k; box._span=c.nMax*k+H;
     oldImg.style.transform='translate3d(0,'+(-yo*k).toFixed(1)+'px,0)'; newImg.style.transform='translate3d(0,'+(-Y*k).toFixed(1)+'px,0)';
     return c.nMax; }
   function chapter(M){ var lab=M.ch[0][1]; M.ch.forEach(function(c){ if(Y+ (mode==='d'?300:420) >= c[0]) lab=c[1]; });
     if(lab===nowTxt) return; nowTxt=lab; var o=nowEl.querySelector('span.cur'); if(o){ o.className='out'; setTimeout(function(){ if(o.parentNode) o.parentNode.removeChild(o); },500); }
     var sp=document.createElement('span'); sp.className='cur'; sp.textContent=lab; nowEl.querySelector('em').appendChild(sp); }
   var nMaxNow=1;
+  function syncSc(list,box){ list.forEach(function(sc){ var h=Math.round(box._span||0)+'px'; if(sc.firstChild.style.height!==h) sc.firstChild.style.height=h; var v=Y*kNow; if(Math.abs(sc.scrollTop-v)>.6){ sc._want=v; sc.scrollTop=v; sc._want=sc.scrollTop; } }); }
   function draw(){ var M=MAP[mode];
-    if(mode==='d'){ nMaxNow=place(dImgs[0],dImgs[1],stage,M,true); pins(); }
-    else { nMaxNow=place(mImgs[0],mImgs[1],root.querySelector('.jdx-scr'),M,false); }
+    if(mode==='d'){ nMaxNow=place(dImgs[0],dImgs[1],stage,M,true); syncSc([scD],stage); pins(); }
+    else { var bx=root.querySelector('.jdx-scr'); nMaxNow=place(mImgs[0],mImgs[1],bx,M,false); syncSc(scM,bx); }
     stage.style.setProperty('--p',(Y/nMaxNow).toFixed(4)); chapter(M); }
   function loop(t){ if(!live){ last=0; return; }
-    if(last && !RM && !hover && !dragging && t>hold){ var dt=Math.min(.05,(t-last)/1000); runT+=dt; var ramp=Math.min(1,runT/1.4); ramp=ramp*ramp*(3-2*ramp);
+    if(last && !RM && !dragging && t>hold){ var dt=Math.min(.05,(t-last)/1000); runT+=dt; var ramp=Math.min(1,runT/2.2); ramp=ramp*ramp*(3-2*ramp);
       var left=nMaxNow-Y, slow=Math.min(1,Math.max(.18,left/(MAP[mode].speed*1.6)));
       Y+=MAP[mode].speed*dt*ramp*slow; draw();
-      if(Y>=nMaxNow-.5){ hold=Infinity; setTimeout(restart,2800); } }
+      if(Y>=nMaxNow-.5){ hold=Infinity; clearTimeout(rTimer); rTimer=setTimeout(restart,2800); } }
     last=t; requestAnimationFrame(loop); }
-  function restart(){ root.classList.add('rst'); setTimeout(function(){ Y=0; runT=0; draw(); root.classList.remove('rst'); hold=performance.now()+1400; },450); }
+  function restart(){ root.classList.add('rst'); rTimer=setTimeout(function(){ Y=0; runT=0; draw(); root.classList.remove('rst'); hold=performance.now()+1200; },450); }
+  /* the visitor scrolls: take their position, pause the autoplay, pick it back up gently once they stop */
+  [scD].concat(scM).forEach(function(sc){ sc.addEventListener('scroll',function(){
+    if(sc._want!=null && Math.abs(sc.scrollTop-sc._want)<=2) return;
+    Y=Math.max(0,Math.min(nMaxNow,sc.scrollTop/kNow)); clearTimeout(rTimer); root.classList.remove('rst');
+    hold=performance.now()+2600; runT=0; draw(); },{passive:true}); });
 
   function fromEvent(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
-  stage.addEventListener('pointerdown',function(e){ dragging=true; root.classList.add('drag'); stage.setPointerCapture(e.pointerId); setX(fromEvent(e)); });
-  stage.addEventListener('pointermove',function(e){ if(dragging) setX(fromEvent(e)); });
-  ['pointerup','pointercancel'].forEach(function(n){ stage.addEventListener(n,function(){ dragging=false; root.classList.remove('drag'); }); });
+  function dragOn(el,mouseOnly){ el.addEventListener('pointerdown',function(e){ if(mouseOnly && e.pointerType!=='mouse') return; if(e.button) return; dragging=true; root.classList.add('drag'); el.setPointerCapture(e.pointerId); setX(fromEvent(e)); e.preventDefault(); });
+    el.addEventListener('pointermove',function(e){ if(dragging) setX(fromEvent(e)); });
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ el.addEventListener(n,function(){ if(dragging){ dragging=false; root.classList.remove('drag'); } }); }); }
+  dragOn(scD,true); dragOn(handle,false);
   handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
-  [stage,root.querySelector('.jdx-phones')].forEach(function(el){ el.addEventListener('mouseenter',function(){ hover=true; }); el.addEventListener('mouseleave',function(){ hover=false; hold=performance.now()+500; }); });
+
 
   root.querySelectorAll('.jdx-tabs button').forEach(function(b){ b.addEventListener('click',function(){
     mode=b.dataset.view; root.classList.toggle('m',mode==='m');
@@ -360,7 +376,7 @@
   setX(100); draw();
   dImgs.forEach(function(img){ if(!img.complete) img.addEventListener('load',draw); });
   window.addEventListener('resize',function(){ PINS.forEach(function(d){ d.w=0; }); draw(); });
-  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ reveal(); if(!live){ live=true; hold=performance.now()+2600; requestAnimationFrame(loop); } } else live=false; }); },{threshold:.25}).observe(root); }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ reveal(); if(!live){ live=true; hold=performance.now()+500; requestAnimationFrame(loop); } } else live=false; }); },{threshold:.12}).observe(root); }
   else { reveal(); live=true; requestAnimationFrame(loop); }
 })();
 </script>
