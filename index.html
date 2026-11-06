@@ -1,383 +1,392 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JD Strategic Transformation</title><meta name="robots" content="noindex">
+<title>JD Strategic Case Study</title><meta name="robots" content="noindex">
 <style>html,body{margin:0;background:#fff}</style></head><body>
-<!-- JD Strategic transformation showcase. Self-contained: paste into a custom code element. -->
+<!-- JD Strategic case study: before, what we changed, after, compare. Self-contained: paste into a custom code element. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,700;1,600&family=Montserrat:wght@400;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
-.jdx{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--ground:#FFFFFF;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;--ease:cubic-bezier(.22,1,.36,1);
-  position:relative;background:var(--ground);color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding:clamp(56px,8vw,120px) clamp(16px,4vw,56px);overflow:hidden;isolation:isolate}
-.jdx *,.jdx *::before,.jdx *::after{box-sizing:border-box}
-.jdx::before{content:"";position:absolute;inset:-20% -10% auto;height:70%;z-index:-1;background:radial-gradient(48% 60% at 50% 0%,rgba(1,129,252,.10),rgba(1,129,252,0) 70%)}
-.jdx-in{max-width:1180px;margin:0 auto}
-.jdx-head{text-align:center;max-width:820px;margin:0 auto clamp(36px,4.6vw,64px)}
-.jdx-k{display:inline-flex;align-items:center;gap:12px;margin:0 0 22px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.jdx-k i{width:28px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
-.jdx h2{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);font-size:clamp(34px,5.4vw,68px);line-height:1;letter-spacing:-.035em;text-wrap:balance}
-.jdx h2 em{display:block;margin-top:.08em;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1.05;padding-bottom:.06em;background:linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.jdx-lede{margin:22px auto 0;max-width:56ch;font-size:clamp(15.5px,1.2vw,17.5px);color:var(--body);text-wrap:pretty}
+.jdc{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;--ease:cubic-bezier(.22,1,.36,1);
+  --jd-navy:#0A1D3A;--jd-orange:#FF6A00;
+  position:relative;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden;isolation:isolate}
+.jdc *,.jdc *::before,.jdc *::after{box-sizing:border-box}
+.jdc img{display:block;max-width:100%;height:auto}
+.jdc-in{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
+.jdc::before{content:"";position:absolute;left:-10%;right:-10%;top:-200px;height:900px;z-index:-1;background:radial-gradient(46% 60% at 50% 30%,rgba(1,129,252,.10),rgba(1,129,252,0) 70%);animation:jdc-drift 18s ease-in-out infinite alternate}
+@keyframes jdc-drift{from{transform:translate3d(-5%,0,0)}to{transform:translate3d(5%,3%,0) scale(1.1)}}
 
-/* view switch */
-.jdx-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 auto 18px;flex-wrap:wrap}
-.jdx-tabs{display:inline-flex;padding:4px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
-.jdx-tabs button{appearance:none;border:0;background:transparent;font:600 13px/1 'Inter',sans-serif;letter-spacing:.01em;color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
-.jdx-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(3,13,48,.08),0 6px 16px -8px rgba(3,13,48,.25)}
-.jdx-tabs button:focus-visible,.jdx-handle:focus-visible,.jdx-live:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
-.jdx-hint{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px}
-.jdx-hint svg{width:18px;height:18px;color:var(--g2)}
-
-/* desktop browser */
-.jdx-win{position:relative;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 2px 4px rgba(3,13,48,.04),0 30px 60px -30px rgba(3,13,48,.28),0 80px 120px -60px rgba(1,29,120,.25);overflow:hidden}
-.jdx-chrome{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;height:46px;padding:0 16px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F4F5F7)}
-.jdx-dots{display:flex;gap:7px}.jdx-dots i{width:11px;height:11px;border-radius:50%;background:#DDE0E6}
-.jdx-url{display:flex;align-items:center;gap:8px;min-width:0;max-width:420px;height:28px;padding:0 14px;border-radius:8px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden}
-.jdx-url svg{width:12px;height:12px;flex:none}
-.jdx-url span{overflow:hidden;text-overflow:ellipsis;transition:opacity .25s ease}
-.jdx-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);user-select:none;-webkit-user-select:none}
-/* a real, invisible scroll area over each view: wheel, trackpad and touch scroll the pages natively,
-   and hand off to the host page at the top and bottom */
-.jdx-sc{position:absolute;inset:0;z-index:2;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch}
-.jdx-sc::-webkit-scrollbar{display:none}
-.jdx-sc i{display:block;width:1px;height:200%}
-.jdx-stage .jdx-sc{cursor:ew-resize}
-.jdx-handle{touch-action:none}
-.jdx-layer{position:absolute;inset:0;overflow:hidden}
-.jdx-layer img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform;pointer-events:none;-webkit-user-drag:none}
-.jdx-after{clip-path:inset(0 0 0 var(--x,50%))}
-.jdx-tag{position:absolute;bottom:16px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:none;transition:opacity .35s var(--ease)}
-.jdx-tag.b{left:16px;background:rgba(255,255,255,.86);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
-.jdx-tag.a{right:16px;background:rgba(3,13,48,.78);color:#fff}
-.jdx-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:44px;margin-left:-22px;display:flex;justify-content:center;cursor:ew-resize;border:0;background:none;padding:0}
-.jdx-handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 24px rgba(1,129,252,.55)}
-.jdx-knob{position:absolute;top:50%;left:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.9),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
-.jdx-knob svg{width:22px;height:22px}
-.jdx-stage:hover .jdx-knob,.jdx-handle:focus-visible .jdx-knob,.jdx.drag .jdx-knob{transform:scale(1.08)}
-.jdx-rail{position:absolute;right:10px;transition:opacity .4s ease;top:16%;bottom:16%;z-index:3;width:3px;border-radius:3px;background:rgba(3,13,48,.10);pointer-events:none}
-.jdx-rail i{position:absolute;left:0;right:0;top:0;height:14%;border-radius:3px;background:rgba(3,13,48,.42);transform:translateY(calc(var(--p,0) * 614%))}
-
-/* mobile pair */
-.jdx-phones{display:none;grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;gap:clamp(20px,6vw,96px);padding:clamp(28px,4vw,56px) 0 clamp(8px,1vw,16px);background:radial-gradient(60% 70% at 50% 40%,#F2F5FB,#fff 70%);border-radius:14px;border:1px solid var(--line)}
-.jdx.m .jdx-phones{display:grid}.jdx.m .jdx-win{display:none}
-.jdx-phone{margin:0;text-align:center}
-.jdx-dev{position:relative;aspect-ratio:390/844;border-radius:42px;padding:10px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 40px 70px -30px rgba(3,13,48,.45)}
-.jdx-scr{position:relative;height:100%;border-radius:33px;overflow:hidden;background:#fff}
-.jdx-scr img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;will-change:transform}
-.jdx-scr::before{content:"";position:absolute;z-index:3;pointer-events:none;top:9px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:20px;background:#0B0E16}
-.jdx-phone figcaption{margin-top:18px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.jdx-phone figcaption b{color:var(--ink);font-weight:600}
-.jdx-phone.after .jdx-dev{box-shadow:inset 0 0 0 2px #2A2F3A,0 0 0 1px rgba(1,129,252,.25),0 40px 80px -28px rgba(1,29,180,.45)}
-
-/* what changed */
-.jdx-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--line)}
-.jdx-note{padding:28px clamp(18px,2.4vw,36px) 0 0}
-.jdx-note+.jdx-note{padding-left:clamp(18px,2.4vw,36px);border-left:1px solid var(--line)}
-.jdx-from{font-size:13px;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(122,129,148,.5)}
-.jdx-to{margin:6px 0 10px;font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.2;letter-spacing:-.015em;color:var(--ink)}
-.jdx-note p{margin:0;font-size:14.5px;line-height:1.6;color:var(--body)}
-.jdx-foot{display:flex;justify-content:center;margin-top:clamp(36px,4vw,56px)}
-.jdx-live{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line);transition:border-color .3s var(--ease),gap .3s var(--ease)}
-.jdx-live svg{width:16px;height:16px;color:var(--g2)}
-.jdx-live:hover{border-color:var(--g2);gap:14px}
-
-/* entrance */
-.jdx [data-jdx-r]{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.jdx.in [data-jdx-r]{opacity:1;transform:none}
-.jdx.in [data-jdx-r="2"]{transition-delay:.12s}.jdx.in [data-jdx-r="3"]{transition-delay:.24s}
-
-@media (max-width:760px){
-  .jdx-notes{grid-template-columns:minmax(0,1fr)}
-  .jdx-note,.jdx-note+.jdx-note{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}
-  .jdx-stage{aspect-ratio:4/5}
-  .jdx-chrome{grid-template-columns:auto 1fr;height:42px}.jdx-chrome>span:last-child{display:none}
-  .jdx-url{max-width:none}
-  .jdx-hint{display:none}
-  .jdx-now{height:34px;font-size:12px}.jdx-now b{display:none}
-  .jdx-k i{display:none}
-  .jdx-bar{justify-content:center}
-  .jdx-knob{width:44px;height:44px;margin:-22px 0 0 -22px}
-  .jdx-phones{gap:14px;padding:22px 12px 8px}
-  .jdx-dev{border-radius:30px;padding:7px}.jdx-scr{border-radius:24px}.jdx-scr::before{height:14px;top:6px}
-}
-@media (prefers-reduced-motion:reduce){.jdx [data-jdx-r]{opacity:1;transform:none;transition:none}.jdx-knob,.jdx-tabs button{transition:none}}
-
-/* ===== motion layer ===== */
-/* chapter chip: both sides are always on the same part of the story */
-.jdx-now{display:inline-flex;align-items:center;gap:10px;margin:0;height:38px;padding:0 16px 0 14px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;box-shadow:0 10px 24px -14px rgba(3,13,48,.6)}
-.jdx-now b{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
-.jdx-now em{position:relative;display:inline-block;height:1.3em;min-width:9.5em;overflow:hidden;font-style:normal;font-weight:600}
-.jdx-now em span{position:absolute;left:0;top:0;white-space:nowrap;animation:jdx-in .55s var(--ease) both}
-.jdx-now em span.out{animation:jdx-out .45s var(--ease) both}
-@keyframes jdx-in{from{transform:translateY(110%);filter:blur(6px);opacity:0}to{transform:none;filter:none;opacity:1}}
-@keyframes jdx-out{to{transform:translateY(-110%);filter:blur(6px);opacity:0}}
-.jdx-layer img,.jdx-scr img{transition:opacity .4s ease}
-.jdx.rst .jdx-layer img,.jdx.rst .jdx-scr img{opacity:0}
-.jdx.rst .jdx-pin>div{opacity:0}
-/* ambient bloom drifts slowly behind everything */
-.jdx::before{animation:jdx-drift 18s ease-in-out infinite alternate}
-@keyframes jdx-drift{from{transform:translate3d(-6%,0,0) scale(1)}to{transform:translate3d(6%,4%,0) scale(1.12)}}
-
-/* headline: words rise out of blur (Magic UI text-animate blurInUp, ported) */
-.jdx-w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.42em);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i) * 70ms + 120ms)}
-.jdx.in .jdx-w{opacity:1;filter:none;transform:none}
-.jdx h2[data-jdx-r]{opacity:1;transform:none}
-.jdx h2 em{clip-path:inset(-10% 100% -20% 0);filter:blur(6px);transition:clip-path 1.25s cubic-bezier(.77,0,.18,1) .55s,filter 1s var(--ease) .65s;
+/* type */
+.jdc-k{display:inline-flex;align-items:center;gap:12px;margin:0 0 20px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.jdc-k i{width:28px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
+.jdc h2,.jdc h3{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.035em;text-wrap:balance}
+.jdc h2{font-size:clamp(36px,5.6vw,72px);line-height:1}
+.jdc h3{font-size:clamp(30px,4vw,52px);line-height:1.02}
+.jdc em.jdc-em{display:block;margin-top:.06em;padding-bottom:.08em;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1.05;
   background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 62%),linear-gradient(100deg,var(--g1) 0%,var(--g2) 45%,var(--g3) 100%);
-  background-size:260% 100%,100% 100%;background-repeat:no-repeat;background-position:160% 0,0 0;animation:jdx-shine 5.5s cubic-bezier(.6,.6,0,1) 2.2s infinite}
-.jdx.in h2 em{clip-path:inset(-10% 0 -20% 0);filter:none}
-@keyframes jdx-shine{0%{background-position:160% 0,0 0}38%,100%{background-position:-60% 0,0 0}}
+  background-size:260% 100%,100% 100%;background-repeat:no-repeat;background-position:160% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:jdc-shine 6s cubic-bezier(.6,.6,0,1) 2s infinite}
+@keyframes jdc-shine{0%{background-position:160% 0,0 0}36%,100%{background-position:-60% 0,0 0}}
+.jdc-lede{margin:20px 0 0;max-width:58ch;font-size:clamp(15.5px,1.2vw,17.5px);color:var(--body);text-wrap:pretty}
+.jdc-center{text-align:center}.jdc-center .jdc-lede{margin-left:auto;margin-right:auto}
 
-/* window flies in on a 3D tilt tied to scroll */
-.jdx-persp{perspective:1800px;perspective-origin:50% 0}
-.jdx-win,.jdx-phones{transform-origin:50% 0;transform:translate3d(0,calc(var(--tilt,1) * 70px),0) rotateX(calc(var(--tilt,1) * 26deg)) scale(calc(1 - var(--tilt,1) * .1));opacity:calc(1 - var(--tilt,1) * .85);will-change:transform}
+/* intro + chapter map */
+.jdc-top{padding:clamp(64px,9vw,130px) 0 clamp(40px,5vw,72px)}
+.jdc-map{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:34px 0 0;padding:0;list-style:none}
+.jdc-map a{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;text-decoration:none;transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
+.jdc-map a b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--tint);font:600 11px/1 'Inter',sans-serif;color:var(--muted);transition:background .3s var(--ease),color .3s var(--ease)}
+.jdc-map a:hover{border-color:rgba(1,129,252,.45);transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(1,29,180,.45)}
+.jdc-map a:hover b{background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff}
 
-/* border beam (Magic UI border-beam, ported to CSS offset-path) */
-.jdx-beam{position:absolute;inset:0;z-index:6;border-radius:inherit;border:1.5px solid transparent;pointer-events:none;
+/* chapters */
+.jdc-ch{position:relative;padding:clamp(56px,7vw,110px) 0;border-top:1px solid var(--line)}
+.jdc-ch.tint{background:linear-gradient(#FAFAFB,#F4F5F8)}
+.jdc-chead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;margin-bottom:clamp(32px,4vw,56px)}
+.jdc-num{font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(15px,1.2vw,17px);color:var(--g2);letter-spacing:.02em;padding-top:.55em;font-variant-numeric:tabular-nums}
+.jdc-num::after{content:"";display:block;width:100%;height:1.5px;margin-top:10px;background:linear-gradient(90deg,var(--g1),var(--g3));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .2s}
+.jdc-ch.in .jdc-num::after{transform:scaleX(1)}
+
+/* frames */
+.jdc-win{position:relative;margin:0;border-radius:14px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 4px rgba(3,13,48,.04),0 30px 60px -30px rgba(3,13,48,.28),0 70px 110px -60px rgba(1,29,120,.22)}
+.jdc-bar{display:flex;align-items:center;gap:12px;height:40px;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F4F5F7)}
+.jdc-bar span{display:flex;gap:6px}.jdc-bar span i{width:10px;height:10px;border-radius:50%;background:#DDE0E6}
+.jdc-bar em{flex:1;max-width:340px;margin:0 auto;height:24px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;background:#fff;border:1px solid var(--line);font:400 12px/1 'Inter',sans-serif;font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden}
+.jdc-bar em svg{width:11px;height:11px;flex:none}
+.jdc-shot{position:relative;overflow:hidden;background:var(--tint)}
+.jdc-shot img{width:100%;transition:transform 1.6s var(--ease)}
+@media (hover:hover){.jdc-win:hover .jdc-shot img{transform:scale(1.02)}}
+.jdc-phone{position:relative;margin:0;border-radius:36px;padding:9px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 36px 64px -30px rgba(3,13,48,.5)}
+.jdc-phone>div{position:relative;border-radius:28px;overflow:hidden;background:#fff}
+.jdc-phone>div::before{content:"";position:absolute;z-index:2;top:8px;left:50%;width:30%;height:20px;margin-left:-15%;border-radius:20px;background:#0B0E16}
+.jdc-phone img{width:100%}
+.jdc-tagline{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* before */
+.jdc-before{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,240px);gap:clamp(20px,3vw,44px);align-items:end}
+.jdc-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(32px,4vw,52px);border-top:1px solid var(--line)}
+.jdc-issue{padding:24px clamp(16px,2.2vw,32px) 0 0}
+.jdc-issue+.jdc-issue{padding-left:clamp(16px,2.2vw,32px);border-left:1px solid var(--line)}
+.jdc-issue b{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.5vw,21px);font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
+.jdc-issue b svg{width:18px;height:18px;flex:none;color:var(--muted)}
+.jdc-issue p{margin:8px 0 0;font-size:14.5px;line-height:1.6}
+.jdc-chip{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin:0 2px;box-shadow:inset 0 0 0 1px rgba(3,13,48,.12)}
+
+/* process: the brand board */
+.jdc-board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.jdc-tile{position:relative;grid-column:span 6;border-radius:16px;background:#fff;border:1px solid var(--line);padding:clamp(22px,2.6vw,34px);overflow:hidden;box-shadow:0 1px 2px rgba(3,13,48,.04),0 24px 48px -32px rgba(3,13,48,.25)}
+.jdc-tile.w7{grid-column:span 7}.jdc-tile.w5{grid-column:span 5}
+.jdc-tile h4{margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(19px,1.6vw,22px);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
+.jdc-tile .s{display:block;margin-bottom:12px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g2)}
+.jdc-tile p{margin:8px 0 0;font-size:14.5px;line-height:1.6;max-width:46ch}
+.jdc-logos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.jdc-logos div{display:grid;place-items:center;aspect-ratio:2/1;border-radius:10px;padding:0 10%}
+.jdc-logos .l1{background:#fff;border:1px solid var(--line);color:var(--jd-navy);--logo-box:var(--jd-navy);--logo-on-box:#fff}
+.jdc-logos .l2{background:var(--jd-navy);color:#fff;--logo-box:#fff;--logo-on-box:var(--jd-navy)}
+.jdc-logos svg{width:100%;height:auto;aspect-ratio:1576/392;overflow:visible}
+.jdc-cols{margin-top:22px;display:grid;gap:14px}
+.jdc-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center}
+.jdc-row>span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.jdc-sw{display:flex;gap:8px;position:relative}
+.jdc-sw i{flex:1;height:58px;border-radius:10px;position:relative;box-shadow:inset 0 0 0 1px rgba(3,13,48,.08);transform:scaleY(.2);opacity:0;transform-origin:bottom;transition:transform .8s var(--ease),opacity .6s ease}
+.jdc-sw i span{position:absolute;left:10px;bottom:8px;font:600 10.5px/1 'Inter',sans-serif;letter-spacing:.04em;color:#fff}
+.jdc-sw i.lt span{color:var(--ink)}
+.jdc-sw.old i{height:40px}
+.jdc-sw.old::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.77,0,.18,1) .9s}
+.jdc-ch.in .jdc-sw i{transform:none;opacity:1}
+.jdc-ch.in .jdc-sw i:nth-child(2){transition-delay:.08s}.jdc-ch.in .jdc-sw i:nth-child(3){transition-delay:.16s}.jdc-ch.in .jdc-sw i:nth-child(4){transition-delay:.24s}
+.jdc-ch.in .jdc-sw.new i{transition-delay:1.3s}.jdc-ch.in .jdc-sw.new i:nth-child(2){transition-delay:1.38s}.jdc-ch.in .jdc-sw.new i:nth-child(3){transition-delay:1.46s}.jdc-ch.in .jdc-sw.new i:nth-child(4){transition-delay:1.54s}
+.jdc-ch.in .jdc-sw.old::after{transform:scaleX(1)}
+.jdc-type{margin-top:22px;display:grid;gap:16px}
+.jdc-type .o{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(20px,2vw,26px);color:#000;text-shadow:1px 1px 3px rgba(0,0,0,.5);line-height:1.15;text-decoration:line-through;text-decoration-color:var(--muted);text-decoration-thickness:1.5px}
+.jdc-type .n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--jd-navy);line-height:1;letter-spacing:-.02em}
+.jdc-type .n i{font-style:italic;font-weight:600;color:var(--jd-orange)}
+.jdc-type .r{font-size:14px;line-height:1.55;color:var(--body);border-top:1px solid var(--line);padding-top:14px}
+.jdc-type small{display:block;margin-bottom:6px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;text-shadow:none}
+.jdc-photos{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.jdc-photos img{border-radius:10px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.jdc-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:clamp(28px,3.6vw,48px) 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.jdc-steps li{padding:20px 14px 0 0;font-size:14px;line-height:1.5;color:var(--body)}
+.jdc-steps li b{display:block;margin-bottom:4px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+
+/* after */
+.jdc-after-hero{margin-bottom:14px}
+.jdc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.jdc-grid figure{margin:0}
+.jdc-grid figcaption{display:flex;justify-content:space-between;gap:16px;padding:14px 4px 0;font-size:13.5px;color:var(--muted)}
+.jdc-grid figcaption b{font-family:'Outfit',sans-serif;font-weight:600;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
+.jdc-grid .jdc-win{border-radius:12px}
+.jdc-phones{display:grid;grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:clamp(16px,4vw,56px);margin-top:clamp(40px,5vw,72px);padding:clamp(32px,4vw,56px) 0;border-radius:18px;background:radial-gradient(60% 70% at 50% 40%,#EEF3FB,#F7F8FA 75%)}
+.jdc-phones figure{margin:0}
+.jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-18px)}
+
+/* compare */
+.jdc-cmp-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.jdc-seg{display:inline-flex;padding:4px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.jdc-seg button{appearance:none;border:0;background:transparent;font:600 13px/1 'Inter',sans-serif;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.jdc-seg button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 6px 16px -8px rgba(3,13,48,.5)}
+.jdc-seg button:focus-visible,.jdc-handle:focus-visible,.jdc-map a:focus-visible,.jdc-live:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
+.jdc-hint{display:flex;align-items:center;gap:8px;margin:0;font-size:13px;color:var(--muted)}
+.jdc-hint svg{width:18px;height:18px;color:var(--g2)}
+.jdc-stage{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint);cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.jdc-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none;-webkit-user-drag:none;transition:opacity .5s var(--ease)}
+.jdc-stage img.a{clip-path:inset(0 0 0 var(--x,50%))}
+.jdc-stage.swap img{opacity:0}
+.jdc-lbl{position:absolute;bottom:16px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:opacity .3s ease}
+.jdc-lbl.b{left:16px;background:rgba(255,255,255,.9);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
+.jdc-lbl.a{right:16px;background:rgba(3,13,48,.8);color:#fff}
+.jdc-handle{position:absolute;top:0;bottom:0;left:var(--x,50%);z-index:4;width:48px;margin-left:-24px;border:0;background:none;padding:0;cursor:ew-resize;touch-action:none}
+.jdc-handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));animation:jdc-glow 2.8s ease-in-out infinite}
+@keyframes jdc-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 16px rgba(1,129,252,.45)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 32px rgba(10,235,255,.85)}}
+.jdc-knob{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.92),0 14px 34px -10px rgba(1,29,180,.7);transition:transform .35s var(--ease)}
+.jdc-knob svg{width:22px;height:22px}
+.jdc-knob::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(10,235,255,.7);animation:jdc-ping 2.8s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes jdc-ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+.jdc-stage:hover .jdc-knob,.jdc.drag .jdc-knob{transform:scale(1.08)}
+.jdc-beam{position:absolute;inset:0;z-index:6;border-radius:inherit;border:1.5px solid transparent;pointer-events:none;
   -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;mask-composite:exclude}
-.jdx-beam i{position:absolute;width:180px;aspect-ratio:1;offset-path:rect(0 auto auto 0 round 180px);background:linear-gradient(to left,var(--g3),var(--g1),transparent);animation:jdx-beam 9s linear infinite}
-.jdx-beam i+i{animation-delay:-4.5s;background:linear-gradient(to left,var(--g2),rgba(10,235,255,.4),transparent)}
-@keyframes jdx-beam{from{offset-distance:0%}to{offset-distance:100%}}
+.jdc-beam i{position:absolute;width:180px;aspect-ratio:1;offset-path:rect(0 auto auto 0 round 180px);background:linear-gradient(to left,var(--g3),var(--g1),transparent);animation:jdc-beam 9s linear infinite}
+.jdc-beam i+i{animation-delay:-4.5s;background:linear-gradient(to left,var(--g2),rgba(10,235,255,.4),transparent)}
+@keyframes jdc-beam{from{offset-distance:0%}to{offset-distance:100%}}
+.jdc-foot{display:flex;justify-content:center;padding:clamp(36px,4vw,56px) 0 clamp(64px,8vw,110px)}
+.jdc-live{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line);transition:border-color .3s var(--ease),gap .3s var(--ease)}
+.jdc-live svg{width:16px;height:16px;color:var(--g2)}
+.jdc-live:hover{border-color:var(--g2);gap:14px}
 
-/* the split line breathes */
-.jdx-handle::before{animation:jdx-glow 2.8s ease-in-out infinite}
-@keyframes jdx-glow{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 18px rgba(1,129,252,.45)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 34px rgba(10,235,255,.85)}}
-.jdx-knob::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(10,235,255,.7);animation:jdx-ping 2.8s cubic-bezier(.2,.6,.3,1) infinite}
-@keyframes jdx-ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+/* reveal on scroll */
+.jdc [data-r]{opacity:0;filter:blur(8px);transform:translateY(26px);transition:opacity 1s var(--ease),filter 1s var(--ease),transform 1.1s var(--ease)}
+.jdc [data-r].on{opacity:1;filter:none;transform:none}
+.jdc [data-r="2"]{transition-delay:.1s}.jdc [data-r="3"]{transition-delay:.2s}.jdc [data-r="4"]{transition-delay:.3s}
 
-/* callouts that ride the page */
-.jdx-pins{position:absolute;inset:0;z-index:3;pointer-events:none}
-.jdx-pin{position:absolute;left:0;top:0;will-change:transform}
-.jdx-pin>div{display:flex;align-items:center;gap:0;opacity:0;filter:blur(8px);transform:translateY(10px) scale(.94);transition:opacity .45s var(--ease),filter .45s var(--ease),transform .55s var(--ease)}
-.jdx-pin.on>div{opacity:1;filter:none;transform:none}
-.jdx-pin.l>div{flex-direction:row-reverse;transform-origin:right center}
-.jdx-pin>div{margin-top:-7px;margin-left:-7px}.jdx-pin.l>div{margin-left:0}.jdx-pin.l>div{position:absolute;right:-7px;top:0}
-.jdx-dot{position:relative;flex:none;width:14px;height:14px;border-radius:50%}
-.jdx-dot::after{content:"";position:absolute;inset:0;border-radius:50%;animation:jdx-ping 2.2s cubic-bezier(.2,.6,.3,1) infinite}
-.jdx-pin i.jdx-lead{flex:none;width:26px;height:1.5px}
-.jdx-lbl{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:-.005em;line-height:1}
-.jdx-lbl svg{width:13px;height:13px;flex:none}
-.jdx-pin.a .jdx-dot{background:linear-gradient(135deg,var(--g1),var(--g3));box-shadow:0 0 0 3px #fff,0 6px 16px rgba(1,29,180,.45)}
-.jdx-pin.a .jdx-dot::after{border:1.5px solid rgba(10,235,255,.9)}
-.jdx-pin.a .jdx-lead{background:linear-gradient(90deg,#fff,rgba(255,255,255,.4))}
-.jdx-pin.l.a .jdx-lead{background:linear-gradient(270deg,#fff,rgba(255,255,255,.4))}
-.jdx-pin.a .jdx-lbl{color:#fff;background:rgba(3,13,48,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(10,235,255,.35),0 14px 30px -12px rgba(1,29,120,.6)}
-.jdx-pin.a .jdx-lbl svg{color:var(--g3)}
-.jdx-pin.b .jdx-dot{background:#fff;box-shadow:0 0 0 2px rgba(3,13,48,.55),0 4px 12px rgba(3,13,48,.25)}
-.jdx-pin.b .jdx-dot::after{border:1.5px solid rgba(3,13,48,.35)}
-.jdx-pin.b .jdx-lead{background:rgba(3,13,48,.45)}
-.jdx-pin.b .jdx-lbl{color:var(--ink);background:rgba(255,255,255,.94);box-shadow:0 0 0 1px rgba(3,13,48,.12),0 12px 26px -12px rgba(3,13,48,.45)}
-.jdx-pin.b .jdx-lbl svg{color:var(--muted)}
-
-/* phones float, and lean toward the cursor */
-.jdx-phones{transform-style:preserve-3d}
-.jdx-phone{animation:jdx-bob 6s ease-in-out infinite alternate}
-.jdx-phone.after{animation-delay:-3s}
-.jdx-dev{transition:transform .8s var(--ease);transform:rotateY(calc(var(--lean,0) * 9deg)) rotateX(calc(var(--leanY,0) * -6deg))}
-@keyframes jdx-bob{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
-
-/* what changed: the old thing gets struck on screen, the new thing rises in */
-.jdx-from{text-decoration:none;position:relative;display:inline-block}
-.jdx-from::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:1.5px;background:var(--muted);transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.77,0,.18,1)}
-.jdx-to,.jdx-note p{opacity:0;filter:blur(8px);transform:translateY(12px);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .8s var(--ease)}
-.jdx-note.go .jdx-from::after{transform:scaleX(1);transition-delay:calc(var(--d,0) * 1ms + 200ms)}
-.jdx-note.go .jdx-to{opacity:1;filter:none;transform:none;transition-delay:calc(var(--d,0) * 1ms + 750ms)}
-.jdx-note.go p{opacity:1;filter:none;transform:none;transition-delay:calc(var(--d,0) * 1ms + 900ms)}
-.jdx-note[data-jdx-r]{opacity:1;transform:none}
-
-@media (max-width:760px){.jdx-lbl{font-size:11px;padding:6px 10px}.jdx-pin i.jdx-lead{width:14px}.jdx-beam i{width:120px;offset-path:rect(0 auto auto 0 round 120px)}}
-@media (max-width:520px){.jdx-pins{display:none}}
+@media (max-width:900px){
+  .jdc-before{grid-template-columns:minmax(0,1fr)}
+  .jdc-before .jdc-phone{max-width:220px;margin:0 auto}
+  .jdc-tile,.jdc-tile.w7,.jdc-tile.w5{grid-column:span 12}
+  .jdc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .jdc-chead{grid-template-columns:minmax(0,1fr);gap:10px}.jdc-num{padding-top:0}.jdc-num::after{width:40px}
+  .jdc-issues{grid-template-columns:minmax(0,1fr)}
+  .jdc-issue,.jdc-issue+.jdc-issue{padding:20px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .jdc-grid{grid-template-columns:minmax(0,1fr)}
+  .jdc-steps{grid-template-columns:minmax(0,1fr)}
+  .jdc-phones{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:22px 10px}
+  .jdc-phone{border-radius:20px;padding:5px}.jdc-phone>div{border-radius:16px}.jdc-phone>div::before{height:10px;top:5px}
+  .jdc-phones figure:nth-child(2) .jdc-phone{transform:translateY(-10px)}
+  .jdc-stage{aspect-ratio:4/5}
+  .jdc-hint{display:none}.jdc-cmp-bar{justify-content:center}
+  .jdc-seg button{padding:9px 11px;font-size:12px}
+  .jdc-k i{display:none}
+  .jdc-map a{font-size:12.5px;padding:8px 12px 8px 8px}
+}
 @media (prefers-reduced-motion:reduce){
-  .jdx::before,.jdx-beam i,.jdx-handle::before,.jdx-knob::after,.jdx-dot::after,.jdx-phone,.jdx h2 em{animation:none}
-  .jdx-w,.jdx h2 em,.jdx-to,.jdx-note p{opacity:1;filter:none;transform:none;clip-path:none;transition:none}
-  .jdx-from::after{transform:scaleX(1);transition:none}
-  .jdx-win,.jdx-phones{transform:none;opacity:1}
+  .jdc::before,.jdc em.jdc-em,.jdc-handle::before,.jdc-knob::after,.jdc-beam i{animation:none}
+  .jdc [data-r]{opacity:1;filter:none;transform:none;transition:none}
+  .jdc-sw i{transform:none;opacity:1;transition:none}.jdc-sw.old::after{transform:scaleX(1);transition:none}
 }
 </style>
 
-<section class="jdx" id="jdx" aria-label="JD Strategic Franchising website redesign, before and after">
-  <div class="jdx-in">
-    <header class="jdx-head">
-      <p class="jdx-k" data-jdx-r><i></i>Website redesign &middot; JD Strategic Franchising<i></i></p>
-      <h2 data-jdx-r="2">Same founder. <em>A whole new first impression.</em></h2>
-      <p class="jdx-lede" data-jdx-r="3">Josh DuBois helps people buy franchises worth owning. His old site said so in a wall of centered text. We rebuilt it into an 11-page site that looks like the expert he is. Drag the line to compare, or scroll inside it.</p>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="jdc-mark" viewBox="0 0 1576 392">
+    <path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="var(--logo-box,#0A1D3A)"/>
+    <rect x="24" y="24" width="352" height="342" fill="var(--logo-box,#0A1D3A)"/>
+    <text x="50" y="276" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="var(--logo-on-box,#fff)">JD</text>
+    <path d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
+    <rect x="456" y="0" width="976" height="12" fill="currentColor"/>
+    <rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/>
+    <text x="456" y="208" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
+    <text x="462" y="324" font-family="Montserrat,Inter,system-ui,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
+    <rect x="456" y="378" width="976" height="12" fill="currentColor"/>
+    <rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/>
+  </symbol>
+  <symbol id="jdc-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="jdc-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<section class="jdc" id="jdc" aria-label="Case study: JD Strategic Franchising website redesign">
+  <div class="jdc-in">
+    <header class="jdc-top jdc-center">
+      <p class="jdc-k" data-r><i></i>Case study &middot; JD Strategic Franchising<i></i></p>
+      <h2 data-r="2">A franchise expert&rsquo;s website, <em class="jdc-em">rebuilt to look the part.</em></h2>
+      <p class="jdc-lede" data-r="3">Josh DuBois helps people buy franchises worth owning. Here&rsquo;s his website before we started, what we changed, and what it looks like now.</p>
+      <ul class="jdc-map" data-r="4">
+        <li><a href="#jdc-before"><b>1</b>The before</a></li>
+        <li><a href="#jdc-process"><b>2</b>What we changed</a></li>
+        <li><a href="#jdc-after"><b>3</b>The after</a></li>
+        <li><a href="#jdc-compare"><b>4</b>Compare them</a></li>
+      </ul>
     </header>
+  </div>
 
-    <div class="jdx-bar" data-jdx-r="3">
-      <div class="jdx-tabs" role="tablist" aria-label="Device">
-        <button type="button" role="tab" aria-selected="true" data-view="d">Desktop</button>
-        <button type="button" role="tab" aria-selected="false" data-view="m">Mobile</button>
+  <!-- 1. BEFORE -->
+  <div class="jdc-ch" id="jdc-before" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>01</div>
+        <div><h3 data-r>His website, before.</h3><p class="jdc-lede" data-r="2">The old jdfranchising.com homepage, exactly as visitors saw it.</p></div>
       </div>
-      <p class="jdx-now" data-now aria-live="off"><b>Now showing</b><em></em></p>
-      <p class="jdx-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag the line to compare &middot; scroll inside to explore</p>
-    </div>
-
-    <div class="jdx-persp"><div class="jdx-win"><span class="jdx-beam" aria-hidden="true"><i></i><i></i></span>
-      <div class="jdx-chrome"><span class="jdx-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="jdx-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-url>jdfranchising.com &rarr; JD Strategic, rebuilt</span></div><span></span></div>
-      <div class="jdx-stage" data-stage>
-        <div class="jdx-layer"><img data-img="old-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage: centered orange headline, a YouTube thumbnail, and long centered paragraphs" decoding="async"></div>
-        <div class="jdx-layer jdx-after"><img data-img="new-desktop" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage: serif headline with an orange italic line, Josh's portrait, credential stats and a franchise fit finder" decoding="async"></div>
-        <div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div>
-        <div class="jdx-pins" aria-hidden="true" data-pins></div>
-        <span class="jdx-tag b" data-tag="b">Before</span><span class="jdx-tag a" data-tag="a">After</span>
-        <button type="button" class="jdx-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdx-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
-        <span class="jdx-rail" aria-hidden="true"><i></i></span>
+      <div class="jdc-before">
+        <figure class="jdc-win" data-r>
+          <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>jdfranchising.com</em></div>
+          <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="The old JD Strategic homepage: an orange drop-shadowed headline, an orange button with blue text and a YouTube thumbnail" loading="lazy" decoding="async"></div>
+        </figure>
+        <div data-r="2"><figure class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-phone.webp" width="780" height="1688" alt="The old homepage on a phone, with a chat pop-up covering the headline" loading="lazy" decoding="async"></div></figure><div class="jdc-center"><span class="jdc-tagline">On a phone</span></div></div>
+      </div>
+      <div class="jdc-issues">
+        <div class="jdc-issue" data-r><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>Colors fighting each other</b><p>Orange buttons <span class="jdc-chip" style="background:#F6AD55"></span> with bright blue text <span class="jdc-chip" style="background:#188BF6"></span>, drop-shadowed headlines, and a row of logos all competing for attention.</p></div>
+        <div class="jdc-issue" data-r="2"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>One font, every line centered</b><p>Everything set in Lato and centered, so long paragraphs read like a wall and nothing stood out as the next step.</p></div>
+        <div class="jdc-issue" data-r="3"><b><svg aria-hidden="true"><use href="#jdc-x"/></svg>A thumbnail for a hero</b><p>The first thing visitors saw was a YouTube thumbnail, not Josh, his credentials, or why they should trust him.</p></div>
       </div>
     </div>
+  </div>
 
-    <div class="jdx-phones" aria-label="Mobile, before and after">
-      <figure class="jdx-phone"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/old-mobile.jpg" width="720" height="20625" alt="The old JD Strategic site on a phone" decoding="async"><div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div></div></div><figcaption>Before</figcaption></figure>
-      <figure class="jdx-phone after"><div class="jdx-dev"><div class="jdx-scr"><img data-src="https://javmartz04-ship-it.github.io/jd-transformation/assets/new-mobile.jpg" width="720" height="29943" alt="The new JD Strategic site on a phone" decoding="async"><div class="jdx-sc" data-sc tabindex="-1" aria-hidden="true"><i></i></div></div></div><figcaption><b>After</b></figcaption></figure>
-    </div></div>
-
-    <div class="jdx-notes">
-      <div class="jdx-note" data-jdx-r style="--d:0"><div><span class="jdx-from">Competing colors and logos</span></div><div class="jdx-to">One navy, one rationed orange</div><p>Orange headlines, two blues and a row of logos fought for attention. Now his brand navy carries the page and orange only marks what matters.</p></div>
-      <div class="jdx-note" data-jdx-r="2" style="--d:180"><div><span class="jdx-from">A YouTube thumbnail as the hero</span></div><div class="jdx-to">Josh, shot like a founder</div><p>Portraits and 4K stills pulled from his own channel, plus a four-minute How It Works film on the homepage and process page.</p></div>
-      <div class="jdx-note" data-jdx-r="3" style="--d:360"><div><span class="jdx-from">A wall of centered text</span></div><div class="jdx-to">A path a buyer can follow</div><p>Credentials up top, a franchise fit finder wired into his CRM, five clear steps, and the same clear next step on every page.</p></div>
+  <!-- 2. PROCESS -->
+  <div class="jdc-ch tint" id="jdc-process" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>02</div>
+        <div><h3 data-r>What we changed, and why.</h3><p class="jdc-lede" data-r="2">Before designing a single page, we cleaned up the brand: his colors, his logo, his type and his photos. That became the brand board every page is built from.</p></div>
+      </div>
+      <div class="jdc-board">
+        <div class="jdc-tile w7" data-r>
+          <span class="s">Colors</span><h4>From four loud colors to one navy and one orange.</h4>
+          <p>We kept his orange but made it deeper, and let his brand navy carry the page. Orange now only marks what matters.</p>
+          <div class="jdc-cols">
+            <div class="jdc-row"><span>Before</span><div class="jdc-sw old"><i style="background:#F6AD55"><span>F6AD55</span></i><i style="background:#188BF6"><span>188BF6</span></i><i style="background:#000"><span>000000</span></i><i class="lt" style="background:#FAFAFA"><span>FAFAFA</span></i></div></div>
+            <div class="jdc-row"><span>After</span><div class="jdc-sw new"><i style="background:#0A1D3A"><span>0A1D3A</span></i><i style="background:#FF6A00"><span>FF6A00</span></i><i style="background:#061020"><span>061020</span></i><i class="lt" style="background:#FAF9F7"><span>FAF9F7</span></i></div></div>
+          </div>
+        </div>
+        <div class="jdc-tile w5" data-r="2">
+          <span class="s">Logo</span><h4>Redrawn as a crisp vector.</h4>
+          <p>His logo was a small, blurry image. We rebuilt it so it stays sharp at any size, on light or dark.</p>
+          <div class="jdc-logos"><div class="l1"><svg role="img" aria-label="JD Strategic Franchising logo on white"><use href="#jdc-mark"/></svg></div><div class="l2"><svg role="img" aria-label="JD Strategic Franchising logo on navy"><use href="#jdc-mark"/></svg></div></div>
+        </div>
+        <div class="jdc-tile w5" data-r>
+          <span class="s">Type</span><h4>A voice that sounds like an expert.</h4>
+          <div class="jdc-type">
+            <div class="o"><small>Before &middot; Lato</small>Discover Carefully Vetted Franchise Opportunities</div>
+            <div class="n"><small style="color:var(--g2)">After &middot; Playfair Display</small>Buy a franchise <i>worth owning.</i></div>
+            <div class="r">Playfair Display for headlines, Inter for everything you read.</div>
+          </div>
+        </div>
+        <div class="jdc-tile w7" data-r="2">
+          <span class="s">Photos</span><h4>Real photos of Josh, from his own videos.</h4>
+          <p>Instead of stock images and thumbnails, we pulled sharp 4K stills from his own YouTube footage and used them across the site.</p>
+          <div class="jdc-photos"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-who.webp" width="800" height="1000" alt="Josh DuBois portrait" loading="lazy" decoding="async"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/photo-proc.webp" width="800" height="1000" alt="Josh working through a plan with a franchise owner" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <ol class="jdc-steps">
+        <li data-r><b>Refine the colors</b>One navy, one orange.</li>
+        <li data-r="2"><b>Rebuild the logo</b>Sharp at every size.</li>
+        <li data-r="3"><b>Set the type</b>A serif with authority.</li>
+        <li data-r="4"><b>Shoot from his videos</b>Real 4K photos of Josh.</li>
+        <li data-r="4"><b>Rebuild the site</b>11 pages, start to finish.</li>
+      </ol>
     </div>
+  </div>
 
-    <div class="jdx-foot"><a class="jdx-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+  <!-- 3. AFTER -->
+  <div class="jdc-ch" id="jdc-after" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>03</div>
+        <div><h3 data-r>His website, after.</h3><p class="jdc-lede" data-r="2">The new homepage, plus a look at the sections that do the heavy lifting.</p></div>
+      </div>
+      <figure class="jdc-win jdc-after-hero" data-r>
+        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>JD Strategic Franchising</em></div>
+        <div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="The new JD Strategic homepage: a serif headline with an orange italic line, Josh's portrait and three stats" loading="lazy" decoding="async"></div>
+      </figure>
+      <div class="jdc-grid">
+        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-fit.webp" width="1200" height="750" alt="The franchise fit finder" loading="lazy" decoding="async"></div></div><figcaption><b>Franchise fit finder</b><span>Six questions, sent straight to his CRM</span></figcaption></figure>
+        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-who.webp" width="1200" height="750" alt="The About Josh section" loading="lazy" decoding="async"></div></div><figcaption><b>Who he is</b><span>A franchise owner on your side</span></figcaption></figure>
+        <figure data-r><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-offer.webp" width="1200" height="750" alt="What you get working with Josh" loading="lazy" decoding="async"></div></div><figcaption><b>The offer</b><span>Free to you, $2,000 back</span></figcaption></figure>
+        <figure data-r="2"><div class="jdc-win"><div class="jdc-shot"><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-show.webp" width="1200" height="750" alt="The Conquer the Mind podcast section" loading="lazy" decoding="async"></div></div><figcaption><b>His podcast</b><span>Conquer the Mind, front and center</span></figcaption></figure>
+      </div>
+      <div class="jdc-phones">
+        <figure data-r><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-a.webp" width="780" height="1688" alt="The new homepage on a phone" loading="lazy" decoding="async"></div></div></figure>
+        <figure data-r="2"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-b.webp" width="780" height="1688" alt="The fit finder on a phone" loading="lazy" decoding="async"></div></div></figure>
+        <figure data-r="3"><div class="jdc-phone"><div><img src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-phone-c.webp" width="780" height="1688" alt="The five-step process on a phone" loading="lazy" decoding="async"></div></div></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. COMPARE -->
+  <div class="jdc-ch tint" id="jdc-compare" data-ch>
+    <div class="jdc-in">
+      <div class="jdc-chead">
+        <div class="jdc-num" data-r>04</div>
+        <div><h3 data-r>Now see the difference <em class="jdc-em">for yourself.</em></h3><p class="jdc-lede" data-r="2">Drag the line left and right. Pick a section to compare the same part of both sites.</p></div>
+      </div>
+      <div class="jdc-cmp-bar" data-r>
+        <div class="jdc-seg" role="group" aria-label="Section to compare">
+          <button type="button" aria-pressed="true" data-pair="hero">First impression</button>
+          <button type="button" aria-pressed="false" data-pair="process">The process</button>
+          <button type="button" aria-pressed="false" data-pair="why">Why franchise</button>
+        </div>
+        <p class="jdc-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>Drag the line to compare</p>
+      </div>
+      <figure class="jdc-win" data-r="2">
+        <span class="jdc-beam" aria-hidden="true"><i></i><i></i></span>
+        <div class="jdc-bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em><svg aria-hidden="true"><use href="#jdc-lock"/></svg>Before &rarr; After</em></div>
+        <div class="jdc-stage" data-stage>
+          <img class="b" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/old-hero.webp" width="1800" height="1125" alt="Before" loading="lazy" decoding="async">
+          <img class="a" src="https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/new-hero.webp" width="1800" height="1125" alt="After" loading="lazy" decoding="async">
+          <span class="jdc-lbl b">Before</span><span class="jdc-lbl a">After</span>
+          <button type="button" class="jdc-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><span class="jdc-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
+        </div>
+      </figure>
+    </div>
+    <div class="jdc-foot"><a class="jdc-live" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
   </div>
 </section>
 
 <script>
 (function(){
-  var root=document.getElementById('jdx'); if(!root||root.dataset.ready) return; root.dataset.ready='1';
+  var root=document.getElementById('jdc'); if(!root||root.dataset.ready) return; root.dataset.ready='1';
   var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var stage=root.querySelector('[data-stage]'), handle=root.querySelector('.jdx-handle'), url=root.querySelector('[data-url]');
-  var tagB=root.querySelector('[data-tag="b"]'), tagA=root.querySelector('[data-tag="a"]');
-  var dImgs=[].slice.call(stage.querySelectorAll('img')), mImgs=[].slice.call(root.querySelectorAll('.jdx-scr img'));
-  var x=100, Y=0, live=false, hold=0, last=0, runT=0, dragging=false, mode='d', intro=false, kNow=1, rTimer=0;
-  var scD=stage.querySelector('[data-sc]'), scM=[].slice.call(root.querySelectorAll('.jdx-scr [data-sc]'));
-  /* both pages scroll together, matched section to section: when the new page reaches a section,
-     the old page is at its equivalent. Offsets are each capture's own CSS px. */
-  var MAP={
-    d:{w:1440,oldH:4484,newH:12125,speed:300,pairs:[[0,0],[1328,2815],[1609,5419],[2160,6650],[2471,6778],[3126,8650]],
-       ch:[[0,'The first impression'],[900,'Who he is'],[1759,'The next step'],[2815,'The positioning'],[4212,'His story'],[5419,'The process'],[6778,'Why franchise'],[8650,'The offer'],[10102,'The podcast'],[10851,'The close']]},
-    m:{w:390,oldH:11172,newH:16219,speed:400,pairs:[[0,0],[2122,3443],[2728,6595],[3700,8300],[4960,8800],[7331,10854]],
-       ch:[[0,'The first impression'],[1098,'Who he is'],[2115,'The next step'],[3443,'The positioning'],[4780,'His story'],[6595,'The process'],[8800,'Why franchise'],[10854,'The offer'],[13226,'The podcast'],[14246,'The close']]}
-  };
-  var nowEl=root.querySelector('[data-now]'), nowTxt='';
-  var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  var XX='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>';
-  /* anchors in the captured pages' own 1440px-wide coordinates */
-  var PINS=[
-    {s:0,x:440,y:330,t:'Drop-shadowed orange headline'},
-    {s:0,x:560,y:610,t:'A centered wall of text'},
-    {s:0,x:720,y:1088,t:'A flyer dropped mid-page'},
-    {s:0,x:430,y:1905,t:'Five steps buried in paragraphs'},
-    {s:0,x:330,y:2370,t:'Social icons as a whole section'},
-    {s:0,x:420,y:2720,t:'Six blocks of small print'},
-    {s:1,x:1080,y:430,t:'His real portrait, pulled from his own 4K footage'},
-    {s:1,x:990,y:1010,t:'Credentials, not adjectives'},
-    {s:1,x:1000,y:1478,t:'A four-minute How It Works film'},
-    {s:1,x:1010,y:2420,t:'Fit finder, wired straight into his CRM'},
-    {s:1,x:1120,y:3050,t:'The whole pitch in one line'},
-    {s:1,x:1000,y:6120,t:'Five steps, zero guesswork'},
-    {s:1,x:1050,y:7420,t:'Industries he actually vets'},
-    {s:1,x:1000,y:9080,t:'What he gives you, in plain numbers'},
-    {s:1,x:1020,y:10440,t:'His podcast, front and center'},
-    {s:1,x:930,y:11050,t:'One closing ask'}
-  ];
-  var pinBox=root.querySelector('[data-pins]'), ty=[0,0];
-  PINS.forEach(function(d){ var el=document.createElement('div'); el.className='jdx-pin '+(d.s?'a':'b');
-    el.innerHTML='<div><span class="jdx-dot"></span><i class="jdx-lead"></i><span class="jdx-lbl">'+(d.s?CHK:XX)+d.t+'</span></div>'; pinBox.appendChild(el); d.el=el; });
-  function pins(){ var W=stage.clientWidth, H=stage.clientHeight, k=W/1440;
-    PINS.forEach(function(d){ var px=d.x/1440*100, py=d.y*k+ty[d.s];
-      var side = d.s ? px > x+4 : px < x-4;
-      if(!d.w) d.w=d.el.firstChild.offsetWidth; var ax=d.x*k, sx=x/100*W, w=d.w, left;
-      if(d.s){ if(ax+w+12<W) left=false; else if(ax-w-12>sx) left=true; else side=false; }
-      else { if(ax-w-12>8) left=true; else if(ax+w+12<sx) left=false; else side=false; }
-      d.el.classList.toggle('l',!!left);
-      var on = mode==='d' && intro && side && py>H*.1 && py<H*.88;
-      d.el.classList.toggle('on',on);
-      d.el.style.transform='translate3d('+(d.x*k).toFixed(1)+'px,'+py.toFixed(1)+'px,0)'; }); }
+  var BASE='https://javmartz04-ship-it.github.io/jd-transformation/assets/v2/';
 
-  function setX(v){ x=Math.max(0,Math.min(100,v)); root.style.setProperty('--x',x+'%'); stage.style.setProperty('--x',x+'%');
-    handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after');
-    tagB.style.opacity=x<12?0:1; tagA.style.opacity=x>88?0:1; if(PINS[0].el) pins();
-    url.textContent = x>60 ? 'jdfranchising.com  (before)' : x<40 ? 'JD Strategic, rebuilt  (after)' : 'jdfranchising.com \u2192 JD Strategic, rebuilt'; }
-  /* monotone cubic through the matched pairs, so the old page never jerks between sections */
-  function curve(M,vh){ var nMax=Math.max(1,M.newH-vh), oMax=Math.max(0,M.oldH-vh);
-    var P=M.pairs.filter(function(q){ return q[0]<oMax-40 && q[1]<nMax-40; }).concat([[oMax,nMax]]);
-    var xs=P.map(function(q){return q[1];}), ys=P.map(function(q){return q[0];}), n=xs.length, d=[], m=[];
-    for(var i=0;i<n-1;i++) d.push((ys[i+1]-ys[i])/(xs[i+1]-xs[i]));
-    m[0]=d[0]; m[n-1]=d[n-2]; for(i=1;i<n-1;i++) m[i]=(d[i-1]*d[i]<=0)?0:(d[i-1]+d[i])/2;
-    for(i=0;i<n-1;i++){ if(d[i]===0){m[i]=m[i+1]=0;continue;} var a=m[i]/d[i], b=m[i+1]/d[i], h=a*a+b*b; if(h>9){ var t=3/Math.sqrt(h); m[i]=t*a*d[i]; m[i+1]=t*b*d[i]; } }
-    return {nMax:nMax, f:function(y){ y=Math.max(0,Math.min(nMax,y)); var i=0; while(i<n-2 && y>xs[i+1]) i++; var hh=xs[i+1]-xs[i], t=(y-xs[i])/hh, t2=t*t, t3=t2*t;
-      return (2*t3-3*t2+1)*ys[i]+(t3-2*t2+t)*hh*m[i]+(-2*t3+3*t2)*ys[i+1]+(t3-t2)*hh*m[i+1]; }}; }
-  function place(oldImg,newImg,box,M,isStage){ var W=box.clientWidth, H=box.clientHeight; if(!W) return 0; var k=W/M.w, vh=H/k, c=curve(M,vh);
-    if(Y>c.nMax) Y=c.nMax; var yo=c.f(Y);
-    if(isStage){ ty[0]=-yo*k; ty[1]=-Y*k; } kNow=k; box._span=c.nMax*k+H;
-    oldImg.style.transform='translate3d(0,'+(-yo*k).toFixed(1)+'px,0)'; newImg.style.transform='translate3d(0,'+(-Y*k).toFixed(1)+'px,0)';
-    return c.nMax; }
-  function chapter(M){ var lab=M.ch[0][1]; M.ch.forEach(function(c){ if(Y+ (mode==='d'?300:420) >= c[0]) lab=c[1]; });
-    if(lab===nowTxt) return; nowTxt=lab; var o=nowEl.querySelector('span.cur'); if(o){ o.className='out'; setTimeout(function(){ if(o.parentNode) o.parentNode.removeChild(o); },500); }
-    var sp=document.createElement('span'); sp.className='cur'; sp.textContent=lab; nowEl.querySelector('em').appendChild(sp); }
-  var nMaxNow=1;
-  function syncSc(list,box){ list.forEach(function(sc){ var h=Math.round(box._span||0)+'px'; if(sc.firstChild.style.height!==h) sc.firstChild.style.height=h; var v=Y*kNow; if(Math.abs(sc.scrollTop-v)>.6){ sc._want=v; sc.scrollTop=v; sc._want=sc.scrollTop; } }); }
-  function draw(){ var M=MAP[mode];
-    if(mode==='d'){ nMaxNow=place(dImgs[0],dImgs[1],stage,M,true); syncSc([scD],stage); pins(); }
-    else { var bx=root.querySelector('.jdx-scr'); nMaxNow=place(mImgs[0],mImgs[1],bx,M,false); syncSc(scM,bx); }
-    stage.style.setProperty('--p',(Y/nMaxNow).toFixed(4)); chapter(M); }
-  function loop(t){ if(!live){ last=0; return; }
-    if(last && !RM && !dragging && t>hold){ var dt=Math.min(.05,(t-last)/1000); runT+=dt; var ramp=Math.min(1,runT/2.2); ramp=ramp*ramp*(3-2*ramp);
-      var left=nMaxNow-Y, slow=Math.min(1,Math.max(.18,left/(MAP[mode].speed*1.6)));
-      Y+=MAP[mode].speed*dt*ramp*slow; draw();
-      if(Y>=nMaxNow-.5){ hold=Infinity; clearTimeout(rTimer); rTimer=setTimeout(restart,2800); } }
-    last=t; requestAnimationFrame(loop); }
-  function restart(){ root.classList.add('rst'); rTimer=setTimeout(function(){ Y=0; runT=0; draw(); root.classList.remove('rst'); hold=performance.now()+1200; },450); }
-  /* the visitor scrolls: take their position, pause the autoplay, pick it back up gently once they stop */
-  [scD].concat(scM).forEach(function(sc){ sc.addEventListener('scroll',function(){
-    if(sc._want!=null && Math.abs(sc.scrollTop-sc._want)<=2) return;
-    Y=Math.max(0,Math.min(nMaxNow,sc.scrollTop/kNow)); clearTimeout(rTimer); root.classList.remove('rst');
-    hold=performance.now()+2600; runT=0; draw(); },{passive:true}); });
+  /* reveal on scroll (blur-up); the chapter rule draws in */
+  var rev=[].slice.call(root.querySelectorAll('[data-r]')), chs=[].slice.call(root.querySelectorAll('[data-ch]'));
+  if(RM || !('IntersectionObserver' in window)){ rev.forEach(function(e){ e.classList.add('on'); }); chs.forEach(function(c){ c.classList.add('in'); }); }
+  else {
+    var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(function(e){ io.observe(e); });
+    var co=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); co.unobserve(e.target); } }); },{threshold:.18});
+    chs.forEach(function(c){ co.observe(c); });
+  }
 
-  function fromEvent(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
-  function dragOn(el,mouseOnly){ el.addEventListener('pointerdown',function(e){ if(mouseOnly && e.pointerType!=='mouse') return; if(e.button) return; dragging=true; root.classList.add('drag'); el.setPointerCapture(e.pointerId); setX(fromEvent(e)); e.preventDefault(); });
-    el.addEventListener('pointermove',function(e){ if(dragging) setX(fromEvent(e)); });
-    ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ el.addEventListener(n,function(){ if(dragging){ dragging=false; root.classList.remove('drag'); } }); }); }
-  dragOn(scD,true); dragOn(handle,false);
+  /* chapter links scroll the host page smoothly */
+  root.querySelectorAll('.jdc-map a').forEach(function(a){ a.addEventListener('click',function(e){ var t=root.querySelector(a.getAttribute('href')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'}); }); });
+
+  /* compare slider: only a sideways drag is captured, so up/down always scrolls the page */
+  var stage=root.querySelector('[data-stage]'), handle=stage.querySelector('.jdc-handle'), imB=stage.querySelector('img.b'), imA=stage.querySelector('img.a');
+  var lb=stage.querySelector('.jdc-lbl.b'), la=stage.querySelector('.jdc-lbl.a'), x=50, drag=false, sx=0, sy=0, decided=false, active=false;
+  function setX(v){ x=Math.max(0,Math.min(100,v)); stage.style.setProperty('--x',x+'%'); handle.setAttribute('aria-valuenow',Math.round(100-x)); handle.setAttribute('aria-valuetext',Math.round(100-x)+'% after'); lb.style.opacity=x<14?0:1; la.style.opacity=x>86?0:1; }
+  function at(e){ var r=stage.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
+  function begin(e){ decided=true; active=true; try{ stage.setPointerCapture(e.pointerId); }catch(_){} root.classList.add('drag'); setX(at(e)); }
+  stage.addEventListener('pointerdown',function(e){ if(e.button) return; drag=true; sx=e.clientX; sy=e.clientY; decided=false;
+    if(e.pointerType==='mouse' || e.target.closest('.jdc-handle')) begin(e); });
+  stage.addEventListener('pointermove',function(e){ if(!drag) return;
+    if(!decided){ var dx=Math.abs(e.clientX-sx), dy=Math.abs(e.clientY-sy); if(dx<6&&dy<6) return; if(dy>dx){ drag=false; return; } begin(e); }
+    setX(at(e)); });
+  function end(){ drag=false; decided=false; active=false; root.classList.remove('drag'); }
+  ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ stage.addEventListener(n,end); });
   handle.addEventListener('keydown',function(e){ var k=e.key, s=e.shiftKey?10:4; if(k==='ArrowLeft'){setX(x-s);e.preventDefault();} else if(k==='ArrowRight'){setX(x+s);e.preventDefault();} else if(k==='Home'){setX(0);e.preventDefault();} else if(k==='End'){setX(100);e.preventDefault();} });
 
+  /* pick which section pair to compare */
+  var PAIRS={hero:['old-hero','new-hero'],process:['old-process','new-process'],why:['old-why','new-why']};
+  [].slice.call(root.querySelectorAll('[data-pair]')).forEach(function(b,i,all){ b.addEventListener('click',function(){
+    if(b.getAttribute('aria-pressed')==='true') return;
+    all.forEach(function(o){ o.setAttribute('aria-pressed',o===b?'true':'false'); });
+    var p=PAIRS[b.dataset.pair]; stage.classList.add('swap');
+    setTimeout(function(){ var n=0; function done(){ if(++n===2){ stage.classList.remove('swap'); nudge(); } }
+      [[imB,p[0]],[imA,p[1]]].forEach(function(q){ q[0].onload=done; q[0].onerror=done; q[0].src=BASE+q[1]+'.webp'; if(q[0].complete && q[0].naturalWidth) { q[0].onload=null; done(); } });
+    }, RM?0:260); }); });
 
-  root.querySelectorAll('.jdx-tabs button').forEach(function(b){ b.addEventListener('click',function(){
-    mode=b.dataset.view; root.classList.toggle('m',mode==='m');
-    root.querySelectorAll('.jdx-tabs button').forEach(function(o){ o.setAttribute('aria-selected',o===b?'true':'false'); });
-    if(mode==='m') mImgs.forEach(function(img){ if(img.dataset.src){ img.src=img.dataset.src; img.removeAttribute('data-src'); img.addEventListener('load',draw); } });
-    root.classList.remove('rst'); Y=0; runT=0; hold=performance.now()+900; draw(); }); });
-
-  function reveal(){ if(intro) return; intro=true; root.classList.add('in'); pins();
-    if(RM){ setX(50); return; }
-    function tw(a,b,d,next){ var s=performance.now(); (function f(t){ var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; if(!dragging) setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
-    setTimeout(function(){ tw(100,0,1700,function(){ setTimeout(function(){ if(!dragging) tw(0,50,1100); },1300); }); }, 650); }
-
-  /* headline: wrap first-line words for the blur-up reveal */
-  var h2=root.querySelector('h2'), em=h2.querySelector('em'), first=h2.firstChild;
-  if(first && first.nodeType===3){ var words=first.textContent.trim().split(/\s+/), frag=document.createDocumentFragment();
-    words.forEach(function(w,i){ var sp=document.createElement('span'); sp.className='jdx-w'; sp.style.setProperty('--i',i); sp.textContent=w; frag.appendChild(sp); frag.appendChild(document.createTextNode(' ')); });
-    h2.replaceChild(frag,first); }
-
-  /* 3D tilt-in driven by scroll */
-  var persp=root.querySelector('.jdx-persp'), tq=false;
-  function tilt(){ tq=false; if(RM){ persp.style.setProperty('--tilt',0); return; } var r=persp.getBoundingClientRect(), vh=window.innerHeight;
-    var t=Math.min(1,Math.max(0,(vh*.98-r.top)/(vh*.62))); var e=1-Math.pow(1-t,3); persp.style.setProperty('--tilt',(1-e).toFixed(4)); }
-  window.addEventListener('scroll',function(){ if(!tq){ tq=true; requestAnimationFrame(tilt); } },{passive:true}); tilt();
-
-  /* notes: strike + rise when they reach the viewport */
-  var notes=[].slice.call(root.querySelectorAll('.jdx-note'));
-  if('IntersectionObserver' in window){ var no=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('go'); no.unobserve(e.target); } }); },{threshold:.4}); notes.forEach(function(n){ no.observe(n); }); }
-  else notes.forEach(function(n){ n.classList.add('go'); });
-
-  /* phones lean toward the cursor */
-  var ph=root.querySelector('.jdx-phones');
-  if(!RM && window.matchMedia('(hover:hover)').matches){ ph.addEventListener('pointermove',function(e){ var r=ph.getBoundingClientRect(); ph.style.setProperty('--lean',(((e.clientX-r.left)/r.width)*2-1).toFixed(3)); ph.style.setProperty('--leanY',(((e.clientY-r.top)/r.height)*2-1).toFixed(3)); });
-    ph.addEventListener('pointerleave',function(){ ph.style.setProperty('--lean',0); ph.style.setProperty('--leanY',0); }); }
-
-  setX(100); draw();
-  dImgs.forEach(function(img){ if(!img.complete) img.addEventListener('load',draw); });
-  window.addEventListener('resize',function(){ PINS.forEach(function(d){ d.w=0; }); draw(); });
-  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ reveal(); if(!live){ live=true; hold=performance.now()+500; requestAnimationFrame(loop); } } else live=false; }); },{threshold:.12}).observe(root); }
-  else { reveal(); live=true; requestAnimationFrame(loop); }
+  /* one gentle sweep when it first comes into view, so people see the line moves */
+  var shown=false;
+  function tw(a,b,d,next){ var s=performance.now(); (function f(t){ if(active) return; var k=Math.min(1,(t-s)/d), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; setX(a+(b-a)*e); if(k<1) requestAnimationFrame(f); else if(next) next(); })(s); }
+  function nudge(){ if(RM||active) return; tw(x,22,700,function(){ tw(x,78,1000,function(){ tw(x,50,700); }); }); }
+  setX(50);
+  if('IntersectionObserver' in window){ var so=new IntersectionObserver(function(en){ if(en[0].isIntersecting && !shown){ shown=true; setTimeout(nudge,800); so.disconnect(); } },{threshold:.5}); so.observe(stage); }
 })();
 </script>
 
