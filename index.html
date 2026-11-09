@@ -3,465 +3,279 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>JD Strategic Transformation</title>
-<meta name="description" content="How JD Strategic Franchising's website went from cluttered to credible: the before, the brand, the rebuild.">
+<title>JD Strategic Website Redesign</title>
+<meta name="description" content="JD Strategic Franchising's website, before and after: what was wrong, what we changed, and the finished site.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,700;1,600&family=Montserrat:wght@400;800&family=Lato:wght@700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#030D30;--body:#4A5163;--muted:#7A8194;--line:#E6E8EE;--tint:#F5F5F7;--g1:#001DFB;--g2:#0181FC;--g3:#0AEBFF;
-  --navy:#0A1D3A;--deep:#061020;--orange:#FF6A00;--ease:cubic-bezier(.22,1,.36,1);--gut:clamp(18px,4vw,64px)}
+:root{--ink:#030D30;--body:#4A5163;--muted:#737A8D;--line:#E6E8EE;--tint:#F5F5F7;--blue:#001DFB;
+  --navy:#0A1D3A;--orange:#FF6A00;--gut:clamp(16px,4vw,56px);--shadow:0 1px 2px rgba(3,13,48,.06),0 18px 44px -24px rgba(3,13,48,.28)}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%;height:auto}
-h1,h2,h3{margin:0;font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.035em;text-wrap:balance}
-.em{display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em;padding-bottom:.08em;
-  background:linear-gradient(100deg,var(--g1),var(--g2) 45%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.k{display:inline-flex;align-items:center;gap:12px;margin:0 0 18px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.k b{color:var(--g2);font-weight:600}
-.k i{width:26px;height:1px;background:linear-gradient(90deg,var(--g1),var(--g3))}
+body{margin:0;background:#fff;color:var(--body);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,ul,figure{margin:0}
+h1,h2,h3{font-family:'Outfit',system-ui,sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.03em;text-wrap:balance}
+ul{padding:0;list-style:none}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:var(--gut)}
+section{padding-block:clamp(64px,8vw,112px)}
+.head{max-width:760px;margin-bottom:clamp(32px,4vw,52px)}
+h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
+.head p{margin-top:14px;font-size:clamp(17px,1.4vw,19px)}
+.tint{background:var(--tint)}
 
-/* scroll progress */
-.prog{position:fixed;left:0;top:0;right:0;height:2px;z-index:50;background:linear-gradient(90deg,var(--g1),var(--g3));transform-origin:left;transform:scaleX(0)}
+/* hero */
+.hero{padding-block:clamp(24px,3.4vh,40px) clamp(44px,5vw,64px)}
+.hero-copy{max-width:980px;margin:0 auto clamp(18px,2.6vh,28px);text-align:center}
+.tag{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px}
+h1{font-size:clamp(35px,4.3vw,62px);line-height:1.03}
+h1 em{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.012em;color:var(--blue);line-height:1.08}
+.sub{max-width:700px;margin:12px auto 0;font-size:clamp(16px,1.35vw,19px);line-height:1.45}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.5vw,20px)}
+.ba figure{animation:rise .55s cubic-bezier(.22,1,.36,1) both}
+.ba figure+figure{animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.label{display:inline-block;margin-bottom:7px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;color:var(--muted)}
+.label.now{color:var(--blue)}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.shot img{width:100%}
+.diff{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,48px);margin-top:clamp(20px,2.6vw,32px)}
+.diff h3{font-size:20px;letter-spacing:-.015em;margin-bottom:3px}
+.diff p{font-size:16px;line-height:1.45}
+.diff s{color:var(--muted)}
 
-/* scenes */
-.scene{position:relative;min-height:100vh;min-height:100svh}
-.pin{height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
-.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+/* quote */
+.quote{text-align:center}
+.quote blockquote{margin:0 auto;max-width:920px;font-family:'Outfit',sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
+.quote cite{display:block;margin-top:20px;font-style:normal;font-size:16px;color:var(--muted)}
 
-/* 0 intro */
-#intro{display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-#intro::before{content:"";position:absolute;inset:-20% -10% auto;height:90%;background:radial-gradient(46% 55% at 50% 40%,rgba(1,129,252,.13),rgba(1,129,252,0) 70%);pointer-events:none}
-#intro h1{font-size:clamp(46px,8.4vw,128px);line-height:.95;position:relative}
-#intro h1 .w{display:inline-block}
-#intro .sub{margin:26px auto 0;max-width:46ch;font-size:clamp(16px,1.3vw,19px);position:relative}
-.cue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.cue i{position:relative;width:1px;height:46px;background:var(--line);overflow:hidden}
-.cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:linear-gradient(var(--g3),var(--g1));animation:cue 1.8s cubic-bezier(.6,0,.3,1) infinite}
-@keyframes cue{to{top:100%}}
+/* problems */
+.probs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,3.6vw,52px) clamp(20px,3vw,44px)}
+.probs .shot{aspect-ratio:16/9}
+.probs img{width:100%;height:100%;object-fit:cover}
+.probs h3{margin-top:18px;font-size:clamp(22px,2vw,27px);line-height:1.15}
+.probs p{margin-top:6px}
 
-/* browser frame */
-.win{position:relative;border-radius:14px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 4px rgba(3,13,48,.04),0 34px 70px -34px rgba(3,13,48,.32),0 80px 120px -70px rgba(1,29,120,.28)}
-.bar{display:flex;align-items:center;gap:12px;height:38px;padding:0 14px;border-bottom:1px solid var(--line);background:linear-gradient(#FBFBFC,#F3F4F7)}
-.bar span{display:flex;gap:6px}.bar span i{width:10px;height:10px;border-radius:50%;background:#DDE0E6}
-.bar em{flex:1;max-width:300px;margin:0 auto;height:22px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#fff;border:1px solid var(--line);font-size:11.5px;font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden}
-.view{position:relative;overflow:hidden;background:var(--tint)}
-.view img.tall{width:100%;height:auto;will-change:transform}
+/* process */
+.steps{display:grid;gap:0}
+.step{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:clamp(20px,4vw,64px);align-items:center;padding-block:clamp(28px,3.4vw,48px);border-top:1px solid var(--line)}
+.step:last-child{padding-bottom:0}
+.step .n{font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;color:var(--blue)}
+.step h3{margin-top:4px;font-size:clamp(25px,2.5vw,34px);line-height:1.1}
+.step p{margin-top:8px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px)}
+.panel{height:clamp(150px,17vw,250px);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(12px,2vw,28px)}
+.panel.bleed{padding:0;height:auto;aspect-ratio:16/9}
+.panel.bleed img{width:100%;height:100%;object-fit:cover}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);width:100%;height:100%;border-radius:6px;overflow:hidden}
+.panel.c{padding:0}
+.panel.c .sw{border-radius:0}
+.old-t{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(17px,2vw,29px);line-height:1.15;color:#F6AD55;text-shadow:2px 2px 5px rgba(0,0,0,.4);text-align:center}
+.new-t{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(23px,3vw,44px);line-height:1.05;letter-spacing:-.02em;color:var(--navy);text-align:center}
+.new-t i{display:block;color:var(--orange);font-weight:600}
 
-/* 1 before + 3 after share a layout */
-.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4.5vw,80px);align-items:center;width:100%}
-.split h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
-.list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:4px}
-.list li{position:relative;padding:14px 0 14px 22px;border-left:2px solid var(--line);opacity:.32;transition:opacity .5s var(--ease),border-color .5s var(--ease)}
-.list li b{display:block;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.5vw,21px);font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
-.list li span{display:block;margin-top:4px;font-size:14.5px;line-height:1.55;max-width:40ch}
-.list li.on{opacity:1;border-color:var(--g2)}
-#before .view{height:min(64vh,40vw)}
-#before .win{transform-origin:50% 60%}
+/* after */
+.show{display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,22vw,300px);gap:clamp(18px,3vw,40px);align-items:start}
+.frame{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.bar{height:34px;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--tint);border-bottom:1px solid var(--line)}
+.bar i{width:9px;height:9px;border-radius:50%;background:#D6D9E0}
+.view{position:relative;overflow:hidden;pointer-events:none;background:#fff}
+.desk .view{height:clamp(420px,calc(100vh - 210px),720px)}
+.ph{border:1px solid #D6D9E0;border-radius:30px;padding:8px;background:var(--ink);box-shadow:var(--shadow);position:relative}
+.ph .view{border-radius:23px;aspect-ratio:9/19.5}
+.ph.ghost{background:#8C93A3;border-color:#8C93A3}
+.auto img{width:100%}
+.pp{position:absolute;right:10px;bottom:10px;z-index:2;font:600 13px/1 'Inter',sans-serif;color:#fff;background:rgba(3,13,48,.78);border:0;border-radius:6px;padding:9px 12px;cursor:pointer}
+.ph .pp{right:18px;bottom:20px}
+.pp:focus-visible,.btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.cap{margin-top:9px;font-size:15px;font-weight:600;color:var(--ink);font-family:'Outfit',sans-serif;text-align:center}
+.after-foot{margin-top:clamp(26px,3vw,38px);text-align:center}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-family:'Outfit',sans-serif;font-weight:600;font-size:18px;padding:16px 30px;border-radius:8px;transition:background .18s}
+.btn:hover{background:var(--ink)}
 
-/* 2 brand */
-#brand .wrap{text-align:center}
-#brand h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
-.steps{display:inline-flex;gap:6px;margin:26px 0 0;padding:5px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
-.steps span{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease)}
-.steps span.on{background:var(--ink);color:#fff;box-shadow:0 8px 20px -10px rgba(3,13,48,.6)}
-.stage{position:relative;height:min(46vh,420px);margin:clamp(24px,4vh,48px) auto 0;max-width:980px}
-.panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden}
-.cap{margin:clamp(20px,3vh,34px) 0 0;font-family:'Outfit',sans-serif;font-size:clamp(18px,1.7vw,24px);font-weight:600;letter-spacing:-.015em;color:var(--ink);text-wrap:balance}
-.cap s{color:var(--muted);text-decoration-thickness:1.5px;font-weight:500}
-/* colors */
-.sw{display:flex;gap:clamp(10px,1.6vw,22px)}
-.sw i{position:relative;width:clamp(64px,9vw,128px);aspect-ratio:1;border-radius:22%;box-shadow:inset 0 0 0 1px rgba(3,13,48,.08),0 20px 40px -24px rgba(3,13,48,.5)}
-.sw i span{position:absolute;left:0;right:0;bottom:-26px;font:600 11.5px/1 'Inter',sans-serif;letter-spacing:.06em;color:var(--muted)}
-/* logo */
-.logos{position:relative;width:min(560px,80vw);aspect-ratio:1576/392}
-.logos img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;filter:blur(1.2px);image-rendering:auto}
-.logos svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--navy)}
-/* type */
-.types{position:relative;width:min(900px,90vw);height:clamp(140px,20vh,200px)}
-.types .o,.types .n{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
-.types .o{font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(28px,4vw,56px);line-height:1.1;color:#F6AD55;text-shadow:2px 2px 5px rgba(0,0,0,.45)}
-.types .n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(40px,6vw,88px);line-height:1;letter-spacing:-.02em;color:var(--navy)}
-.types .n i{font-style:italic;font-weight:600;color:var(--orange)}
-.types .c,.types .wd{display:inline-block;white-space:pre}
-/* photo */
-.photos{position:relative;width:min(560px,82vw);aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(3,13,48,.55)}
-.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.photos img.n{object-position:50% 22%;clip-path:circle(0% at 50% 50%)}
+/* mobile */
+.mob{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:clamp(32px,6vw,96px);align-items:center}
+.pair{display:grid;grid-template-columns:repeat(2,clamp(150px,20vw,270px));gap:clamp(12px,2.4vw,32px)}
+.list{margin-top:clamp(20px,2.4vw,30px)}
+.list li{padding:14px 0;border-top:1px solid var(--line)}
+.list b{display:block;color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.012em}
 
-/* 3 after: the dark moment */
-#after{color:rgba(255,255,255,.7)}
-#after h2{color:#fff}
-#after .k{color:rgba(255,255,255,.55)}
-#after .list li{border-color:rgba(255,255,255,.14)}
-#after .list li b{color:#fff}
-#after .list li.on{border-color:var(--g3)}
-#after .win{border-color:rgba(255,255,255,.12);box-shadow:0 60px 120px -50px rgba(0,0,0,.9),0 0 0 1px rgba(10,235,255,.12)}
-#after .bar{background:linear-gradient(#141B2C,#0E1424);border-color:rgba(255,255,255,.08)}
-#after .bar span i{background:rgba(255,255,255,.16)}
-#after .bar em{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-#after .view{height:min(64vh,40vw);background:var(--deep)}
-.bg{position:fixed;inset:0;z-index:-1;background:var(--deep);opacity:0;pointer-events:none}
-.bg::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 70% 30%,rgba(1,129,252,.22),rgba(1,129,252,0) 70%),radial-gradient(40% 50% at 15% 85%,rgba(10,235,255,.10),rgba(10,235,255,0) 70%)}
+/* work */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,48px) clamp(18px,2.6vw,36px)}
+.work h3{margin-top:14px;font-size:21px;letter-spacing:-.015em}
+.work p{font-size:16px}
+footer{padding:32px 0;text-align:center;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
 
-/* 4 phones */
-#phones{padding:clamp(80px,12vh,140px) 0;text-align:center;min-height:auto}
-#phones h2{font-size:clamp(34px,4.4vw,62px);line-height:1}
-.phones{display:grid;grid-template-columns:repeat(3,minmax(0,min(230px,26vh)));justify-content:center;gap:clamp(14px,4vw,60px);margin-top:clamp(40px,6vh,72px)}
-.phone{border-radius:38px;padding:9px;background:#0B0E16;box-shadow:inset 0 0 0 2px #2A2F3A,0 50px 90px -40px rgba(3,13,48,.55)}
-.phone>div{position:relative;border-radius:30px;overflow:hidden;background:#fff}
-.phone>div::before{content:"";position:absolute;z-index:2;top:8px;left:50%;width:30%;height:20px;margin-left:-15%;border-radius:20px;background:#0B0E16}
-.phone img{width:100%}
-
-/* 5 reveal */
-#reveal .wrap{text-align:center}
-#reveal h2{font-size:clamp(34px,4.4vw,62px);line-height:1;position:relative;height:1.1em}
-#reveal h2 span{position:absolute;left:0;right:0;top:0}
-.cmp{margin:clamp(22px,4vh,44px) auto 0;max-width:1100px}
-.stg{position:relative;height:min(62vh,42vw);overflow:hidden;background:var(--tint);user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
-.stg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none}
-.stg img.a{clip-path:inset(0 0 0 var(--x,100%))}
-.stg .lb{position:absolute;bottom:14px;z-index:3;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transition:opacity .3s}
-.stg .lb.b{left:14px;background:rgba(255,255,255,.92);color:var(--ink);box-shadow:0 0 0 1px rgba(3,13,48,.08)}
-.stg .lb.a{right:14px;background:rgba(3,13,48,.82);color:#fff}
-.hd{position:absolute;top:0;bottom:0;left:var(--x,100%);z-index:4;width:48px;margin-left:-24px;border:0;background:none;padding:0;cursor:ew-resize;touch-action:none}
-.hd::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:linear-gradient(var(--g3),var(--g1));box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 26px rgba(1,129,252,.6)}
-.hd b{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));box-shadow:0 0 0 4px rgba(255,255,255,.92),0 14px 34px -10px rgba(1,29,180,.7)}
-.hd b svg{width:22px;height:22px}
-.hint{margin:16px 0 0;font-size:13px;color:var(--muted);opacity:0;transition:opacity .6s var(--ease)}
-.hint.on{opacity:1}
-
-/* 6 end */
-#end{display:flex;align-items:center;text-align:center;min-height:90vh;min-height:90svh}
-#end h2{font-size:clamp(40px,6.4vw,96px);line-height:.98}
-.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin:34px auto 0;padding:0;list-style:none;max-width:900px}
-.facts li{padding:6px 18px;font-size:14px;font-weight:500;color:var(--ink);border-left:1px solid var(--line)}
-.facts li:first-child{border-left:0}
-.live{display:inline-flex;align-items:center;gap:10px;margin-top:40px;padding:15px 22px;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 18px 40px -20px rgba(3,13,48,.7);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.live svg{width:16px;height:16px;color:var(--g3)}
-.live:hover{transform:translateY(-2px);box-shadow:0 24px 50px -20px rgba(1,29,180,.7)}
-.live:focus-visible,.hd:focus-visible{outline:2px solid var(--g2);outline-offset:4px}
-
-/* phones and small screens */
-@media (max-width:860px){
-  .split{grid-template-columns:minmax(0,1fr);gap:18px;align-content:center}
-  .split h2{font-size:clamp(30px,8vw,44px)}
-  .list{position:relative;margin-top:14px;height:84px}
-  .list li{position:absolute;left:0;right:0;top:0;padding:8px 0 8px 16px;opacity:0;border-color:var(--g2)}
-  .list li.on{opacity:1}
-  .list li span{font-size:13.5px}
-  #before .view,#after .view{height:44svh}
-  .k{margin-bottom:10px}
-  .stage{height:40svh}
-  .steps span{padding:7px 10px;font-size:12px}
-  .phones{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .phone{border-radius:20px;padding:5px}.phone>div{border-radius:16px}.phone>div::before{height:10px;top:5px}
-  .stg{height:56svh}
-  .facts li{border-left:0;padding:4px 10px}
+@media (max-width:760px){
+  body{font-size:16px}
+  .ba,.probs,.step,.show,.mob,.work{grid-template-columns:minmax(0,1fr)}
+  .ba{gap:8px}
+  .label{margin-bottom:3px;font-size:14px}
+  .diff{grid-template-columns:1fr;gap:16px}
+  .panel{height:150px}
+  .ph.solo{max-width:260px;margin-inline:auto}
+  .desk .view{height:62vh;height:62svh}
+  .pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .ph{border-radius:24px;padding:6px}.ph .view{border-radius:19px}
+  .btn{display:block;text-align:center}
 }
-/* no motion, or GSAP failed: everything simply shows, nothing is pinned */
-.static .panel{position:relative;opacity:1;visibility:visible;margin-bottom:60px}
-.static .stage{height:auto}
-.static .pin{height:auto;padding:90px 0}
-.static .list li{position:relative;opacity:1}
-.static .list{height:auto}
-.static .photos img.n{clip-path:none}
-.static .logos img,.static .types .o{display:none}
-.static .stg img.a{clip-path:inset(0 0 0 50%)}
-.static .hd{left:50%}
+@media (prefers-reduced-motion:reduce){.ba figure{animation:none}}
 </style>
 </head>
 <body>
-<div class="prog" aria-hidden="true"></div>
-<div class="bg" aria-hidden="true"></div>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="arrows" viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-</defs></svg>
-
 <main>
-  <!-- 0 -->
-  <section class="scene" id="intro">
-    <div class="wrap">
-      <p class="k" data-in><i></i>JD Strategic Franchising &middot; Website redesign<i></i></p>
-      <h1 data-split>Same founder. <span class="em">A whole new first impression.</span></h1>
-      <p class="sub" data-in>How a franchise expert&rsquo;s website went from cluttered to credible.</p>
+
+<section class="hero"><div class="wrap">
+  <div class="hero-copy">
+    <p class="tag">JD Strategic Franchising &middot; Website Redesign</p>
+    <h1>His website looked like a template. <em>Now it looks like the expert he is.</em></h1>
+    <p class="sub">We rebuilt Josh DuBois's logo, headlines, photos and pages, so a franchise buyer trusts him before the first call.</p>
+  </div>
+  <div class="ba">
+    <figure><span class="label">Before</span><div class="shot"><img src="assets/v2/old-hero.webp" width="1800" height="1125" alt="The old JD Strategic homepage: pale orange headline, YouTube thumbnail, chat pop-up"></div></figure>
+    <figure><span class="label now">After</span><div class="shot"><img src="assets/v2/new-hero.webp" width="1800" height="1125" alt="The new JD Strategic homepage: navy logo, serif headline, photo of Josh"></div></figure>
+  </div>
+  <div class="diff">
+    <div><h3>Logo</h3><p><s>A blurry image file.</s> Now a sharp navy and orange logo at any size.</p></div>
+    <div><h3>Headline</h3><p><s>Pale orange and generic.</s> Now dark, readable and says what he does.</p></div>
+    <div><h3>Photos</h3><p><s>A YouTube thumbnail.</s> Now real photos of Josh and his business.</p></div>
+  </div>
+</div></section>
+
+<!-- Client quote: paste Josh DuBois's real words into the blockquote, then remove "hidden". Never ship an invented quote. -->
+<section class="quote tint" hidden><div class="wrap">
+  <blockquote></blockquote>
+  <cite>Josh DuBois, Founder, JD Strategic Franchising</cite>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><h2>Four problems were costing him trust.</h2><p>A franchise is a major purchase. This is what buyers saw when they checked him out.</p></div>
+  <div class="probs">
+    <article><div class="shot"><img src="assets/v7/p-headline.webp" width="750" height="500" loading="lazy" alt="Pale orange headline and orange button with blue text"></div><h3>The headline was hard to read</h3><p>Pale orange on white, with an orange button carrying bright blue text.</p></article>
+    <article><div class="shot"><img src="assets/v3/old-thumb.webp" width="600" height="338" loading="lazy" alt="The YouTube thumbnail that filled the old hero"></div><h3>The main image was a YouTube thumbnail</h3><p>Loud graphics took the spot where buyers should have met Josh.</p></article>
+    <article><div class="shot"><img src="assets/v7/p-text.webp" width="900" height="600" loading="lazy" alt="Small paragraphs of text on the old site"></div><h3>Every section was a wall of text</h3><p>One font and small paragraphs, so nothing told visitors where to look.</p></article>
+    <article><div class="shot"><img src="assets/v7/p-chat.webp" width="900" height="600" loading="lazy" alt="A chat pop-up covering centered paragraphs on the old site"></div><h3>A pop-up covered the page</h3><p>A chat box sat on top of the opening paragraphs, with no clear next step.</p></article>
+  </div>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="head"><h2>How we fixed it, step by step.</h2><p>Brand first, then the pages. Old on the left, new on the right.</p></div>
+  <div class="steps">
+    <div class="step">
+      <div><span class="n">Step 1</span><h3>Refined the colors</h3><p>Four competing colors became one navy and one orange.</p></div>
+      <div class="vs">
+        <div class="panel c"><div class="sw" role="img" aria-label="Old colors: orange, blue, black, off-white"><i style="background:#F6AD55"></i><i style="background:#188BF6"></i><i style="background:#000"></i><i style="background:#FAFAFA"></i></div></div>
+        <div class="panel c"><div class="sw" role="img" aria-label="New colors: navy, orange, deep navy, cream"><i style="background:#0A1D3A"></i><i style="background:#FF6A00"></i><i style="background:#061020"></i><i style="background:#FAF9F7"></i></div></div>
+      </div>
     </div>
-    <div class="cue" aria-hidden="true">Scroll<i></i></div>
-  </section>
-
-  <!-- 1 -->
-  <section class="scene" id="before">
-    <div class="pin"><div class="wrap"><div class="split">
-      <div class="copy">
-        <p class="k"><b>01</b>The before</p>
-        <h2>This was his website.</h2>
-        <ul class="list">
-          <li><b>Colors fighting each other</b><span>Orange buttons with bright blue text and drop-shadowed headlines.</span></li>
-          <li><b>Walls of centered text</b><span>One font for everything, so nothing told visitors where to look.</span></li>
-          <li><b>No clear next step</b><span>Long paragraphs, a flyer mid-page, and the ask buried at the bottom.</span></li>
-        </ul>
+    <div class="step">
+      <div><span class="n">Step 2</span><h3>Redrew the logo</h3><p>The blurry image became a clean vector that stays sharp everywhere.</p></div>
+      <div class="vs">
+        <div class="panel"><img src="assets/v3/old-logo.png" width="226" height="116" alt="The old raster logo" style="width:min(170px,80%)"></div>
+        <div class="panel" style="color:#0A1D3A"><svg viewBox="0 0 1576 392" role="img" aria-label="The new vector logo" style="width:100%">
+          <path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="#0A1D3A"/><rect x="24" y="24" width="352" height="342" fill="#0A1D3A"/>
+          <text x="50" y="276" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="#fff">JD</text>
+          <path d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
+          <rect x="456" y="0" width="976" height="12" fill="currentColor"/><rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/>
+          <text x="456" y="208" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
+          <text x="462" y="324" font-family="Montserrat,Inter,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
+          <rect x="456" y="378" width="976" height="12" fill="currentColor"/><rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/>
+        </svg></div>
       </div>
-      <figure class="win" style="margin:0">
-        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>jdfranchising.com</em></div>
-        <div class="view"><img class="tall" src="assets/old-desktop.webp" width="1600" height="4982" alt="The old JD Strategic homepage, top to bottom"></div>
-      </figure>
-    </div></div></div>
-  </section>
-
-  <!-- 2 -->
-  <section class="scene" id="brand">
-    <div class="pin"><div class="wrap">
-      <p class="k"><b>02</b>The brand</p>
-      <h2>First, we fixed the brand.</h2>
-      <div class="steps" aria-hidden="true"><span class="on">Color</span><span>Logo</span><span>Type</span><span>Photos</span></div>
-      <div class="stage">
-        <div class="panel p1">
-          <div class="sw">
-            <i style="background:#F6AD55" data-to="#0A1D3A"><span data-a="F6AD55" data-b="0A1D3A">F6AD55</span></i>
-            <i style="background:#188BF6" data-to="#FF6A00"><span data-a="188BF6" data-b="FF6A00">188BF6</span></i>
-            <i style="background:#000000" data-to="#061020"><span data-a="000000" data-b="061020">000000</span></i>
-            <i style="background:#FAFAFA" data-to="#FAF9F7"><span data-a="FAFAFA" data-b="FAF9F7">FAFAFA</span></i>
-          </div>
-          <p class="cap" style="margin-top:56px"><s>Four loud colors.</s> One navy and one orange.</p>
-        </div>
-        <div class="panel p2">
-          <div class="logos">
-            <img src="assets/v3/old-logo.png" width="226" height="116" alt="The old raster logo">
-            <svg viewBox="0 0 1576 392" role="img" aria-label="The new vector logo">
-              <g class="lg-box"><path d="M0 0H400V156H388V12H12V378H190V390H0Z" fill="#0A1D3A"/><rect x="24" y="24" width="352" height="342" fill="#0A1D3A"/></g>
-              <text class="lg-jd" x="50" y="276" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="268" textLength="294" lengthAdjust="spacingAndGlyphs" fill="#fff">JD</text>
-              <path class="lg-or" d="M388 168H400V390H200V378H388Z" fill="#FF6A00"/>
-              <g class="lg-top"><rect x="456" y="0" width="976" height="12" fill="currentColor"/><rect x="1448" y="0" width="122" height="12" fill="#FF6A00"/></g>
-              <text class="lg-t1" x="456" y="208" font-family="Montserrat,Inter,sans-serif" font-weight="800" font-size="184" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="currentColor">STRATEGIC</text>
-              <text class="lg-t2" x="462" y="324" font-family="Montserrat,Inter,sans-serif" font-weight="400" font-size="82" textLength="1106" lengthAdjust="spacing" fill="currentColor">FRANCHISING</text>
-              <g class="lg-bot"><rect x="456" y="378" width="976" height="12" fill="currentColor"/><rect x="1448" y="378" width="122" height="12" fill="#FF6A00"/></g>
-            </svg>
-          </div>
-          <p class="cap"><s>A blurry image.</s> A crisp vector logo, sharp at any size.</p>
-        </div>
-        <div class="panel p3">
-          <div class="types">
-            <div class="o" data-chars>Discover Carefully Vetted Franchise Opportunities</div>
-            <div class="n"><span data-words>Buy a franchise</span> <i data-words>worth owning.</i></div>
-          </div>
-          <p class="cap"><s>Lato for everything.</s> A serif with authority.</p>
-        </div>
-        <div class="panel p4">
-          <div class="photos">
-            <img class="o" src="assets/v3/old-thumb.webp" width="600" height="338" alt="The old YouTube thumbnail hero">
-            <img class="n" src="assets/v2/photo-who.webp" width="800" height="1000" alt="A real portrait of Josh DuBois from his own footage">
-          </div>
-          <p class="cap"><s>A YouTube thumbnail.</s> Real 4K photos of Josh.</p>
-        </div>
+    </div>
+    <div class="step">
+      <div><span class="n">Step 3</span><h3>Rewrote the headline</h3><p>A vague line in a default font became a clear promise in a confident serif.</p></div>
+      <div class="vs">
+        <div class="panel"><div class="old-t">Discover Carefully Vetted Franchise Opportunities</div></div>
+        <div class="panel"><div class="new-t">Buy a franchise <i>worth owning.</i></div></div>
       </div>
+    </div>
+    <div class="step">
+      <div><span class="n">Step 4</span><h3>Showed the real business</h3><p>Graphics came out. Real photos of Josh working with owners went in.</p></div>
+      <div class="vs">
+        <div class="panel bleed"><img src="assets/v3/old-thumb.webp" width="600" height="338" loading="lazy" alt="The old YouTube thumbnail"></div>
+        <div class="panel bleed"><img src="assets/v7/photo-floor.webp" width="1400" height="933" loading="lazy" alt="Josh with a franchise owner inside a laundromat"></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><h2>Then we rebuilt the whole site.</h2><p>This is the finished homepage, top to bottom. It scrolls by itself.</p></div>
+  <div class="show">
+    <div class="frame desk"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="view auto" data-speed="130"><img src="assets/new-desktop.webp" width="1600" height="13472" loading="lazy" alt="The complete new JD Strategic homepage"></div>
+      <button class="pp" type="button">Pause</button>
+    </div>
+    <div><div class="ph solo">
+      <div class="view auto" data-speed="130"><img src="assets/new-mobile.jpg" width="720" height="29943" loading="lazy" alt="The complete new homepage on a phone"></div>
+      <button class="pp" type="button">Pause</button>
     </div></div>
-  </section>
+  </div>
+  <div class="after-foot"><a class="btn" href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See The Live Site</a></div>
+</div></section>
 
-  <!-- 3 -->
-  <section class="scene" id="after">
-    <div class="pin"><div class="wrap"><div class="split">
-      <div class="copy">
-        <p class="k"><b>03</b>The rebuild</p>
-        <h2>Then we rebuilt every page.</h2>
-        <ul class="list">
-          <li><b>He leads, with proof</b><span>His portrait, his credentials and what it costs, above the fold.</span></li>
-          <li><b>A fit finder</b><span>Six questions that land straight in his CRM.</span></li>
-          <li><b>Five clear steps</b><span>The whole process, from first call to signing.</span></li>
-          <li><b>One next step</b><span>The same call to action, page after page.</span></li>
-        </ul>
-      </div>
-      <figure class="win" style="margin:0">
-        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>JD Strategic Franchising</em></div>
-        <div class="view"><img class="tall" src="assets/new-desktop.webp" width="1600" height="13472" alt="The new JD Strategic homepage, top to bottom"></div>
-      </figure>
-    </div></div></div>
-  </section>
+<section class="tint"><div class="wrap mob">
+  <div>
+    <h2>Now it works on a phone.</h2>
+    <ul class="list">
+      <li><b>One clean column</b>Each section stacks in reading order.</li>
+      <li><b>Text you don't have to zoom</b>Headlines and paragraphs are sized for a phone.</li>
+      <li><b>Forms that use the whole screen</b>Almost no wasted padding around the fields.</li>
+      <li><b>Booking right on the page</b>The calendar opens without leaving the site.</li>
+    </ul>
+  </div>
+  <div class="pair">
+    <figure><div class="ph ghost"><div class="view auto" data-speed="110"><img src="assets/old-mobile.jpg" width="720" height="20625" loading="lazy" alt="The old homepage on a phone"></div><button class="pp" type="button">Pause</button></div><p class="cap" style="color:var(--muted)">Before</p></figure>
+    <figure><div class="ph"><div class="view auto" data-speed="110"><img src="assets/new-mobile.jpg" width="720" height="29943" loading="lazy" alt="The new homepage on a phone"></div><button class="pp" type="button">Pause</button></div><p class="cap" style="color:var(--blue)">After</p></figure>
+  </div>
+</div></section>
 
-  <!-- 4 -->
-  <section class="scene" id="phones">
-    <div class="wrap">
-      <p class="k" data-in><b>04</b>On the go</p>
-      <h2 data-in>And it works on every phone.</h2>
-      <div class="phones">
-        <div class="phone" data-depth="1.0"><div><img src="assets/v2/new-phone-a.webp" width="780" height="1688" alt="The new homepage on a phone" loading="lazy"></div></div>
-        <div class="phone" data-depth="-0.6"><div><img src="assets/v2/new-phone-b.webp" width="780" height="1688" alt="The fit finder on a phone" loading="lazy"></div></div>
-        <div class="phone" data-depth="0.7"><div><img src="assets/v2/new-phone-c.webp" width="780" height="1688" alt="The five steps on a phone" loading="lazy"></div></div>
-      </div>
-    </div>
-  </section>
+<section><div class="wrap">
+  <div class="head"><h2>More of our work.</h2></div>
+  <div class="work">
+    <article><div class="shot"><img src="assets/v7/w-rigfmo.webp" width="1800" height="1125" loading="lazy" alt="The Real Insurance Group website"></div><h3>The Real Insurance Group</h3><p>Company website for a Medicare agency network</p></article>
+    <article><div class="shot"><img src="assets/v7/w-mmi.webp" width="1800" height="1125" loading="lazy" alt="Money Type Decoded registration page"></div><h3>Money Type Decoded</h3><p>Live training registration page</p></article>
+    <article><div class="shot"><img src="assets/v7/w-mark.webp" width="1800" height="1125" loading="lazy" alt="Medicare PA video funnel"></div><h3>Medicare PA</h3><p>Three-step call funnel</p></article>
+    <article><div class="shot"><img src="assets/v7/w-justin.webp" width="1800" height="1125" loading="lazy" alt="Just Insurance ASL Medicare page"></div><h3>Just Insurance ASL</h3><p>Medicare funnel in American Sign Language</p></article>
+    <article><div class="shot"><img src="assets/v7/w-melody.webp" width="1800" height="1125" loading="lazy" alt="Melody Circle website"></div><h3>Melody Circle</h3><p>Baby music class funnel</p></article>
+    <article><div class="shot"><img src="assets/v7/w-abbott.webp" width="1800" height="1125" loading="lazy" alt="GenAI prompt library sales page"></div><h3>Dean Abbott Prompt Library</h3><p>Digital product sales page</p></article>
+  </div>
+</div></section>
 
-  <!-- 5 -->
-  <section class="scene" id="reveal">
-    <div class="pin"><div class="wrap">
-      <p class="k"><b>05</b>Side by side</p>
-      <h2><span class="r1">From this&hellip;</span><span class="r2" style="opacity:0">&hellip;to this.</span></h2>
-      <figure class="win cmp" style="margin-bottom:0">
-        <div class="bar"><span aria-hidden="true"><i></i><i></i><i></i></span><em>Before &rarr; After</em></div>
-        <div class="stg">
-          <img class="b" src="assets/v2/old-hero.webp" width="1800" height="1125" alt="Before: the old homepage">
-          <img class="a" src="assets/v2/new-hero.webp" width="1800" height="1125" alt="After: the new homepage">
-          <span class="lb b">Before</span><span class="lb a">After</span>
-          <button type="button" class="hd" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><b><svg aria-hidden="true"><use href="#arrows"/></svg></b></button>
-        </div>
-      </figure>
-      <p class="hint">Drag the line to compare</p>
-    </div></div>
-  </section>
-
-  <!-- 6 -->
-  <section class="scene" id="end">
-    <div class="wrap">
-      <h2 data-in>From cluttered <span class="em">to credible.</span></h2>
-      <ul class="facts" data-in>
-        <li>Brand board</li><li>Vector logo</li><li>11 pages</li><li>Fit finder in his CRM</li><li>A 4-minute film</li>
-      </ul>
-      <a class="live" data-in href="https://jd-strategic-site.vercel.app/" target="_blank" rel="noopener">See the live site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-    </div>
-  </section>
 </main>
+<footer>&copy; 2026</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+/* Auto-scroll runs inside the frames only. Frames ignore the pointer, so the wheel and touch always move the page. */
 (function(){
-  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var $=function(s,c){return (c||document).querySelector(s);}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
-
-  /* split helpers */
-  $$('[data-chars]').forEach(function(el){ el.innerHTML=el.textContent.split('').map(function(ch){ return '<span class="c">'+(ch===' '?' ':ch)+'</span>'; }).join(''); });
-  $$('[data-words]').forEach(function(el){ el.innerHTML=el.textContent.split(' ').map(function(w){ return '<span class="wd">'+w+'</span>'; }).join(' '); });
-  var h1=$('[data-split]'), first=h1.firstChild;
-  if(first && first.nodeType===3){ var frag=document.createDocumentFragment(); first.textContent.trim().split(/\s+/).forEach(function(w){ var s=document.createElement('span'); s.className='w'; s.textContent=w; frag.appendChild(s); frag.appendChild(document.createTextNode(' ')); }); h1.replaceChild(frag,first); }
-
-  /* compare slider (works with or without GSAP) */
-  var stg=$('.stg'), hd=$('.hd'), lbB=$('.lb.b',stg), lbA=$('.lb.a',stg), X=100, userX=false;
-  function setX(v){ X=Math.max(0,Math.min(100,v)); stg.style.setProperty('--x',X+'%'); hd.setAttribute('aria-valuenow',Math.round(100-X)); lbB.style.opacity=X<12?0:1; lbA.style.opacity=X>88?0:1; }
-  (function(){ var drag=false, dec=false, sx=0, sy=0;
-    function at(e){ var r=stg.getBoundingClientRect(); return (e.clientX-r.left)/r.width*100; }
-    function go(e){ dec=true; userX=true; try{stg.setPointerCapture(e.pointerId);}catch(_){} setX(at(e)); $('.hint').classList.add('on'); }
-    stg.addEventListener('pointerdown',function(e){ if(e.button) return; drag=true; dec=false; sx=e.clientX; sy=e.clientY; if(e.pointerType==='mouse'||e.target.closest('.hd')) go(e); });
-    stg.addEventListener('pointermove',function(e){ if(!drag) return; if(!dec){ var dx=Math.abs(e.clientX-sx), dy=Math.abs(e.clientY-sy); if(dx<6&&dy<6) return; if(dy>dx){ drag=false; return; } go(e); } setX(at(e)); });
-    ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){ stg.addEventListener(n,function(){ drag=false; dec=false; }); });
-    hd.addEventListener('keydown',function(e){ var s=e.shiftKey?10:4; if(e.key==='ArrowLeft'){userX=true;setX(X-s);e.preventDefault();} if(e.key==='ArrowRight'){userX=true;setX(X+s);e.preventDefault();} });
-  })();
-
-  if(RM || !window.gsap || !window.ScrollTrigger){ document.documentElement.classList.add('static'); setX(50); $$('.list li').forEach(function(l){ l.classList.add('on'); }); $('.r2').style.opacity=1; $('.r1').style.opacity=0; $('.hint').classList.add('on'); return; }
-
-  gsap.registerPlugin(ScrollTrigger);
-  var mob=window.matchMedia('(max-width:860px)').matches;
-  setX(100);
-
-  /* progress bar */
-  gsap.to('.prog',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
-
-  /* 0 intro: words rise out of blur */
-  gsap.set('#intro .w,#intro .em',{yPercent:60,opacity:0,filter:'blur(12px)'});
-  gsap.set('#intro [data-in]',{y:18,opacity:0});
-  var tIn=gsap.timeline({delay:.2});
-  tIn.to('#intro .k',{y:0,opacity:1,duration:.8,ease:'power3.out'})
-     .to('#intro .w',{yPercent:0,opacity:1,filter:'blur(0px)',duration:1,ease:'power4.out',stagger:.07},'-=.5')
-     .to('#intro .em',{yPercent:0,opacity:1,filter:'blur(0px)',duration:1.2,ease:'power4.out'},'-=.7')
-     .to('#intro .sub',{y:0,opacity:1,duration:.9,ease:'power3.out'},'-=.8');
-  gsap.to('#intro .wrap',{yPercent:-18,opacity:0,ease:'none',scrollTrigger:{trigger:'#intro',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('.cue',{opacity:0,scrollTrigger:{trigger:'#intro',start:'top top',end:'15% top',scrub:true}});
-
-  /* shared: a tall screenshot scrolls inside its frame as the page scrolls; list items light in turn */
-  function walk(id,len,marks,extra){
-    var sec=$(id), view=$('.view',sec), img=$('img.tall',view), items=$$('.list li',sec);
-    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'+='+len,pin:$('.pin',sec),scrub:.8,anticipatePin:1,invalidateOnRefresh:true,
-      onUpdate:function(st){ var p=st.progress, k=-1; marks.forEach(function(m,i){ if(p>=m) k=i; }); items.forEach(function(li,i){ li.classList.toggle('on',i===k||(!mob&&i<k)); }); }}});
-    var ent={trigger:sec,start:'top 90%',end:'top 10%',scrub:.8};
-    gsap.fromTo($('.copy',sec),{x:-50,opacity:0,filter:'blur(8px)'},{x:0,opacity:1,filter:'blur(0px)',ease:'power2.out',scrollTrigger:ent});
-    gsap.fromTo($('.win',sec),{y:120,scale:.88,rotateX:16,opacity:0,transformPerspective:1400},{y:0,scale:1,rotateX:0,opacity:1,ease:'power2.out',scrollTrigger:ent});
-    tl.to(img,{y:function(){ return -(img.offsetHeight-view.clientHeight); },ease:'none',duration:.84},.02);
-    if(extra) extra(tl,sec);
-    return tl;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.pp').forEach(function(b){b.hidden=true});return;
   }
-
-  /* 1 before */
-  walk('#before',mob?'200%':'230%',[.06,.34,.6],function(tl,sec){
-    tl.fromTo($('.win',sec),{scale:1,filter:'grayscale(0) brightness(1)',opacity:1},{scale:.92,filter:'grayscale(1) brightness(1.05)',opacity:.35,duration:.12,ease:'power1.in',immediateRender:false},.88)
-      .fromTo($('.copy',sec),{opacity:1,x:0},{opacity:0,x:-30,duration:.1,immediateRender:false},.9);
+  var HOLD=2200,FADE=420;
+  document.querySelectorAll('.auto').forEach(function(view){
+    var img=view.querySelector('img'),btn=view.parentNode.querySelector('.pp');
+    var speed=+view.dataset.speed,y=0,last=0,visible=false,paused=false,holdUntil=0;
+    function frame(t){
+      var dt=Math.min(64,t-last);last=t;
+      var max=Math.max(0,img.offsetHeight-view.clientHeight);
+      if(visible&&!paused&&max&&img.complete&&t>holdUntil){
+        y+=speed*dt/1000;
+        if(y>=max){
+          y=max;holdUntil=t+HOLD+FADE;
+          setTimeout(function(){img.style.transition='opacity '+FADE+'ms';img.style.opacity=0},HOLD);
+          setTimeout(function(){y=0;img.style.transform='translate3d(0,0,0)';img.style.opacity=1},HOLD+FADE);
+        }
+        img.style.transform='translate3d(0,'+(-y)+'px,0)';
+      }
+      requestAnimationFrame(frame);
+    }
+    img.loading='eager';
+    new IntersectionObserver(function(e){visible=e[0].isIntersecting},{threshold:.2}).observe(view);
+    btn.addEventListener('click',function(){paused=!paused;btn.textContent=paused?'Play':'Pause'});
+    requestAnimationFrame(function(t){last=t;frame(t)});
   });
-
-  /* 2 brand: four morphs, one at a time */
-  (function(){
-    var sec=$('#brand'), steps=$$('.steps span',sec), P=$$('.panel',sec);
-    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:mob?'+=380%':'+=440%',pin:$('.pin',sec),scrub:.8,anticipatePin:1,
-      onUpdate:function(st){ var i=Math.min(3,Math.floor(st.progress*4.0001)); steps.forEach(function(s,j){ s.classList.toggle('on',j===i); }); }}});
-    tl.from(sec.querySelectorAll('.k,h2,.steps'),{y:30,opacity:0,stagger:.02,duration:.06},0);
-    function show(p,at){ tl.set(p,{visibility:'visible'},at).fromTo(p,{opacity:0,y:30},{opacity:1,y:0,duration:.04},at); }
-    function hide(p,at){ tl.to(p,{opacity:0,y:-30,duration:.04},at).set(p,{visibility:'hidden'},at+.04); }
-    /* color */
-    show(P[0],.02);
-    var sw=$$('.sw i',P[0]);
-    tl.from(sw,{scale:.4,opacity:0,stagger:.012,duration:.05,ease:'back.out(2)'},.04);
-    sw.forEach(function(s,i){ var lab=$('span',s);
-      tl.to(s,{backgroundColor:s.dataset.to,rotate:360*0+0,duration:.07,ease:'power2.inOut'},.12+i*.015)
-        .to(s,{keyframes:{scale:[1,1.12,1]},duration:.07},.12+i*.015)
-        .call(function(){ lab.textContent=tl.scrollTrigger&&tl.scrollTrigger.direction<0?lab.dataset.a:lab.dataset.b; },null,.155+i*.015); });
-    hide(P[0],.235);
-    /* logo */
-    show(P[1],.26);
-    var L=P[1], oldL=$('img',L);
-    tl.set(L.querySelectorAll('.lg-box,.lg-jd,.lg-or,.lg-top,.lg-t1,.lg-t2,.lg-bot'),{opacity:0},.26)
-      .to(oldL,{filter:'blur(6px)',scale:1.08,opacity:0,duration:.06},.32)
-      .fromTo(L.querySelector('.lg-box'),{opacity:0,scale:.6,transformOrigin:'200px 195px'},{opacity:1,scale:1,duration:.05,ease:'back.out(1.6)'},.34)
-      .fromTo(L.querySelector('.lg-jd'),{opacity:0,y:40},{opacity:1,y:0,duration:.04},.36)
-      .fromTo(L.querySelector('.lg-or'),{opacity:0},{opacity:1,duration:.03},.38)
-      .fromTo(L.querySelectorAll('.lg-top,.lg-bot'),{opacity:1,scaleX:0,transformOrigin:'456px 0'},{scaleX:1,duration:.05,ease:'power2.out'},.38)
-      .fromTo(L.querySelectorAll('.lg-t1,.lg-t2'),{opacity:0,x:-30},{opacity:1,x:0,stagger:.015,duration:.04},.4);
-    hide(P[1],.475);
-    /* type */
-    show(P[2],.5);
-    var T=P[2];
-    tl.set($$('.n .wd',T),{opacity:0,yPercent:90,filter:'blur(10px)'},.5)
-      .to($$('.o .c',T),{opacity:0,y:function(){ return 40+Math.random()*60; },rotate:function(){ return (Math.random()-.5)*40; },stagger:{each:.0015,from:'random'},duration:.04,ease:'power2.in'},.56)
-      .to($$('.n .wd',T),{opacity:1,yPercent:0,filter:'blur(0px)',stagger:.012,duration:.05,ease:'power3.out'},.62);
-    hide(P[2],.715);
-    /* photos */
-    show(P[3],.74);
-    var Ph=P[3];
-    tl.to($('img.o',Ph),{scale:1.08,filter:'blur(3px) saturate(.6)',duration:.1},.78)
-      .to($('img.n',Ph),{clipPath:'circle(75% at 50% 50%)',duration:.1,ease:'power2.inOut'},.79)
-      .from($('img.n',Ph),{scale:1.15,duration:.12,ease:'power2.out'},.79);
-    tl.to({}, {duration:.06},.94);
-  })();
-
-  /* 3 after: the page turns navy, the new site builds and scrolls */
-  walk('#after',mob?'240%':'300%',[.04,.22,.5,.76],function(tl,sec){
-    gsap.fromTo($('img.tall',sec),{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',ease:'power2.out',scrollTrigger:{trigger:sec,start:'top 40%',end:'top top',scrub:.8}});
-  });
-
-  /* the dark moment: navy fades in under the rebuild, out before the phones (created after the pin so positions include its spacing) */
-  gsap.fromTo('.bg',{opacity:0},{opacity:1,ease:'none',scrollTrigger:{trigger:'#after',start:'top 70%',end:'top top',scrub:true}});
-  gsap.fromTo('.bg',{opacity:1},{opacity:0,ease:'none',immediateRender:false,scrollTrigger:{trigger:'#phones',start:'top 85%',end:'top 35%',scrub:true}});
-
-  /* 4 phones: rise in with depth */
-  $$('#phones [data-in]').forEach(function(el){ gsap.from(el,{y:30,opacity:0,filter:'blur(8px)',duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}}); });
-  $$('.phone').forEach(function(p,i){ var d=parseFloat(p.dataset.depth);
-    gsap.fromTo(p,{y:160+i*40,rotate:(i-1)*6,opacity:0},{y:0,rotate:0,opacity:1,ease:'power3.out',scrollTrigger:{trigger:'.phones',start:'top 95%',end:'top 40%',scrub:.8}});
-    gsap.to(p,{y:-60*d,ease:'none',scrollTrigger:{trigger:'.phones',start:'top 40%',end:'bottom top',scrub:true}}); });
-
-  /* 5 reveal: scroll sweeps before into after, then it's yours to drag */
-  (function(){
-    var sec=$('#reveal'), o={x:100};
-    var tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:mob?'+=180%':'+=200%',pin:$('.pin',sec),scrub:.8,anticipatePin:1,
-      onLeave:function(){ $('.hint',sec).classList.add('on'); }, onEnterBack:function(){ userX=false; }}});
-    tl.from(sec.querySelectorAll('.k,h2'),{y:30,opacity:0,stagger:.03,duration:.1},0)
-      .from($('.cmp',sec),{y:70,scale:.94,opacity:0,duration:.14,ease:'power2.out'},0)
-      .to(o,{x:0,duration:.6,ease:'power2.inOut',onUpdate:function(){ if(!userX) setX(o.x); }},.2)
-      .to($('.r1',sec),{opacity:0,y:-20,duration:.08},.42)
-      .fromTo($('.r2',sec),{opacity:0,y:20},{opacity:1,y:0,duration:.08},.46)
-      .to(o,{x:50,duration:.14,ease:'power2.inOut',onUpdate:function(){ if(!userX) setX(o.x); }},.84);
-  })();
-
-  /* 6 end */
-  $$('#end [data-in]').forEach(function(el,i){ gsap.from(el,{y:36,opacity:0,filter:'blur(10px)',duration:1.1,delay:i*.12,ease:'power3.out',scrollTrigger:{trigger:'#end',start:'top 70%'}}); });
-
-  window.addEventListener('load',function(){ ScrollTrigger.refresh(); });
 })();
 </script>
 </body>
