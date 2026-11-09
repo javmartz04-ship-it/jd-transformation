@@ -50,13 +50,6 @@ h1 em{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400
 .quote blockquote{margin:0 auto;max-width:920px;font-family:'Outfit',sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
 .quote cite{display:block;margin-top:20px;font-style:normal;font-size:16px;color:var(--muted)}
 
-/* problems */
-.probs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,3.6vw,52px) clamp(20px,3vw,44px)}
-.probs .shot{aspect-ratio:16/9}
-.probs img{width:100%;height:100%;object-fit:cover}
-.probs h3{margin-top:18px;font-size:clamp(22px,2vw,27px);line-height:1.15}
-.probs p{margin-top:6px}
-
 /* process */
 .steps{display:grid;gap:0}
 .step{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:clamp(20px,4vw,64px);align-items:center;padding-block:clamp(28px,3.4vw,48px);border-top:1px solid var(--line)}
@@ -101,15 +94,11 @@ h1 em{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400
 .list li{padding:14px 0;border-top:1px solid var(--line)}
 .list b{display:block;color:var(--ink);font-family:'Outfit',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.012em}
 
-/* work */
-.work{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,48px) clamp(18px,2.6vw,36px)}
-.work h3{margin-top:14px;font-size:21px;letter-spacing:-.015em}
-.work p{font-size:16px}
 footer{padding:32px 0;text-align:center;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
 
 @media (max-width:760px){
   body{font-size:16px}
-  .ba,.probs,.step,.show,.mob,.work{grid-template-columns:minmax(0,1fr)}
+  .ba,.step,.show,.mob{grid-template-columns:minmax(0,1fr)}
   .ba{gap:8px}
   .label{margin-bottom:3px;font-size:14px}
   .diff{grid-template-columns:1fr;gap:16px}
@@ -147,16 +136,6 @@ footer{padding:32px 0;text-align:center;font-size:14px;color:var(--muted);border
 <section class="quote tint" hidden><div class="wrap">
   <blockquote></blockquote>
   <cite>Josh DuBois, Founder, JD Strategic Franchising</cite>
-</div></section>
-
-<section><div class="wrap">
-  <div class="head"><h2>Four problems were costing him trust.</h2><p>A franchise is a major purchase. This is what buyers saw when they checked him out.</p></div>
-  <div class="probs">
-    <article><div class="shot"><img src="assets/v7/p-headline.webp" width="750" height="500" loading="lazy" alt="Pale orange headline and orange button with blue text"></div><h3>The headline was hard to read</h3><p>Pale orange on white, with an orange button carrying bright blue text.</p></article>
-    <article><div class="shot"><img src="assets/v3/old-thumb.webp" width="600" height="338" loading="lazy" alt="The YouTube thumbnail that filled the old hero"></div><h3>The main image was a YouTube thumbnail</h3><p>Loud graphics took the spot where buyers should have met Josh.</p></article>
-    <article><div class="shot"><img src="assets/v7/p-text.webp" width="900" height="600" loading="lazy" alt="Small paragraphs of text on the old site"></div><h3>Every section was a wall of text</h3><p>One font and small paragraphs, so nothing told visitors where to look.</p></article>
-    <article><div class="shot"><img src="assets/v7/p-chat.webp" width="900" height="600" loading="lazy" alt="A chat pop-up covering centered paragraphs on the old site"></div><h3>A pop-up covered the page</h3><p>A chat box sat on top of the opening paragraphs, with no clear next step.</p></article>
-  </div>
 </div></section>
 
 <section class="tint"><div class="wrap">
@@ -229,18 +208,6 @@ footer{padding:32px 0;text-align:center;font-size:14px;color:var(--muted);border
   <div class="pair">
     <figure><div class="ph ghost"><div class="view auto" data-speed="110"><img src="assets/old-mobile.jpg" width="720" height="20625" loading="lazy" alt="The old homepage on a phone"></div><button class="pp" type="button">Pause</button></div><p class="cap" style="color:var(--muted)">Before</p></figure>
     <figure><div class="ph"><div class="view auto" data-speed="110"><img src="assets/new-mobile.jpg" width="720" height="29943" loading="lazy" alt="The new homepage on a phone"></div><button class="pp" type="button">Pause</button></div><p class="cap" style="color:var(--blue)">After</p></figure>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="head"><h2>More of our work.</h2></div>
-  <div class="work">
-    <article><div class="shot"><img src="assets/v7/w-rigfmo.webp" width="1800" height="1125" loading="lazy" alt="The Real Insurance Group website"></div><h3>The Real Insurance Group</h3><p>Company website for a Medicare agency network</p></article>
-    <article><div class="shot"><img src="assets/v7/w-mmi.webp" width="1800" height="1125" loading="lazy" alt="Money Type Decoded registration page"></div><h3>Money Type Decoded</h3><p>Live training registration page</p></article>
-    <article><div class="shot"><img src="assets/v7/w-mark.webp" width="1800" height="1125" loading="lazy" alt="Medicare PA video funnel"></div><h3>Medicare PA</h3><p>Three-step call funnel</p></article>
-    <article><div class="shot"><img src="assets/v7/w-justin.webp" width="1800" height="1125" loading="lazy" alt="Just Insurance ASL Medicare page"></div><h3>Just Insurance ASL</h3><p>Medicare funnel in American Sign Language</p></article>
-    <article><div class="shot"><img src="assets/v7/w-melody.webp" width="1800" height="1125" loading="lazy" alt="Melody Circle website"></div><h3>Melody Circle</h3><p>Baby music class funnel</p></article>
-    <article><div class="shot"><img src="assets/v7/w-abbott.webp" width="1800" height="1125" loading="lazy" alt="GenAI prompt library sales page"></div><h3>Dean Abbott Prompt Library</h3><p>Digital product sales page</p></article>
   </div>
 </div></section>
 
